@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  
+  --color-earth-900: #1a2e12;
+  --color-earth-800: #2d4f1e;
+  --color-earth-700: #3d6b29;
+  --color-earth-600: #4a8232;
+  --color-earth-500: #57993b;
+  
+  --color-sand-100: #fcfbf9;
+  --color-sand-200: #f5f2ed;
+  --color-sand-300: #e8e4db;
+  
+  --color-accent-brown: #8b4513;
+  --color-accent-sage: #4a6741;
+  
+  /* Darker text for better contrast */
+  --color-text-muted: #595959;
+}
+
+@layer base {
+  body {
+    @apply bg-sand-200 text-earth-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-semibold;
+  }
+
+  /* Smooth page transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Global animation utilities */
+  * {
+    @apply transition-colors;
+  }
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.btn-primary {
+  @apply bg-earth-800 text-sand-100 px-8 py-3 rounded-full font-semibold transition-all hover:bg-earth-900 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply border-2 border-earth-800 text-earth-800 px-8 py-3 rounded-full font-semibold transition-all hover:bg-earth-800 hover:text-sand-100 active:scale-95;
+}
+
+.section-padding {
+  @apply py-20 px-6 md:px-12 lg:px-24;
+}
+
+.nature-gradient {
+  background: linear-gradient(135deg, #f5f2ed 0%, #e8e4db 100%);
+}
+
+.earth-gradient {
+  background: linear-gradient(135deg, #2d4f1e 0%, #1a2e12 100%);
+}
+
+.logo-filter-brand {
+  filter: invert(24%) sepia(18%) saturate(1471%) hue-rotate(62deg) brightness(94%) contrast(92%);
+}
+
+.logo-filter-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Smooth scroll for navigation */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Utility classes for animations */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+/* Smooth focus states for accessibility */
+a, button,input, select, textarea {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-earth-600 focus-visible:ring-offset-2;
+}
