@@ -43,12 +43,12 @@ const WarrantySection: React.FC = () => {
 
   return (
     <section id="warranty" className="section-padding bg-linear-to-b from-sand-100 to-sand-200 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-earth-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Static background elements - removed animation for performance */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-earth-500/10 rounded-full blur-xl opacity-50"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-600/10 rounded-full blur-xl opacity-40"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -57,23 +57,21 @@ const WarrantySection: React.FC = () => {
             viewport={{ once: true }}
           >
             <motion.div
-              className="flex items-center gap-4 mb-6"
+              className="flex items-center gap-3 mb-4"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
               <motion.div
-                className="w-12 h-12 rounded-full bg-linear-to-br from-earth-700 to-earth-800 flex items-center justify-center text-sand-100 shadow-lg"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                className="w-10 h-10 rounded-full bg-linear-to-br from-earth-700 to-earth-800 flex items-center justify-center text-white shadow-lg"
               >
-                <ShieldCheck size={24} />
+                <ShieldCheck size={20} />
               </motion.div>
-              <h2 className="text-4xl md:text-6xl font-serif font-bold text-earth-900">Warranty Registration</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900">Warranty Registration</h2>
             </motion.div>
 
             <motion.p
-              className="text-lg text-earth-800/80 mb-10 leading-relaxed"
+              className="text-sm sm:text-base md:text-base text-earth-800/80 mb-6 leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -82,7 +80,7 @@ const WarrantySection: React.FC = () => {
             </motion.p>
             
             {/* Warranty items */}
-            <div className="space-y-4 mb-10">
+            <div className="space-y-3 mb-6">
               {warrantyItems.map((item, index) => (
                 <motion.div
                   key={item}

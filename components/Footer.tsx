@@ -51,26 +51,24 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-earth-900 text-sand-100 pt-20 pb-10 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-earth-800/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-700/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 animate-pulse" style={{ animationDelay: '1s' }}></div>
+    <footer className="bg-earth-900 text-white pt-12 pb-6 relative overflow-hidden">
+      {/* Static background elements - removed animation for performance */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-earth-800/20 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-40\"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-700/10 rounded-full blur-2xl translate-x-1/2 translate-y-1/2 opacity-30\"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
-          className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4"
+          className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {/* Brand column */}
-          <motion.div className="space-y-6" variants={itemVariants}>
-            <motion.div className="flex items-center gap-3" whileHover={{ x: 8 }}>
+          <motion.div className="space-y-4" variants={itemVariants}>
+            <motion.div className="flex items-center gap-2" whileHover={{ x: 8 }}>
               <motion.div
-                className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+                className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full"
               >
                 {isLogoVisible ? (
                   <img
@@ -80,13 +78,13 @@ const Footer: React.FC = () => {
                     onError={() => setIsLogoVisible(false)}
                   />
                 ) : (
-                  <span className="font-serif text-xl font-bold text-sand-100">{BRAND_CONFIG.name[0]}</span>
+                  <span className="font-serif text-base font-bold text-white">{BRAND_CONFIG.name[0]}</span>
                 )}
               </motion.div>
-              <h3 className="text-2xl font-serif font-bold tracking-tight">{BRAND_CONFIG.name}</h3>
+              <h3 className="text-lg sm:text-xl font-serif font-bold tracking-tight">{BRAND_CONFIG.name}</h3>
             </motion.div>
-            <p className="text-sm leading-relaxed text-sand-300">{BRAND_CONFIG.tagline}</p>
-            <div className="flex items-center gap-4">
+            <p className="text-xs sm:text-sm leading-relaxed text-gray-300">{BRAND_CONFIG.tagline}</p>
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -109,8 +107,8 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-earth-500">Quick Links</h4>
-            <ul className="space-y-4 text-sm text-sand-300">
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-earth-500">Quick Links</h4>
+            <ul className="space-y-3 text-xs sm:text-sm text-gray-300">
               {quickLinks.map((link, index) => (
                 <motion.li
                   key={link.name}
@@ -119,7 +117,7 @@ const Footer: React.FC = () => {
                   transition={{ delay: index * 0.05 }}
                   whileHover={{ x: 8 }}
                 >
-                  <Link to={link.href} className="transition-colors hover:text-sand-100">
+                  <Link to={link.href} className="transition-colors hover:text-white">
                     {link.name}
                   </Link>
                 </motion.li>
@@ -129,19 +127,19 @@ const Footer: React.FC = () => {
 
           {/* Support */}
           <motion.div variants={itemVariants}>
-            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-earth-500">Support</h4>
-            <ul className="space-y-4 text-sm text-sand-300">
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-earth-500">Support</h4>
+            <ul className="space-y-3 text-xs sm:text-sm text-gray-300">
               {supportLinks.map((link, index) => (
                 <motion.li
                   key={link.text}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   whileHover={{ x: 8 }}
                 >
-                  {link.type === 'email' && <Mail size={16} className="text-earth-500 shrink-0" />}
-                  {link.type === 'location' && <MapPin size={16} className="text-earth-500 shrink-0" />}
+                  {link.type === 'email' && <Mail size={14} className="text-earth-500 shrink-0" />}
+                  {link.type === 'location' && <MapPin size={14} className="text-earth-500 shrink-0" />}
                   {link.type === 'email' || link.type === 'location' ? (
                     <span>{link.text}</span>
                   ) : (
@@ -149,9 +147,9 @@ const Footer: React.FC = () => {
                       href={link.href}
                       target={link.type === 'manual' ? '_blank' : undefined}
                       rel={link.type === 'manual' ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-2 transition-colors hover:text-sand-100"
+                      className="flex items-center gap-1 transition-colors hover:text-white"
                     >
-                      {link.text} {link.type === 'manual' && <ExternalLink size={14} />}
+                      {link.text} {link.type === 'manual' && <ExternalLink size={12} />}
                     </a>
                   )}
                 </motion.li>

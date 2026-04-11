@@ -32,19 +32,24 @@ const Hero: React.FC = () => {
           alt="Terra Sol Grounding products in a serene setting, representing the grounding power of nature."
           className="h-full w-full object-cover opacity-40"
           referrerPolicy="no-referrer"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-linear-to-b from-sand-200/50 via-transparent to-sand-200" />
         
-        {/* Animated gradient overlays */}
+        {/* Animated gradient overlays - only animate on viewport */}
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-earth-500/10 rounded-full blur-3xl"
-          animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-0 left-1/4 w-96 h-96 bg-earth-500/10 rounded-full blur-xl"
+          initial={{ y: 0, x: 0 }}
+          whileInView={{ y: -15, x: 10 }}
+          transition={{ duration: 6, ease: 'easeInOut' }}
+          viewport={{ once: true }}
         />
         <motion.div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-earth-600/10 rounded-full blur-3xl"
-          animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-earth-600/10 rounded-full blur-xl"
+          initial={{ y: 0, x: 0 }}
+          whileInView={{ y: 15, x: -10 }}
+          transition={{ duration: 7, ease: 'easeInOut' }}
+          viewport={{ once: true }}
         />
       </div>
 
@@ -70,7 +75,7 @@ const Hero: React.FC = () => {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-8 text-6xl font-serif font-bold leading-none tracking-tighter text-earth-900 md:text-8xl lg:text-9xl"
+            className="mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-none tracking-tighter text-earth-900"
           >
             Restore Your <br />
             <motion.span
@@ -85,7 +90,7 @@ const Hero: React.FC = () => {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mx-auto mb-12 max-w-2xl text-lg font-medium leading-relaxed text-earth-800/80 md:text-xl"
+            className="mx-auto mb-8 max-w-2xl text-sm sm:text-base md:text-lg font-medium leading-relaxed text-earth-800/80"
           >
             Neutralize inflammation and deepen sleep with Earth's natural energy. Our premium grounding products bring restorative biophysics directly into your home.
           </motion.p>
@@ -93,7 +98,7 @@ const Hero: React.FC = () => {
           {/* CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center gap-6 sm:flex-row"
+            className="flex flex-col items-center gap-4 sm:flex-row sm:gap-4"
           >
             <motion.a
               href="#products"

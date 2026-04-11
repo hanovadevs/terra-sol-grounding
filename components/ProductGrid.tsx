@@ -29,9 +29,9 @@ const ProductGrid: React.FC = () => {
 
   return (
     <section id="products" className="section-padding bg-linear-to-b from-sand-100 to-sand-200 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-earth-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-earth-600/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Static background elements - removed animation for performance */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-earth-500/10 rounded-full blur-xl opacity-60"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-earth-600/5 rounded-full blur-xl opacity-40"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -51,10 +51,10 @@ const ProductGrid: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-widest text-earth-700">Premium Collection</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-earth-800 mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-800 mb-4 leading-tight">
             Our Premium <span className="italic text-earth-600">Products</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-earth-800/70 leading-relaxed">
+          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-base text-earth-800/70 leading-relaxed">
             Carefully crafted with high-quality materials to ensure a reliable and effective connection to the Earth's natural energy.
           </p>
         </motion.div>
@@ -75,12 +75,10 @@ const ProductGrid: React.FC = () => {
               }`}
               whileHover={{ y: -8 }}
             >
-              {/* Premium badge with glow */}
+              {/* Premium badge with glow - static for performance */}
               {product.isPremium && (
-                <motion.div
+                <div
                   className="absolute -top-2 -right-2 w-24 h-24 bg-earth-600/20 rounded-full blur-2xl z-10"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                  transition={{ duration: 4, repeat: Infinity }}
                 />
               )}
 
@@ -91,6 +89,7 @@ const ProductGrid: React.FC = () => {
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
 
                 {/* Image overlay on hover */}
@@ -114,11 +113,10 @@ const ProductGrid: React.FC = () => {
                 {/* Premium Badge */}
                 {product.isPremium && (
                   <motion.div
-                    className="absolute top-4 left-4 bg-linear-to-r from-earth-700 to-earth-800 text-sand-100 px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-lg z-20"
+                    className="absolute top-4 left-4 bg-linear-to-r from-earth-700 to-earth-800 text-white px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-lg z-20"
                     initial={{ x: -20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 + 0.2 }}
-                    animate={{ y: [0, -4, 0] }}
                   >
                     ⭐ Premium Choice
                   </motion.div>
@@ -126,7 +124,7 @@ const ProductGrid: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8 flex flex-col grow">
+              <div className="p-5 sm:p-6 flex flex-col grow">
                 {product.tagline && (
                   <motion.p
                     className="text-[10px] font-bold text-earth-600 uppercase tracking-widest mb-3"
@@ -138,11 +136,11 @@ const ProductGrid: React.FC = () => {
                   </motion.p>
                 )}
 
-                <h3 className="text-2xl font-serif font-bold text-earth-900 mb-2 group-hover:text-earth-700 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mb-2 group-hover:text-earth-700 transition-colors">
                   {product.name}
                 </h3>
 
-                <p className="text-earth-800/70 text-sm mb-6 leading-relaxed">
+                <p className="text-earth-800/70 text-xs sm:text-sm mb-4 leading-relaxed">
                   {product.description}
                 </p>
 

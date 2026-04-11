@@ -39,17 +39,17 @@ const FAQItem: React.FC<{ faq: typeof FAQS[0], index: number }> = ({ faq, index 
   return (
     <div className="border-b border-sand-300 last:border-0">
       <button
-        className="w-full py-6 flex items-center justify-between text-left group"
+        className="w-full py-4 sm:py-5 flex items-center justify-between text-left group"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
         id={`faq-question-${index}`}
       >
-        <span className="text-xl font-serif font-bold text-earth-900 group-hover:text-earth-600 transition-colors">
+        <span className="text-base sm:text-lg font-serif font-bold text-earth-900 group-hover:text-earth-600 transition-colors">
           {faq.question}
         </span>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${isOpen ? 'bg-earth-800 text-sand-100 rotate-180' : 'bg-sand-300 text-earth-800'}`}>
-          {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+        <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all shrink-0 ml-3 ${isOpen ? 'bg-earth-800 text-white rotate-180' : 'bg-sand-300 text-earth-800'}`}>
+          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
         </div>
       </button>
       <AnimatePresence>
@@ -64,7 +64,7 @@ const FAQItem: React.FC<{ faq: typeof FAQS[0], index: number }> = ({ faq, index 
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-text-muted leading-relaxed">
+            <p className="pb-4 sm:pb-5 text-xs sm:text-sm text-earth-800/80 leading-relaxed">
               {faq.answer}
             </p>
           </motion.div>
@@ -78,11 +78,11 @@ const FAQSection: React.FC = () => {
   return (
     <section id="faq" className="section-padding bg-sand-200">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-earth-800 mb-6">Frequently Asked Questions</h2>
-          <p className="text-text-muted">Everything you need to know about grounding and our products.</p>
+        <div className="text-center mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-800 mb-4">Frequently Asked Questions</h2>
+          <p className="text-xs sm:text-sm text-earth-700/80">Everything you need to know about grounding and our products.</p>
         </div>
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-sand-300/50">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm border border-sand-300/50">
           {FAQS.map((faq, index) => (
             <FAQItem key={index} faq={faq} index={index} />
           ))}

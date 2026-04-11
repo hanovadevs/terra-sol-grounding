@@ -5,12 +5,12 @@ import { BRAND_STORY } from '../constants';
 const StorySection: React.FC = () => {
   return (
     <section id="story" className="section-padding bg-linear-to-b from-sand-200 to-sand-100 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-earth-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 left-20 w-96 h-96 bg-earth-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Static background elements - removed animation for performance */}
+      <div className="absolute top-10 sm:top-20 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-earth-500/10 rounded-full blur-xl opacity-50"></div>
+      <div className="absolute bottom-0 left-10 sm:left-20 w-64 sm:w-96 h-64 sm:h-96 bg-earth-600/10 rounded-full blur-xl opacity-40"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Image section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, x: -50 }}
@@ -29,6 +29,7 @@ const StorySection: React.FC = () => {
                 alt="Terra Sol Grounding mission and journey" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               
               {/* Image overlay on hover */}
@@ -38,14 +39,12 @@ const StorySection: React.FC = () => {
               />
             </motion.div>
 
-            {/* Floating quote circle */}
-            <motion.div
-              className="absolute -bottom-8 -right-8 w-48 h-48 bg-linear-to-br from-earth-700 to-earth-800 rounded-full p-8 text-center text-sand-100 font-serif italic text-xl shadow-2xl z-10 flex items-center justify-center border-4 border-white max-md:hidden"
-              animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            {/* Floating quote circle - removed infinite animation for performance */}
+            <div
+              className="absolute -bottom-8 -right-8 w-48 h-48 bg-linear-to-br from-earth-700 to-earth-800 rounded-full p-8 text-center text-white font-serif italic text-xl shadow-2xl z-10 flex items-center justify-center border-4 border-white max-md:hidden"
             >
               "Connecting you back to Earth"
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Text section */}
@@ -66,7 +65,7 @@ const StorySection: React.FC = () => {
             </motion.span>
 
             <motion.h2
-              className="text-4xl md:text-6xl font-serif font-bold text-earth-900 mb-8 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-6 leading-tight"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -84,7 +83,7 @@ const StorySection: React.FC = () => {
             </motion.h2>
 
             <motion.p
-              className="text-lg text-earth-800/80 mb-10 leading-relaxed"
+              className="text-sm sm:text-base md:text-base text-earth-800/80 mb-6 leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -94,7 +93,7 @@ const StorySection: React.FC = () => {
             
             {/* Stats Grid */}
             <motion.div
-              className="grid grid-cols-2 gap-8 mb-10"
+              className="grid grid-cols-2 gap-6 mb-6"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -102,13 +101,13 @@ const StorySection: React.FC = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
               >
-                <h4 className="text-3xl font-serif font-bold text-earth-800 mb-1">10k+</h4>
+                <h4 className="text-2xl sm:text-3xl font-serif font-bold text-earth-800 mb-1">10k+</h4>
                 <p className="text-xs font-bold text-earth-800/50 uppercase tracking-widest">Happy Customers</p>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
               >
-                <h4 className="text-3xl font-serif font-bold text-earth-800 mb-1">100%</h4>
+                <h4 className="text-2xl sm:text-3xl font-serif font-bold text-earth-800 mb-1">100%</h4>
                 <p className="text-xs font-bold text-earth-800/50 uppercase tracking-widest">Verified Quality</p>
               </motion.div>
             </motion.div>
