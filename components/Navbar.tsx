@@ -11,14 +11,18 @@ const Navbar: React.FC = () => {
   const [activeHover, setActiveHover] = useState<string | null>(null);
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+  const isHome = location.pathname === '/';
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const navLinks = [
     { name: 'Home', href: '/', icon: Home },
@@ -29,163 +33,113 @@ const Navbar: React.FC = () => {
     { name: 'Warranty', href: '/warranty', icon: Shield, badge: 'New' },
   ];
 
-  const navVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const navItemVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 },
-    },
-  };
-
   const isActive = (href: string) => location.pathname === href;
 
+  // On the home page before scrolling, use a fully transparent dark-text approach
+  // After scrolling or on inner pages, use the frosted glass look
+  const navBg = isScrolled || !isHome
+    ? 'bg-white/80 backdrop-blur-xl border-b border-sand-300/50 shadow-sm'
+    : 'bg-transparent';
+
+  const textColor = isScrolled || !isHome ? 'text-earth-900' : 'text-white';
+
   return (
-    <nav
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
-        isScrolled || location.pathname !== '/' ? 'glass py-4 shadow-lg backdrop-blur-xl' : 'bg-transparent py-5'
-      }`}
-    >
-
-
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 relative">
-        {/* Logo Section */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Link to="/" className="group flex items-center gap-2" aria-label="Terra Sol Home">
-            <motion.div
-              className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-earth-600/10 backdrop-blur-sm border border-earth-600/20 group-hover:border-earth-600/40 transition-all"
-              role="img"
-              aria-label="Terra Sol Logo"
+    <nav className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 py-4 ${navBg}`}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <Link to="/" className="group flex items-center gap-2.5" aria-label="Terra Sol Home">
+            <div
+              className={`flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border transition-all ${
+                isScrolled || !isHome
+                  ? 'border-earth-600/15 bg-earth-600/5'
+                  : 'border-white/20 bg-white/10 backdrop-blur-md'
+              }`}
             >
               {isLogoVisible ? (
                 <img
                   src={BRAND_CONFIG.logo}
                   alt=""
-                  className="h-full w-full object-contain group-hover:scale-110 transition-transform"
+                  className="h-full w-full object-contain"
                   onError={() => setIsLogoVisible(false)}
                 />
               ) : (
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-earth-700">
-                  <span className="font-serif text-sm font-bold text-white">{BRAND_CONFIG.name[0]}</span>
-                </div>
+                <span className="font-serif text-sm font-bold">{BRAND_CONFIG.name[0]}</span>
               )}
-            </motion.div>
-            <motion.span
-              className="text-lg sm:text-xl font-serif font-bold tracking-tight text-earth-800 transition-colors group-hover:text-earth-600 hidden sm:inline"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            </div>
+            <span className={`text-lg font-serif font-bold tracking-tight hidden sm:inline transition-colors ${textColor}`}>
               {BRAND_CONFIG.name}
-            </motion.span>
+            </span>
           </Link>
         </motion.div>
 
         {/* Desktop Nav Links */}
-        <motion.div
-          className="hidden items-center gap-2.5 md:flex"
-          variants={navVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const Icon = link.icon;
+            const active = isActive(link.href);
             return (
-              <motion.div
+              <div
                 key={link.name}
-                variants={navItemVariants}
-                onHoverStart={() => setActiveHover(link.name)}
-                onHoverEnd={() => setActiveHover(null)}
+                onMouseEnter={() => setActiveHover(link.name)}
+                onMouseLeave={() => setActiveHover(null)}
               >
                 <Link
                   to={link.href}
-                  className={`relative group px-4 py-2.5 rounded-lg transition-all ${
-                    isActive(link.href)
-                      ? 'text-earth-700 bg-earth-100'
-                      : 'text-earth-900 hover:text-earth-700'
+                  className={`relative group px-3.5 py-2.5 rounded-lg flex items-center gap-2 transition-colors ${
+                    active
+                      ? `${isScrolled || !isHome ? 'text-earth-700' : 'text-white'} font-bold`
+                      : `${textColor} hover:text-earth-600`
                   }`}
                 >
-                  <motion.div
-                    className="flex items-center gap-2.5"
-                    whileHover={{ x: 2 }}
-                  >
-                    <Icon size={16} className="opacity-70" />
-                    <span className="text-xs font-bold uppercase tracking-wide">{link.name}</span>
-                    {link.badge && (
-                      <motion.span
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="ml-1 px-1.5 py-0.5 text-[9px] font-bold uppercase bg-earth-600 text-white rounded-full"
-                      >
-                        {link.badge}
-                      </motion.span>
-                    )}
-                  </motion.div>
+                  <Icon size={14} className="opacity-50" />
+                  <span className="text-xs font-bold uppercase tracking-wide">{link.name}</span>
+                  {link.badge && (
+                    <span className="px-1.5 py-0.5 text-[8px] font-bold uppercase bg-earth-600 text-white rounded-full leading-none">
+                      {link.badge}
+                    </span>
+                  )}
 
-                  {/* Bottom line indicator */}
+                  {/* Active/hover underline */}
                   <motion.div
-                    className="absolute bottom-0 left-3 right-3 h-0.5 bg-earth-600 rounded-full"
+                    className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full ${
+                      isScrolled || !isHome ? 'bg-earth-600' : 'bg-white'
+                    }`}
                     initial={{ scaleX: 0 }}
                     animate={{
-                      scaleX: isActive(link.href) ? 1 : activeHover === link.name ? 1 : 0,
+                      scaleX: active ? 1 : activeHover === link.name ? 0.6 : 0,
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     style={{ originX: 0 }}
                   />
-
-                  {/* Hover background */}
-                  <motion.div
-                    className="absolute inset-0 bg-earth-600/5 rounded-lg -z-10"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: activeHover === link.name ? 1 : isActive(link.href) ? 0.5 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  />
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Shop Button & Mobile Menu */}
-        <div className="flex items-center gap-5">
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {/* Shop CTA */}
           <motion.a
             href="https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 rounded-full border-2 border-earth-700 bg-sand-100 px-5 py-2.5 text-xs sm:text-sm font-bold text-earth-700 transition-all hover:bg-earth-700 hover:text-sand-100 hover:shadow-lg relative overflow-hidden group whitespace-nowrap"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
+            className={`hidden sm:flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+              isScrolled || !isHome
+                ? 'bg-earth-800 text-white hover:bg-earth-900 shadow-md'
+                : 'bg-white/15 text-white border border-white/20 backdrop-blur-md hover:bg-white/25'
+            }`}
+            whileHover={{ scale: 1.05, y: -1 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <motion.div
-              className="absolute inset-0 bg-linear-to-r from-earth-600 to-earth-700 opacity-0 group-hover:opacity-100"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: '100%' }}
-              transition={{ duration: 0.6 }}
-            />
-            <motion.div whileHover={{ rotate: 12, scale: 1.2 }}>
-              <ShoppingCart size={16} />
-            </motion.div>
-            <span className="relative">SHOP</span>
+            <ShoppingCart size={14} />
+            <span>Shop</span>
           </motion.a>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="p-2 text-earth-800 md:hidden rounded-lg hover:bg-earth-100 transition-colors"
+            className={`p-2 md:hidden rounded-lg transition-colors ${textColor}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -225,53 +179,43 @@ const Navbar: React.FC = () => {
         {isMobileMenuOpen && (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, height: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, height: 'auto', backdropFilter: 'blur(8px)' }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden border-t border-sand-300 bg-white/50 backdrop-blur-md"
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden overflow-hidden border-t border-sand-300/50 bg-white/95 backdrop-blur-xl"
           >
-            <motion.div
-              className="flex flex-col gap-3 p-4 max-w-7xl mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ staggerChildren: 0.05, delayChildren: 0.1 }}
-            >
-              {navLinks.map((link) => {
+            <div className="flex flex-col gap-1 p-4 max-w-7xl mx-auto">
+              {navLinks.map((link, idx) => {
                 const Icon = link.icon;
                 return (
                   <motion.div
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: idx * 0.05 }}
                   >
                     <Link
                       to={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-4 rounded-lg transition-all ${
+                      className={`flex items-center gap-3 px-4 py-4 rounded-xl transition-all ${
                         isActive(link.href)
-                          ? 'bg-earth-100 text-earth-700 font-semibold'
+                          ? 'bg-earth-100 text-earth-700 font-bold'
                           : 'text-earth-900 hover:bg-earth-50'
                       }`}
                     >
-                      <Icon size={18} className="opacity-70" />
-                      <span className="text-sm font-medium">{link.name}</span>
+                      <Icon size={18} className="opacity-50" />
+                      <span className="text-sm font-semibold">{link.name}</span>
                       {link.badge && (
-                        <motion.span
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className="ml-auto px-2 py-0.5 text-[8px] font-bold uppercase bg-earth-600 text-white rounded-full"
-                        >
+                        <span className="ml-auto px-2 py-0.5 text-[8px] font-bold uppercase bg-earth-600 text-white rounded-full">
                           {link.badge}
-                        </motion.span>
+                        </span>
                       )}
                     </Link>
                   </motion.div>
                 );
               })}
 
-              {/* Mobile Shop Button */}
               <motion.a
                 href="https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98"
                 target="_blank"
@@ -280,12 +224,12 @@ const Navbar: React.FC = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex items-center gap-2 px-4 py-4 rounded-lg bg-gradient-to-r from-earth-700 to-earth-800 text-white font-bold text-sm mx-0 mt-3 hover:shadow-lg transition-shadow"
+                className="flex items-center justify-center gap-2 px-4 py-4 rounded-xl bg-earth-800 text-white font-bold text-sm mt-2"
               >
-                <ShoppingCart size={18} />
-                <span>SHOP ON AMAZON</span>
+                <ShoppingCart size={16} />
+                <span>Shop on Amazon</span>
               </motion.a>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

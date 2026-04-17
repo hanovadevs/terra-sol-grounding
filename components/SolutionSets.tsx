@@ -1,145 +1,104 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { SOLUTION_SETS } from '../constants';
 
 const SolutionSets: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
   return (
-    <section className="overflow-hidden bg-linear-to-b from-sand-100 to-sand-200 py-24 relative">
-      {/* Static background elements - removed animation for performance */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-earth-500/10 rounded-full blur-xl opacity-50"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-600/10 rounded-full blur-xl opacity-40"></div>
+    <section className="relative overflow-hidden bg-sand-50 py-24 sm:py-32">
+      {/* Subtle background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-earth-500/4 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-earth-600/3 blur-[100px]" />
+      </div>
 
-      <div className="mx-auto max-w-7xl px-6 relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-16 sm:mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6"
         >
-          <motion.h2
-            className="mb-4 text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-earth-900 leading-tight"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            Tailored <span className="italic text-earth-700 relative">
-              Solution Sets
-              <motion.div
-                className="absolute -bottom-2 left-0 h-1 bg-linear-to-r from-earth-700 to-transparent rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-            </span>
-          </motion.h2>
-          <motion.p
-            className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-earth-800/70"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Grounding isn't just a wellness trend, it's a biological necessity. Discover how our products integrate into your specific lifestyle.
-          </motion.p>
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-earth-600 mb-4 block">Use Cases</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-earth-900 leading-[1.05]">
+              Tailored <span className="italic text-earth-700">Solution Sets</span>
+            </h2>
+          </div>
+          <p className="max-w-lg text-sm sm:text-base leading-relaxed text-earth-800/60 lg:text-right">
+            Grounding isn't just a wellness trend — it's a biological necessity. Discover how our products integrate into your specific lifestyle.
+          </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {SOLUTION_SETS.map((set, index) => (
             <motion.div
               key={set.id}
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              viewport={{ once: true, margin: '-80px' }}
               className="group relative"
-              whileHover={{ y: -8 }}
             >
-              {/* Card background glow on hover */}
-              <motion.div
-                className="absolute inset-0 bg-linear-to-br from-earth-600/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={{ opacity: 0 }}
-              />
-
-              {/* Image container */}
-              <motion.div
-                className="relative mb-6 aspect-4/5 overflow-hidden rounded-3xl shadow-lg border border-sand-300/50 group-hover:border-earth-600/30"
-                whileHover={{ scale: 1.02 }}
-              >
+              {/* Image */}
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[2rem] mb-6 shadow-lg">
                 <img
                   src={set.image}
                   alt={set.title}
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   loading="lazy"
                 />
-                
-                {/* Overlay gradient */}
-                <motion.div
-                  className="absolute inset-0 bg-linear-to-t from-earth-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  initial={{ opacity: 0 }}
-                />
 
-                {/* Index badge */}
-                <motion.div
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-earth-800 font-bold shadow-lg border border-white/30"
-                  initial={{ scale: 0, rotate: -90 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: index * 0.15 + 0.3 }}
-                >
-                  {index + 1}
-                </motion.div>
-              </motion.div>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-earth-900/70 via-earth-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Index */}
+                <div className="absolute top-5 left-5">
+                  <motion.div
+                    className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center font-serif font-bold text-earth-900 text-sm border border-white/50 shadow-md"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: index * 0.15 + 0.4, type: 'spring', stiffness: 200 }}
+                    viewport={{ once: true }}
+                  >
+                    0{index + 1}
+                  </motion.div>
+                </div>
+
+                {/* Hover CTA */}
+                <div className="absolute bottom-5 left-5 right-5 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-500">
+                  <div className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider">
+                    <span>Explore</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </div>
+              </div>
 
               {/* Content */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.15 + 0.4 }}
-              >
-                <h3 className="mb-2 text-lg sm:text-xl font-serif font-bold text-earth-900 group-hover:text-earth-700 transition-colors">
+              <div className="px-1">
+                <h3 className="mb-2 text-xl sm:text-2xl font-serif font-bold text-earth-900 group-hover:text-earth-700 transition-colors">
                   {set.title}
                 </h3>
-                <p className="leading-relaxed text-xs sm:text-sm text-earth-800/70 group-hover:text-earth-800 transition-colors">
+                <p className="text-sm leading-relaxed text-earth-800/60">
                   {set.description}
                 </p>
-              </motion.div>
+              </div>
 
               {/* Accent line */}
               <motion.div
-                className="absolute bottom-0 left-0 h-1 bg-linear-to-r from-earth-700 to-transparent rounded-full"
+                className="mt-4 h-[2px] bg-gradient-to-r from-earth-700 to-transparent rounded-full ml-1"
                 initial={{ width: 0 }}
                 whileInView={{ width: '40px' }}
                 transition={{ delay: index * 0.15 + 0.5, duration: 0.6 }}
+                viewport={{ once: true }}
               />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

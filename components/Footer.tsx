@@ -1,37 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Instagram, Facebook, Twitter, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Mail, MapPin, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { BRAND_CONFIG } from '../constants';
 
 const Footer: React.FC = () => {
   const [isLogoVisible, setIsLogoVisible] = React.useState(true);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com/terrasol', label: 'Instagram' },
-    { icon: Facebook, href: 'https://facebook.com/terrasol', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com/terrasol', label: 'Twitter' },
-  ];
+  const year = new Date().getFullYear();
 
   const quickLinks = [
     { name: 'Home', href: '/' },
@@ -42,34 +17,64 @@ const Footer: React.FC = () => {
     { name: 'Warranty', href: '/warranty' },
   ];
 
-  const supportLinks = [
-    { type: 'email', text: 'support@terrasolgrounding.com', icon: Mail },
-    { type: 'location', text: 'Los Angeles, CA', icon: MapPin },
-    { type: 'manual', text: 'Instruction Manual', href: '/manual.pdf' },
-    { type: 'privacy', text: 'Privacy Policy', href: 'mailto:support@terrasolgrounding.com?subject=Privacy%20Policy%20Request' },
-    { type: 'terms', text: 'Terms of Service', href: 'mailto:support@terrasolgrounding.com?subject=Terms%20of%20Service%20Request' },
+  const socialLinks = [
+    { icon: Instagram, href: 'https://instagram.com/terrasol', label: 'Instagram' },
+    { icon: Facebook, href: 'https://facebook.com/terrasol', label: 'Facebook' },
+    { icon: Twitter, href: 'https://twitter.com/terrasol', label: 'Twitter' },
   ];
 
   return (
-    <footer className="bg-earth-900 text-white pt-12 pb-6 relative overflow-hidden">
-      {/* Static background elements - removed animation for performance */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-earth-800/20 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-40\"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-700/10 rounded-full blur-2xl translate-x-1/2 translate-y-1/2 opacity-30\"></div>
+    <footer className="relative overflow-hidden bg-earth-900 text-sand-100">
+      {/* Grain overlay */}
+      <div className="grain-overlay absolute inset-0 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
+      {/* Ambient background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-earth-700/8 blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-earth-600/5 blur-[100px]" />
+      </div>
+
+      {/* Large CTA banner */}
+      <div className="relative z-10 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-16 sm:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex-1"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-tight tracking-tight">
+              Ready to restore <br />
+              your <span className="italic text-earth-400">natural balance?</span>
+            </h2>
+          </motion.div>
+
+          <motion.a
+            href="https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="group flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-earth-900 shadow-2xl transition-all hover:bg-earth-300 hover:shadow-[0_0_40px_rgba(112,180,78,0.3)]"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Shop on Amazon
+            <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </motion.a>
+        </div>
+      </div>
+
+      {/* Main footer grid */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand column */}
-          <motion.div className="space-y-4" variants={itemVariants}>
-            <motion.div className="flex items-center gap-2" whileHover={{ x: 8 }}>
-              <motion.div
-                className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full"
-              >
+          <div className="space-y-5">
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all group-hover:border-white/20">
                 {isLogoVisible ? (
                   <img
                     src={BRAND_CONFIG.logo}
@@ -80,11 +85,17 @@ const Footer: React.FC = () => {
                 ) : (
                   <span className="font-serif text-base font-bold text-white">{BRAND_CONFIG.name[0]}</span>
                 )}
-              </motion.div>
-              <h3 className="text-lg sm:text-xl font-serif font-bold tracking-tight">{BRAND_CONFIG.name}</h3>
-            </motion.div>
-            <p className="text-xs sm:text-sm leading-relaxed text-gray-300">{BRAND_CONFIG.tagline}</p>
-            <div className="flex items-center gap-3">
+              </div>
+              <span className="text-lg font-serif font-bold tracking-tight group-hover:text-earth-300 transition-colors">
+                {BRAND_CONFIG.name}
+              </span>
+            </Link>
+
+            <p className="text-sm leading-relaxed text-sand-100/50 max-w-xs">
+              Restore your biology while you sleep. Premium grounding backed by material science.
+            </p>
+
+            <div className="flex items-center gap-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -93,107 +104,107 @@ const Footer: React.FC = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-earth-800 transition-colors hover:bg-earth-700"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/8 bg-white/5 text-sand-100/50 transition-all hover:bg-white/10 hover:text-white hover:border-white/15"
                     aria-label={`Follow us on ${social.label}`}
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Icon size={18} />
+                    <Icon size={16} />
                   </motion.a>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div variants={itemVariants}>
-            <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-earth-500">Quick Links</h4>
-            <ul className="space-y-3 text-xs sm:text-sm text-gray-300">
-              {quickLinks.map((link, index) => (
-                <motion.li
-                  key={link.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ x: 8 }}
-                >
-                  <Link to={link.href} className="transition-colors hover:text-white">
+          <div>
+            <h4 className="mb-5 text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/30">Navigation</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="link-underline text-sm text-sand-100/60 transition-colors hover:text-white"
+                  >
                     {link.name}
                   </Link>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Support */}
-          <motion.div variants={itemVariants}>
-            <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-earth-500">Support</h4>
-            <ul className="space-y-3 text-xs sm:text-sm text-gray-300">
-              {supportLinks.map((link, index) => (
-                <motion.li
-                  key={link.text}
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ x: 8 }}
+          <div>
+            <h4 className="mb-5 text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/30">Support</h4>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2 text-sm text-sand-100/60">
+                <Mail size={14} className="text-earth-500 shrink-0" />
+                <span>support@terrasolgrounding.com</span>
+              </li>
+              <li className="flex items-center gap-2 text-sm text-sand-100/60">
+                <MapPin size={14} className="text-earth-500 shrink-0" />
+                <span>Los Angeles, CA</span>
+              </li>
+              <li>
+                <a
+                  href="/manual.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline flex items-center gap-1 text-sm text-sand-100/60 hover:text-white transition-colors"
                 >
-                  {link.type === 'email' && <Mail size={14} className="text-earth-500 shrink-0" />}
-                  {link.type === 'location' && <MapPin size={14} className="text-earth-500 shrink-0" />}
-                  {link.type === 'email' || link.type === 'location' ? (
-                    <span>{link.text}</span>
-                  ) : (
-                    <a
-                      href={link.href}
-                      target={link.type === 'manual' ? '_blank' : undefined}
-                      rel={link.type === 'manual' ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-1 transition-colors hover:text-white"
-                    >
-                      {link.text} {link.type === 'manual' && <ExternalLink size={12} />}
-                    </a>
-                  )}
-                </motion.li>
-              ))}
+                  Instruction Manual <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@terrasolgrounding.com?subject=Privacy%20Policy%20Request"
+                  className="link-underline text-sm text-sand-100/60 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@terrasolgrounding.com?subject=Terms%20of%20Service%20Request"
+                  className="link-underline text-sm text-sand-100/60 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </a>
+              </li>
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Shop Amazon */}
-          <motion.div variants={itemVariants}>
-            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-earth-500">Shop Amazon</h4>
-            <p className="mb-6 text-sm text-sand-300">Visit our official Amazon store for the latest deals and verified reviews.</p>
+          {/* Amazon */}
+          <div>
+            <h4 className="mb-5 text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/30">Official Store</h4>
+            <p className="mb-5 text-sm leading-relaxed text-sand-100/50">
+              Visit our Amazon store for the latest deals, verified reviews, and exclusive bundles.
+            </p>
             <motion.a
               href="https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-bold text-earth-500 transition-colors hover:text-sand-100 relative overflow-hidden"
-              whileHover={{ gap: '12px' }}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-sand-100/70 transition-all hover:bg-white/10 hover:text-white hover:border-white/20"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
             >
-              Go to Amazon Store
-              <motion.div
-                whileHover={{ x: 4, y: -4 }}
-              >
-                <ExternalLink size={16} />
-              </motion.div>
+              Amazon Store
+              <ExternalLink size={12} />
             </motion.a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
+      </div>
 
-        {/* Footer bottom */}
-        <motion.div
-          className="border-t border-earth-800 pt-10 text-center text-xs text-sand-300/50"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <p>Copyright {new Date().getFullYear()} Terra Sol Grounding. All rights reserved.</p>
-          <motion.p
-            className="mt-2 italic"
-            whileHover={{ scale: 1.05 }}
-          >
+      {/* Bottom bar */}
+      <div className="relative z-10 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] text-sand-100/25 tracking-wide">
+            © {year} Terra Sol Grounding. All rights reserved.
+          </p>
+          <p className="text-[10px] text-sand-100/20 italic max-w-md text-center sm:text-right">
             Disclaimer: Our products are not intended to diagnose, treat, cure, or prevent any disease.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </div>
     </footer>
   );
