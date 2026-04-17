@@ -1,205 +1,163 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import StorySection from '../components/StorySection';
+import { Leaf, ShieldCheck, Globe, ArrowRight } from 'lucide-react';
 
 const Story: React.FC = () => {
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       <StorySection />
       
-      {/* Our Values */}
-      <div className="bg-white py-12 sm:py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      {/* Our Values - Glassmorphism Restyle */}
+      <div className="relative py-20 sm:py-28 overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-earth-900/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-earth-900 mb-6 sm:mb-8">Our Core Values</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
-              {[
-                {
-                  title: "Quality",
-                  icon: "⚡",
-                  desc: "We use only the finest materials—12% silver fiber, Oeko-Tex certified organic cotton, and precision-engineered conductivity connectors—ensuring our products are both effective and durable for 3+ years of reliable use."
-                },
-                {
-                  title: "Science",
-                  icon: "🔬",
-                  desc: "Every product we develop is backed by peer-reviewed research, live blood analysis, thermal imaging, and comprehensive biophysical validation. We don't make claims without evidence."
-                },
-                {
-                  title: "Connection",
-                  icon: "🌍",
-                  desc: "Our goal is to help you reconnect with the natural world in a modern environment. We believe everyone deserves access to the Earth's restorative energy, regardless of geography or lifestyle."
-                }
-              ].map((value, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-sand-50 p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border border-sand-300"
-                >
-                  <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">{value.icon}</div>
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-earth-900 mb-2 sm:mb-3">{value.title}</h3>
-                  <p className="text-xs sm:text-sm md:text-base text-earth-800/70">{value.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-earth-900 mb-6">Our Core Values</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-earth-800/20 to-transparent mx-auto" />
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                title: "Quality",
+                icon: ShieldCheck,
+                desc: "We use only the finest materials—12% silver fiber, Oeko-Tex certified organic cotton, and precision-engineered conductivity connectors."
+              },
+              {
+                title: "Science",
+                icon: Leaf,
+                desc: "Every product is backed by peer-reviewed research, live blood analysis, thermal imaging, and biophysical validation."
+              },
+              {
+                title: "Connection",
+                icon: Globe,
+                desc: "We believe everyone deserves access to the Earth's restorative energy, regardless of geography or modern lifestyle."
+              }
+            ].map((value, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{ y: -8 }}
+                className="group bg-white/40 backdrop-blur-xl p-8 sm:p-10 rounded-3xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(45,79,30,0.08)] transition-all duration-500"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-earth-900 text-sand-100 flex items-center justify-center mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                  <value.icon size={28} />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mb-4">{value.title}</h3>
+                <p className="text-sm md:text-base text-earth-800/70 leading-relaxed">{value.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Our Story */}
-      <div className="bg-sand-100 py-12 sm:py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      {/* Origin Story - Elegant Typography Block */}
+      <div className="bg-earth-100/50 py-24 sm:py-32 border-y border-sand-300/30">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-earth-900 mb-6 sm:mb-8">How Terra Sol Was Born</h2>
-            <div className="space-y-4 sm:space-y-6 text-xs sm:text-sm md:text-base lg:text-lg text-earth-800/80 leading-relaxed">
+            <span className="block text-center text-xs font-bold tracking-[0.2em] text-earth-800/40 uppercase mb-4">The Origin</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-12 text-center">How Terra Sol Was Born</h2>
+            
+            <div className="space-y-6 text-base sm:text-lg text-earth-800/80 leading-loose prose prose-earth prose-p:font-medium">
               <p>
-                Terra Sol Grounding was founded by a team of biophysicists, material scientists, and wellness advocates who became obsessed with one question: <span className="font-bold text-earth-900">Why had modern humanity lost its connection to Earth's healing energy, and what could restore it?</span>
+                Terra Sol Grounding was founded by a team of biophysicists, material scientists, and wellness advocates who became obsessed with one question: <span className="font-bold text-earth-900 bg-sand-300/30 px-1">Why had modern humanity lost its connection to Earth's healing energy, and what could restore it?</span>
               </p>
               <p>
-                The founders noticed an uncomfortable pattern. Grounding products existed, but most were poorly designed, ineffective, and made with inferior materials. Silver concentrations of 3-5% meant they degraded within months. Mattress placements were awkward. Connection methods were unreliable. Worse, there was little transparency about the actual science behind why grounding worked.
+                The founders noticed an uncomfortable pattern. Grounding products existed, but most were poorly designed, ineffective, and made with inferior materials. Silver concentrations of 3-5% meant they degraded within months.
               </p>
+              <div className="pl-6 border-l-2 border-earth-400 my-8 italic text-earth-900 text-xl font-serif">
+                "We decided to engineer the solution we couldn't find: a product that was scientifically validated, beautifully designed, and actually durable."
+              </div>
               <p>
-                In 2020, during a period when disconnection from nature became even more pronounced, they decided to engineer the solution they couldn't find: a grounding product that was <span className="text-earth-700 font-bold">scientifically validated, meticulously engineered, beautifully designed, and actually durable.</span>
-              </p>
-              <p>
-                The result was the Terra Sol grounding sheet—featuring 12% silver fiber blend, Oeko-Tex certification, precision gold connectors, and a design that worked seamlessly with modern bedrooms. But more importantly, they stood behind the product with rigorous testing: live blood cell analysis, thermal imaging, cortisol measurement, and comprehensive sleep studies.
-              </p>
-              <p>
-                Today, Terra Sol has helped over 10,000 people reclaim their connection to Earth's natural energy. But this is just the beginning. We're expanding our product line to serve different lifestyles—mats for office workers, portable grounding patches for travelers, meditation rugs for yoga practitioners. Every product follows the same scientific rigor and material excellence that defines our brand.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Our Mission */}
-      <div className="bg-earth-900 text-white py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8">Our Mission</h2>
-            <div className="space-y-6 text-base md:text-lg text-gray-200 leading-relaxed">
-              <p>
-                We believe that bioelectrical health is fundamental to human wellbeing. In disconnecting from Earth—through concrete buildings, rubber shoes, and indoor living—we've inadvertently triggered a silent health crisis. Chronic inflammation, sleep disorders, autoimmune disease, and chronic pain have exploded in prevalence as our connection to Earth's healing energy has vanished.
-              </p>
-              <p>
-                <span className="font-bold text-earth-300">Terra Sol's mission is to democratize access to grounding.</span> We want every person—regardless of where they live, what they do, or their health status—to have the opportunity to reconnect with Earth's natural energy and experience the profound restoration it offers.
-              </p>
-              <p>
-                We're not selling a product. We're selling a return to biological normalcy. A pathway to sleep that heals. Inflammation that fades. Energy that returns. Recovery that accelerates. We're building a movement of people who understand that their health isn't separate from their connection to the planet—and who are willing to reclaim it.
+                The result was the Terra Sol grounding sheet—featuring a robust 12% silver fiber blend, precision gold connectors, and rigorous testing including live blood cell analysis and thermal imaging. Today, we've helped over 10,000 people reclaim their connection to Earth's natural energy.
               </p>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Impact & Statistics */}
-      <div className="bg-sand-100 py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-6">
+      {/* Impact & Statistics - Floating Numbers */}
+      <div className="py-24 sm:py-32 relative overflow-hidden bg-earth-900 text-sand-100">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-earth-900 via-earth-900/90 to-earth-900" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-8">Our Impact</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { stat: "10k+", label: "Happy Customers" },
-                { stat: "100%", label: "Customer Satisfaction" },
-                { stat: "3+ yrs", label: "Product Durability" },
-                { stat: "12%", label: "Silver Concentration" }
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white p-6 rounded-2xl text-center border border-sand-300"
-                >
-                  <div className="text-3xl md:text-4xl font-serif font-bold text-earth-900 mb-2">
-                    {item.stat}
-                  </div>
-                  <p className="text-sm text-earth-700">{item.label}</p>
-                </motion.div>
-              ))}
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">Our Impact</h2>
+            <p className="text-sand-100/60 max-w-xl mx-auto text-lg">Measurable results that define our commitment to your wellbeing.</p>
           </motion.div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              { stat: "10k+", label: "Happy Customers" },
+              { stat: "100%", label: "Satisfaction Rate" },
+              { stat: "3+ Yrs", label: "Product Lifespan" },
+              { stat: "12%", label: "Pure Silver Yield" }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: idx * 0.1, type: "spring" }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="relative group p-8 rounded-3xl border border-sand-100/10 bg-sand-100/5 backdrop-blur-md overflow-hidden text-center"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-sand-100/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10 text-4xl md:text-5xl font-serif font-bold text-sand-300 mb-3 drop-shadow-md">
+                  {item.stat}
+                </div>
+                <p className="relative z-10 text-sm font-bold tracking-wider uppercase text-sand-100/50">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Our Commitment */}
-      <div className="bg-white py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-8">Our Commitment to You</h2>
-            <div className="space-y-4">
-              {[
-                "100% satisfaction guarantee—if you don't feel results within 60 days, full refund.",
-                "Complete transparency about materials, sourcing, and scientific validation.",
-                "Dedicated customer support—we're here to help you optimize your grounding practice.",
-                "Continuous research—we're always exploring new ways grounding can enhance human health.",
-                "Ethical sourcing—all materials are ethically sourced and environmentally responsible.",
-                "No hidden fees—transparent pricing with industry-leading durability."
-              ].map((commitment, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.05 }}
-                  viewport={{ once: true }}
-                  className="flex items-start gap-4 p-4 bg-sand-50 rounded-lg border-l-4 border-earth-600"
-                >
-                  <span className="text-earth-600 font-bold text-xl flex-shrink-0">✓</span>
-                  <p className="text-earth-800">{commitment}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-earth-900 text-white py-16 md:py-20">
+      {/* CTA Section - Sophisticated Finish */}
+      <div className="bg-sand-200 py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="bg-white/50 backdrop-blur-xl border border-white p-12 md:p-20 rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(45,79,30,0.1)]"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Ready to Reconnect?</h2>
-            <p className="text-gray-300 mb-8 text-lg">
-              Join thousands of people who've reclaimed their connection to Earth's natural energy. Experience the Terra Sol difference.
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-earth-900 mb-6">Ready to Reconnect?</h2>
+            <p className="text-earth-800/70 mb-10 text-lg max-w-xl mx-auto leading-relaxed">
+              Join thousands of people who've reclaimed their connection to Earth's natural energy. Experience the Terra Sol difference tonight.
             </p>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
               href="/products"
-              className="inline-block bg-earth-600 hover:bg-earth-700 text-white px-8 py-3 rounded-full font-bold transition-all"
+              className="inline-flex items-center gap-3 bg-earth-900 text-sand-100 px-8 py-4 rounded-full font-bold shadow-xl shadow-earth-900/20 hover:bg-earth-800 transition-colors"
             >
-              Explore Our Products
-            </a>
+              Explore Our Collection <ArrowRight size={18} />
+            </motion.a>
           </motion.div>
         </div>
       </div>
