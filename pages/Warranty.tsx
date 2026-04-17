@@ -1,114 +1,212 @@
-import React from 'react';
-import { ShieldCheck, FileText, CheckCircle2, Mail, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { ShieldCheck, FileText, CheckCircle2, Mail, ExternalLink, Zap, Award, Activity } from 'lucide-react';
 
-const GOOGLE_FORM_EMBED_URL = '';
+// ============================================================================
+// HOW TO ATTACH YOUR GOOGLE FORM:
+// 1. Go to your Google Form -> Click "Send" -> Select the "< >" (Embed) tab
+// 2. Copy the URL inside the src="..." attribute.
+// 3. Paste it inside the quotes below:
+// ============================================================================
+const GOOGLE_FORM_EMBED_URL = ''; 
+
 const SUPPORT_EMAIL = 'support@terrasolgrounding.com';
 
 const Warranty: React.FC = () => {
   const hasConfiguredGoogleForm = GOOGLE_FORM_EMBED_URL.startsWith('https://docs.google.com/forms/');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+  };
 
   return (
-    <div className="pt-20">
-      <div className="bg-earth-900 py-12 sm:py-16 md:py-20 text-sand-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 text-center">
-          <ShieldCheck className="mx-auto mb-4 sm:mb-6 text-sand-400" size={44} />
-          <h1 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold">Warranty Registration</h1>
-          <p className="mx-auto max-w-2xl text-xs sm:text-sm md:text-base lg:text-lg text-sand-100/70">
-            Protect your investment. Register your Terra Sol products to activate your 3-year conductivity guarantee. Previous customers are welcome to register at any time.
-          </p>
+    <div className="pt-20 bg-sand-200 min-h-screen font-sans selection:bg-earth-800 selection:text-sand-100">
+      
+      {/* Super Premium Hero Section */}
+      <div className="relative overflow-hidden bg-earth-900 py-20 sm:py-28 text-sand-100">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div 
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] rounded-full border border-earth-800/20 bg-radial from-earth-800/10 to-transparent blur-3xl opacity-50"
+          />
+          <motion.div 
+            animate={{ y: [0, -30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-radial from-earth-700/20 to-transparent blur-3xl opacity-30"
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 text-center">
+          <motion.div initial="hidden" animate={mounted ? "visible" : "hidden"} variants={containerVariants}>
+            <motion.div variants={itemVariants} className="flex justify-center mb-6">
+              <div className="relative inline-flex items-center justify-center p-4 rounded-full bg-earth-800/30 backdrop-blur-md border border-earth-700/50 shadow-[0_0_40px_rgba(45,79,30,0.3)] hover:shadow-[0_0_60px_rgba(45,79,30,0.5)] transition-shadow duration-500">
+                <ShieldCheck className="text-sand-400" size={48} />
+                <motion.div 
+                  className="absolute inset-0 rounded-full border border-sand-400/30"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+              </div>
+            </motion.div>
+            
+            <motion.h1 variants={itemVariants} className="mb-6 text-4xl sm:text-5xl md:text-7xl font-serif font-bold tracking-tight">
+              Activate Your <span className="italic text-sand-400">Guarantee</span>
+            </motion.h1>
+            
+            <motion.p variants={itemVariants} className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-sand-100/70 leading-relaxed font-medium">
+              Protect your bio-electrical investment. Register your Terra Sol grounding products below to instantly activate your 3-year conductivity warranty.
+            </motion.p>
+          </motion.div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20">
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-12 lg:grid-cols-3">
-          <div className="space-y-8 lg:col-span-1">
-            <div className="rounded-2xl sm:rounded-3xl border border-sand-300 bg-white p-5 sm:p-6 md:p-8 shadow-sm">
-              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-serif font-bold text-earth-900">Why Register?</h2>
-              <ul className="space-y-3 sm:space-y-4">
-                <li className="flex gap-2 sm:gap-3">
-                  <CheckCircle2 className="shrink-0 mt-0.5 text-earth-600" size={18} />
-                  <span className="text-[10px] sm:text-xs md:text-sm text-earth-800/70"><strong>3-Year Guarantee:</strong> Covers loss of conductivity in our high-density silver and carbon fiber products.</span>
-                </li>
-                <li className="flex gap-2 sm:gap-3">
-                  <CheckCircle2 className="shrink-0 mt-0.5 text-earth-600" size={18} />
-                  <span className="text-[10px] sm:text-xs md:text-sm text-earth-800/70"><strong>Priority Support:</strong> Faster claim processing and direct access to our wellness experts.</span>
-                </li>
-                <li className="flex gap-2 sm:gap-3">
-                  <CheckCircle2 className="shrink-0 mt-0.5 text-earth-600" size={18} />
-                  <span className="text-[10px] sm:text-xs md:text-sm text-earth-800/70"><strong>Authenticity Proof:</strong> Verifies your product is a genuine Terra Sol original.</span>
-                </li>
+      {/* Main Content Grid */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-12 items-start">
+          
+          {/* Left Column - Premium Value Props */}
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6 lg:col-span-4"
+          >
+            <div className="rounded-3xl border border-sand-300/50 bg-white/60 backdrop-blur-lg p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden relative group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-earth-900/5 rounded-full blur-2xl -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
+              <h2 className="mb-6 text-2xl font-serif font-bold text-earth-900 flex items-center gap-3">
+                <Award className="text-earth-600" /> Why Register?
+              </h2>
+              
+              <ul className="space-y-5">
+                {[
+                  { icon: Zap, title: "3-Year Protection", desc: "Full coverage for any loss of conductivity in our 12% silver fiber." },
+                  { icon: Activity, title: "Priority Support", desc: "Skip the queue. Direct access to our wellness experts instantly." },
+                  { icon: ShieldCheck, title: "Authenticity Proof", desc: "Verify your product is a scientifically-backed genuine original." }
+                ].map((item, idx) => (
+                  <motion.li 
+                    key={idx}
+                    className="flex gap-4 group/item cursor-default"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="shrink-0 mt-1 w-8 h-8 rounded-full bg-sand-200 flex items-center justify-center text-earth-800 transition-colors group-hover/item:bg-earth-800 group-hover/item:text-sand-100">
+                      <item.icon size={14} />
+                    </div>
+                    <div>
+                      <span className="block text-sm font-bold text-earth-900 mb-1">{item.title}</span>
+                      <span className="block text-[13px] text-earth-800/70 leading-relaxed">{item.desc}</span>
+                    </div>
+                  </motion.li>
+                ))}
               </ul>
             </div>
 
-            <div className="rounded-2xl sm:rounded-3xl border border-sand-300 bg-sand-100 p-5 sm:p-6 md:p-8">
-              <h3 className="mb-3 sm:mb-4 flex items-center gap-2 text-base sm:text-lg font-bold text-earth-900">
-                <FileText size={16} className="sm:w-[18px] sm:h-[18px]" /> Order Verification
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="rounded-3xl border border-earth-900/10 bg-earth-900 text-sand-100 p-6 sm:p-8 shadow-xl relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-linear-to-tr from-transparent via-sand-100/5 to-transparent opacity-50" />
+              <h3 className="mb-3 flex items-center gap-2 text-lg font-bold">
+                <FileText size={18} className="text-sand-400" /> Need Order Details?
               </h3>
-              <p className="text-xs sm:text-sm text-earth-800/70">
-                Please provide your <strong>Order Number</strong> from Amazon or our website. We will match this with your purchase date to determine your warranty coverage period.
+              <p className="text-sm text-sand-100/70 leading-relaxed mb-4">
+                To verify authenticity, the form requires your <strong>Order ID</strong> (found in your email receipt from Amazon or our store).
               </p>
-            </div>
-          </div>
+              <a href="/manual.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-sand-400 hover:text-white transition-colors">
+                Read User Manual <ExternalLink size={14} />
+              </a>
+            </motion.div>
+          </motion.div>
 
-          <div className="lg:col-span-2">
-            <div className="relative min-h-[600px] sm:min-h-[700px] md:min-h-[800px] overflow-hidden rounded-2xl sm:rounded-3xl border border-sand-300 bg-white shadow-xl">
-              {hasConfiguredGoogleForm ? (
-                <iframe
-                  src={GOOGLE_FORM_EMBED_URL}
-                  title="Warranty Registration Form"
-                  width="100%"
-                  height="800"
-                  frameBorder="0"
-                  marginHeight={0}
-                  marginWidth={0}
-                  className="h-full w-full"
-                >
-                  Loading...
-                </iframe>
-              ) : (
-                <div className="flex h-full min-h-[600px] sm:min-h-[700px] md:min-h-[800px] items-center justify-center bg-sand-50 p-4 sm:p-8 md:p-12">
-                  <div className="max-w-lg text-center">
-                    <Mail className="mx-auto mb-3 sm:mb-4 text-earth-400" size={40} />
-                    <h3 className="mb-3 sm:mb-4 text-2xl sm:text-3xl font-serif font-bold text-earth-900">Register by Email</h3>
-                    <p className="mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm text-earth-800/70">
-                      The online registration form has not been connected yet. Until then, customers can activate coverage by emailing the details below to our support team.
-                    </p>
-                    <div className="mb-4 sm:mb-6 rounded-xl sm:rounded-2xl border border-sand-300 bg-white p-4 sm:p-6 text-left">
-                      <p className="mb-3 sm:mb-4 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-earth-800/50">Include In Your Email</p>
-                      <ul className="space-y-2 sm:space-y-3 text-[10px] sm:text-xs md:text-sm text-earth-800/80">
-                        <li>Full name</li>
-                        <li>Order number</li>
-                        <li>Product purchased</li>
-                        <li>Purchase date</li>
-                        <li>Best contact email</li>
-                      </ul>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-3 sm:gap-4">
-                      <a
-                        href={`mailto:${SUPPORT_EMAIL}?subject=Terra%20Sol%20Warranty%20Registration`}
-                        className="inline-flex items-center gap-2 rounded-full bg-earth-800 px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-sand-100 transition-colors hover:bg-earth-900"
-                      >
-                        Email Support
-                        <Mail size={14} className="sm:w-[16px] sm:h-[16px]" />
-                      </a>
-                      <a
-                        href="/manual.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-earth-800 px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-earth-800 transition-colors hover:bg-earth-800 hover:text-sand-100"
-                      >
-                        View Manual
-                        <ExternalLink size={14} className="sm:w-[16px] sm:h-[16px]" />
-                      </a>
-                    </div>
-                    <p className="mt-4 sm:mt-6 text-[9px] sm:text-xs text-earth-800/60">
-                      To switch this page to a Google Form later, update <code>GOOGLE_FORM_EMBED_URL</code> in <code>pages/Warranty.tsx</code>.
-                    </p>
-                  </div>
+          {/* Right Column - Google Form Embed */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-8"
+          >
+            <div className="relative min-h-[600px] h-[800px] w-full overflow-hidden rounded-3xl border border-sand-300/60 bg-white shadow-[0_20px_50px_-12px_rgba(45,79,30,0.1)] group">
+              
+              {/* Glass Header for the Embed Frame */}
+              <div className="absolute top-0 left-0 right-0 h-10 bg-sand-100/80 backdrop-blur-md border-b border-sand-300/50 flex items-center px-4 z-20">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-sand-300" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-sand-300" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-sand-300" />
                 </div>
-              )}
+                <div className="mx-auto text-[10px] font-bold tracking-widest text-earth-800/50 uppercase">Secure Verification Portal</div>
+              </div>
+
+              <div className="absolute inset-0 pt-10">
+                {hasConfiguredGoogleForm ? (
+                  <iframe
+                    src={GOOGLE_FORM_EMBED_URL}
+                    title="Warranty Registration Form"
+                    className="w-full h-full bg-transparent"
+                    frameBorder="0"
+                    marginHeight={0}
+                    marginWidth={0}
+                  >
+                    Loading Secure Form...
+                  </iframe>
+                ) : (
+                  <div className="flex h-full flex-col items-center justify-center p-6 text-center bg-sand-50/50">
+                    <motion.div 
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Mail className="mb-6 text-earth-400 drop-shadow-md" size={56} />
+                    </motion.div>
+                    
+                    <h3 className="mb-4 text-3xl font-serif font-bold text-earth-900">Form Not Yet Connected</h3>
+                    <p className="mb-8 max-w-md leading-relaxed text-sm text-earth-800/70">
+                      The Google verification form hasn't been linked. Until then, you can instantly activate your coverage by emailing our team directly.
+                    </p>
+                    
+                    <div className="flex flex-col gap-4 w-full max-w-sm">
+                      <motion.a
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        href={`mailto:${SUPPORT_EMAIL}?subject=Terra%20Sol%20Warranty%20Registration`}
+                        className="flex items-center justify-center gap-3 rounded-2xl bg-earth-800 px-6 py-4 text-sm font-bold text-sand-100 shadow-lg shadow-earth-800/20 transition-all hover:bg-earth-900 focus:outline-hidden focus:ring-4 focus:ring-earth-800/20"
+                      >
+                        <Mail size={18} /> Register via Email
+                      </motion.a>
+                      <div className="relative">
+                        <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-sand-300" />
+                        <span className="relative inline-block bg-sand-50/50 px-4 text-xs font-medium text-earth-800/40">Instructions</span>
+                      </div>
+                      <div className="rounded-xl border border-earth-800/10 bg-white p-5 text-left text-xs leading-relaxed text-earth-800/70 shadow-sm">
+                        Please include: <strong className="text-earth-900">Name</strong>, <strong className="text-earth-900">Order ID</strong>, <strong className="text-earth-900">Product</strong>, and <strong className="text-earth-900">Purchase Date</strong> in your email.
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Optional: Interactive glow effect on hover */}
+              <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent to-earth-900/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
             </div>
-          </div>
+          </motion.div>
+          
         </div>
       </div>
     </div>
