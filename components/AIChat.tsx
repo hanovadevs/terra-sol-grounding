@@ -172,7 +172,7 @@ const AIChat: React.FC = () => {
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close AI chat"
-                className="relative text-sand-100/50 hover:text-sand-100 transition-colors p-1 rounded-lg hover:bg-white/5"
+                className="relative text-white hover:text-white/70 transition-colors p-1 rounded-lg hover:bg-white/10"
               >
                 <X size={18} />
               </button>
@@ -189,11 +189,10 @@ const AIChat: React.FC = () => {
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[85%] text-[13px] ${
-                      msg.role === 'user'
+                    className={`max-w-[85%] text-[13px] ${msg.role === 'user'
                         ? 'rounded-2xl rounded-br-md bg-earth-800 text-sand-100 px-4 py-3 shadow-sm'
                         : 'rounded-2xl rounded-bl-md border border-sand-300/60 bg-white text-earth-800 px-4 py-3 shadow-sm'
-                    }`}
+                      }`}
                   >
                     {msg.role === 'bot' ? <BotMessage text={msg.text} /> : msg.text}
                   </div>
