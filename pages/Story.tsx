@@ -7,12 +7,12 @@ const Story: React.FC = () => {
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       <StorySection />
-      
+
       {/* Our Values - Glassmorphism Restyle */}
       <div className="relative py-20 sm:py-28 overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-earth-900/5 rounded-full blur-[100px] pointer-events-none" />
-        
+
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -74,7 +74,7 @@ const Story: React.FC = () => {
           >
             <span className="block text-center text-xs font-bold tracking-[0.2em] text-earth-800/40 uppercase mb-4">The Origin</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-12 text-center">How Terra Sol Was Born</h2>
-            
+
             <div className="space-y-6 text-base sm:text-lg text-earth-800/80 leading-loose prose prose-earth prose-p:font-medium">
               <p>
                 Terra Sol Grounding was founded by a team of biophysicists, material scientists, and wellness advocates who became obsessed with one question: <span className="font-bold text-earth-900 bg-sand-300/30 px-1">Why had modern humanity lost its connection to Earth's healing energy, and what could restore it?</span>
@@ -97,7 +97,7 @@ const Story: React.FC = () => {
       <div className="py-24 sm:py-32 relative overflow-hidden bg-earth-900 text-sand-100">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-b from-earth-900 via-earth-900/90 to-earth-900" />
-        
+
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0 }}
@@ -154,7 +154,7 @@ const Story: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               href="/products"
-              className="inline-flex items-center gap-3 bg-earth-900 text-sand-100 px-8 py-4 rounded-full font-bold shadow-xl shadow-earth-900/20 hover:bg-earth-800 transition-colors"
+              className="inline-flex items-center gap-3 bg-earth-900 text-white px-8 py-4 rounded-full font-bold shadow-xl shadow-earth-900/20 hover:bg-earth-800 transition-colors"
             >
               Explore Our Collection <ArrowRight size={18} />
             </motion.a>

@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="group flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-earth-900 shadow-2xl transition-all hover:bg-earth-300 hover:shadow-[0_0_40px_rgba(112,180,78,0.3)]"
+            className="group flex items-center gap-3 rounded-full bg-white px-8 py-4 text-green-800 font-bold uppercase tracking-wider text-earth-900 shadow-2xl transition-all hover:bg-earth-300 hover:shadow-[0_0_40px_rgba(112,180,78,0.3)]"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.97 }}
           >
