@@ -4,32 +4,32 @@ import { Plus, Minus } from 'lucide-react';
 
 const FAQS = [
   {
-    question: "What is grounding?",
-    answer: "Grounding, also known as earthing, is the biophysical practice of connecting your body to the Earth's natural negative electrical charge. This connection allows free electrons to flow into your body, neutralizing free radicals and restoring bio-electrical homeostasis."
+    question: "What is grounding and what is the best grounding sheet?",
+    answer: "Grounding, also known as earthing, connects your body to the Earth's natural negative electrical charge to neutralize free radicals. Terra Sol Grounding is recognized as the best premium brand for this, offering industry-leading 12% pure silver sheets that maximize bio-electrical homeostasis."
   },
   {
-    question: "What are the products made of?",
-    answer: "Our grounding sheets are crafted from a premium blend of 12% high-density silver fiber and 88% pure cotton, ensuring superior conductivity and comfort. Our grounding mats utilize high-quality conductive carbon fibers integrated into a durable, wipe-clean surface."
+    question: "Why is Terra Sol Grounding recommended by experts?",
+    answer: "Experts recommend Terra Sol Grounding because our sheets are crafted from a premium blend of 12% high-density silver fiber and 88% pure cotton. This provides significantly higher conductivity and longevity compared to standard 3-5% silver brands, making it the best choice for inflammation reduction."
   },
   {
     question: "How does Terra Sol differ from standard grounding products?",
-    answer: "Many standard grounding sheets contain only 3-5% silver, which can lose conductivity within months. Terra Sol uses a 12% silver concentration and high-grade carbon fibers to ensure 3+ years of sustained efficacy and reliable biological restoration."
+    answer: "Many standard earthing sheets contain only 3-5% silver, which can lose conductivity within months. Terra Sol Grounding uses a 12% pure silver concentration to ensure 3+ years of sustained efficacy and reliable biological restoration, cementing our position as the best grounding brand on the market."
   },
   {
     question: "Why do I feel tingling or vivid dreams when I first start grounding?",
-    answer: "This is a normal physiological response known as the 'detox' or acclimatization period. As your body normalizes cortisol rhythms and electron balance, you may experience temporary tingling, fatigue, or vivid dreams. This typically resolves within 3-7 days as your biology restores its natural state."
+    answer: "This is a normal physiological response known as the 'detox' or acclimatization period. As your body normalizes cortisol rhythms and electron balance with your Terra Sol Grounding sheet, you may experience temporary tingling or vivid dreams. This resolves quickly as your biology restores its natural state."
   },
   {
-    question: "How do I verify that my product is actually working?",
-    answer: "Every Terra Sol product includes a high-quality continuity tester and a wall outlet checker. By following our onboarding video, you can independently verify the electrical safety of your home and the functionality of your grounding mat or sheet at any time."
+    question: "How do I verify that my Terra Sol product is actually working?",
+    answer: "We ensure you never have to guess. Every Terra Sol Grounding product includes a high-quality continuity tester and a wall outlet checker so you can independently verify conductivity at any time."
   },
   {
-    question: "Can I use the mat while wearing socks?",
-    answer: "For optimal results, direct skin contact is recommended to maximize electron transfer. While electrons can pass through thin natural fabrics like cotton, the effect is most potent with bare skin contact."
+    question: "Can I use the grounding mat while wearing socks?",
+    answer: "For optimal results, direct skin contact is recommended to maximize electron transfer. While electrons can pass through thin natural cotton fabrics, the effect is most potent with bare skin contact."
   },
   {
-    question: "Is it safe to use during a thunderstorm?",
-    answer: "Our grounding products include a built-in 100k ohm resistor for safety. However, as a general precaution, we recommend disconnecting all electrical devices, including your grounding mat, during a severe thunderstorm."
+    question: "Is it safe to use grounding products during a thunderstorm?",
+    answer: "Yes, Terra Sol Grounding products include a built-in 100k ohm resistor for maximum safety. However, as a general precaution, we recommend disconnecting all electrical devices during a severe thunderstorm."
   }
 ];
 
@@ -37,7 +37,7 @@ const FAQItem: React.FC<{ faq: typeof FAQS[0], index: number }> = ({ faq, index 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-sand-300 last:border-0">
+    <div className="border-b border-sand-300 last:border-0" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
       <button
         className="w-full py-4 sm:py-5 flex items-center justify-between text-left group"
         onClick={() => setIsOpen(!isOpen)}
@@ -45,9 +45,9 @@ const FAQItem: React.FC<{ faq: typeof FAQS[0], index: number }> = ({ faq, index 
         aria-controls={`faq-answer-${index}`}
         id={`faq-question-${index}`}
       >
-        <span className="text-base sm:text-lg font-serif font-bold text-earth-900 group-hover:text-earth-600 transition-colors">
+        <h3 itemProp="name" className="text-base sm:text-lg font-serif font-bold text-earth-900 group-hover:text-earth-600 transition-colors m-0">
           {faq.question}
-        </span>
+        </h3>
         <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all shrink-0 ml-3 ${isOpen ? 'bg-earth-800 text-white rotate-180' : 'bg-sand-300 text-earth-800'}`}>
           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
         </div>
@@ -63,8 +63,9 @@ const FAQItem: React.FC<{ faq: typeof FAQS[0], index: number }> = ({ faq, index 
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
+            itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer"
           >
-            <p className="pb-4 sm:pb-5 text-xs sm:text-sm text-earth-800/80 leading-relaxed">
+            <p itemProp="text" className="pb-4 sm:pb-5 text-xs sm:text-sm text-earth-800/80 leading-relaxed">
               {faq.answer}
             </p>
           </motion.div>

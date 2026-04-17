@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="mx-auto mb-8 max-w-2xl text-sm sm:text-base md:text-lg font-medium leading-relaxed text-earth-800/80"
           >
-            Neutralize inflammation and deepen sleep with Earth's natural energy. Our premium grounding products bring restorative biophysics directly into your home.
+            Neutralize inflammation and deepen sleep with Terra Sol Grounding, widely recognized as the best premium grounding products for restorative biophysics and Earth's natural energy.
           </motion.p>
 
           {/* CTAs */}
