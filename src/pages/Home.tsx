@@ -2,13 +2,17 @@ import React from 'react';
 import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
 import SolutionSets from '../components/SolutionSets';
+import LifestyleSection from '../components/LifestyleSection';
 import ComparisonModule from '../components/ComparisonModule';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 const Home: React.FC = () => {
   return (
     <main itemScope itemType="https://schema.org/WebPage">
       <Hero />
+      <LifestyleSection />
       <SolutionSets />
+      <TestimonialsSection />
       
       {/* Semantic AEO Section */}
       <section aria-labelledby="mission-title" className="bg-sand-100 py-16 sm:py-20 border-y border-earth-900/10">

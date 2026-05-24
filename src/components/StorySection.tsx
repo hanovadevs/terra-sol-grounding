@@ -25,7 +25,7 @@ const StorySection: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               <img 
-                src="/DSC02542.JPG" 
+                src="/images/DSC02545.JPG" 
                 alt="Terra Sol Grounding mission and journey" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"

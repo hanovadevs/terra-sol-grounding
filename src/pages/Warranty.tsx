@@ -129,7 +129,7 @@ const Warranty: React.FC = () => {
               <p className="text-sm text-sand-100/70 leading-relaxed mb-4">
                 To verify authenticity, the form requires your <strong>Order ID</strong> (found in your email receipt from Amazon or our store).
               </p>
-              <a href="/manual.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-sand-400 hover:text-white transition-colors">
+              <a href="/docs/manual.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-sand-400 hover:text-white transition-colors">
                 Read User Manual <ExternalLink size={14} />
               </a>
             </motion.div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import AmazonCTA from './AmazonCTA';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingCart, Home, Package, BookOpen, Zap, HelpCircle, Shield } from 'lucide-react';
 import { BRAND_CONFIG } from '../constants';
@@ -121,21 +122,9 @@ const Navbar: React.FC = () => {
         {/* Right side */}
         <div className="flex items-center gap-3">
           {/* Shop CTA */}
-          <motion.a
-            href="https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`hidden sm:flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
-              isScrolled || !isHome
-                ? 'bg-earth-800 text-white hover:bg-earth-900 shadow-md'
-                : 'bg-white/15 text-white border border-white/20 backdrop-blur-md hover:bg-white/25'
-            }`}
-            whileHover={{ scale: 1.05, y: -1 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <ShoppingCart size={14} />
-            <span>Shop</span>
-          </motion.a>
+          <div className="hidden sm:flex items-center">
+            <AmazonCTA url="https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98" />
+          </div>
 
           {/* Mobile Menu Button */}
           <motion.button

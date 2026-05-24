@@ -75,7 +75,7 @@ export const PRODUCTS: Product[] = [
     name: '24-Hour Optimization Bundle',
     tagline: 'The Ultimate Lifestyle Bundle',
     price: '$249.99',
-    image: '/DSC02525.JPG',
+    image: '/images/DSC02552.JPG',
     amazonUrl: 'https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98',
     description: 'The complete grounding ecosystem. Pair daytime mats with nighttime grounding sheets to stay connected around the clock.',
     benefits: ['Daytime Mat Support', 'Nighttime Sheet Recovery', 'Multi-Zone Grounding Routine', 'Great For Full Lifestyle Adoption'],
@@ -161,18 +161,18 @@ export const SOLUTION_SETS = [
     id: '1',
     title: 'The Remote Professional',
     description: 'Combat digital fatigue and EMF exposure during your workday with the Terra Workspace Mat.',
-    image: '/DSC02295.JPG'
+    image: '/images/DSC02393.JPG'
   },
   {
     id: '2',
     title: 'The Performance Athlete',
     description: 'Accelerate recovery and reduce DOMS with full-body nocturnal grounding.',
-    image: '/DSC02316.JPG'
+    image: '/images/DSC02394.JPG'
   },
   {
     id: '3',
     title: 'The Modern Parent',
     description: 'Optimize your limited sleep windows with deep, restorative cortisol regulation.',
-    image: '/DSC02339.JPG'
+    image: '/images/DSC02401.JPG'
   }
 ];

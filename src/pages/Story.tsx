@@ -21,8 +21,8 @@ const Story: React.FC = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-earth-900 mb-6">Our Core Values</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-earth-800/20 to-transparent mx-auto" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">Our Core Values</h2>
+            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-transparent via-earth-800/20 to-transparent mx-auto" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -57,6 +57,48 @@ const Story: React.FC = () => {
                 </div>
                 <h3 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mb-4">{value.title}</h3>
                 <p className="text-sm md:text-base text-earth-800/70 leading-relaxed">{value.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Behind the Material - Visual Image Grid */}
+      <div className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="block text-[10px] sm:text-xs font-bold tracking-[0.2em] text-earth-600 uppercase mb-4">Authentic Quality</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">Behind the Material</h2>
+            <p className="text-earth-800/70 max-w-2xl mx-auto text-base sm:text-lg">No cutting corners. We use genuine 12% Silver Fiber and Oeko-Tex certified cotton. See the difference for yourself.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { src: "/images/DSC02410.JPG", alt: "Silver thread close up", delay: 0.1 },
+              { src: "/images/DSC02474.JPG", alt: "Cotton blend texture", delay: 0.2 },
+              { src: "/images/DSC02490.JPG", alt: "Premium stitching", delay: 0.3 }
+            ].map((img, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: img.delay }}
+                viewport={{ once: true }}
+                className="relative rounded-[2rem] overflow-hidden aspect-square border border-sand-300 shadow-lg group"
+              >
+                <div className="absolute inset-0 bg-earth-900/10 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
+                <img 
+                  src={img.src} 
+                  alt={img.alt} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
               </motion.div>
             ))}
           </div>
@@ -98,16 +140,16 @@ const Story: React.FC = () => {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-b from-earth-900 via-earth-900/90 to-earth-900" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">Our Impact</h2>
-            <p className="text-sand-100/60 max-w-xl mx-auto text-lg">Measurable results that define our commitment to your wellbeing.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 sm:mb-6">Our Impact</h2>
+            <p className="text-sand-100/60 max-w-xl mx-auto text-base sm:text-lg">Measurable results that define our commitment to your wellbeing.</p>
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -138,16 +180,16 @@ const Story: React.FC = () => {
 
       {/* CTA Section - Sophisticated Finish */}
       <div className="bg-sand-200 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white/50 backdrop-blur-xl border border-white p-12 md:p-20 rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(45,79,30,0.1)]"
+            className="bg-white/50 backdrop-blur-xl border border-white p-8 sm:p-12 md:p-20 rounded-[2rem] sm:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(45,79,30,0.1)]"
           >
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-earth-900 mb-6">Ready to Reconnect?</h2>
-            <p className="text-earth-800/70 mb-10 text-lg max-w-xl mx-auto leading-relaxed">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">Ready to Reconnect?</h2>
+            <p className="text-earth-800/70 mb-8 sm:mb-10 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
               Join thousands of people who've reclaimed their connection to Earth's natural energy. Experience the Terra Sol difference tonight.
             </p>
             <motion.a

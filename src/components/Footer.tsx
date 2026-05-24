@@ -147,7 +147,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="/manual.pdf"
+                  href="/docs/manual.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-underline flex items-center gap-1 text-sm text-sand-100/60 hover:text-white transition-colors"

@@ -114,7 +114,7 @@ const ScienceSection: React.FC = () => {
               whileHover={{ y: -8 }}
             >
               <img 
-                src="/DSC02530.JPG" 
+                src="/images/DSC02537.JPG" 
                 alt="Conductivity testing" 
                 className="w-full h-48 object-cover"
                 referrerPolicy="no-referrer"

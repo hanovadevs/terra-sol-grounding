@@ -103,7 +103,7 @@ const WarrantySection: React.FC = () => {
 
             {/* Manual download link */}
             <motion.a 
-              href="/manual.pdf" 
+              href="/docs/manual.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-earth-800 font-bold border-b-2 border-earth-800 pb-1 hover:text-earth-600 hover:border-earth-600 transition-all group relative overflow-hidden"

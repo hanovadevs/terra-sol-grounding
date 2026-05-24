@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, CheckCircle2, Sparkles, X, ZoomIn } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import { Product } from '../types';
+import AmazonCTA from './AmazonCTA';
 
 const ProductGrid: React.FC = () => {
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
@@ -294,15 +295,7 @@ const ProductGrid: React.FC = () => {
                   )}
                 </div>
 
-                <a
-                  href={activeProduct.amazonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-earth-700 to-earth-800 px-5 py-4 text-sm font-bold tracking-wide text-sand-100 uppercase shadow-lg transition-transform hover:-translate-y-0.5 hover:shadow-xl"
-                >
-                  <ShoppingCart size={18} />
-                  Buy On Amazon
-                </a>
+                <AmazonCTA url={activeProduct.amazonUrl} className="w-full mt-8" />
               </div>
             </motion.div>
           </motion.div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ScienceSection from '../components/ScienceSection';
 import { Microscope, Zap, Thermometer, Droplets, Activity, Brain } from 'lucide-react';
+import AmazonCTA from '../components/AmazonCTA';
 
 const Science: React.FC = () => {
   return (
@@ -18,11 +19,11 @@ const Science: React.FC = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <span className="block text-xs font-bold tracking-[0.2em] text-earth-600 uppercase mb-4">The Industry Problem</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-earth-900 mb-6">The Conductivity Crisis</h2>
+            <span className="block text-[10px] sm:text-xs font-bold tracking-[0.2em] text-earth-600 uppercase mb-4">The Industry Problem</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">The Conductivity Crisis</h2>
           </motion.div>
 
-          <div className="p-8 sm:p-12 bg-sand-50 rounded-[2.5rem] border border-sand-300/50 shadow-inner relative overflow-hidden">
+          <div className="p-6 sm:p-8 md:p-12 bg-sand-50 rounded-[2rem] sm:rounded-[2.5rem] border border-sand-300/50 shadow-inner relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-earth-900/5 rounded-full blur-[80px]" />
             <div className="relative z-10 space-y-6 text-base sm:text-lg text-earth-800/80 leading-relaxed font-medium">
               <p>
@@ -48,13 +49,14 @@ const Science: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               className="bg-white p-8 rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(45,79,30,0.1)] border border-earth-900/5 group hover:border-earth-900/20 transition-colors"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-earth-100 flex items-center justify-center text-earth-800">
-                  <Droplets size={24} />
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-earth-100 flex items-center justify-center text-earth-800">
+                  <Droplets size={20} className="sm:hidden" />
+                  <Droplets size={24} className="hidden sm:block" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-earth-900">Live Blood Analysis</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-earth-900">Live Blood Analysis</h3>
               </div>
-              <p className="text-sm text-earth-800/70 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-earth-800/70 mb-6 leading-relaxed">
                 Microscopic observation shows that grounding rapidly decouples clumped red blood cells, improving circulation within 15 minutes.
               </p>
               <div className="bg-sand-50 rounded-xl p-4 mb-6 border border-sand-300/50">
@@ -66,7 +68,7 @@ const Science: React.FC = () => {
                 </ul>
               </div>
               <div className="overflow-hidden rounded-xl h-48 bg-earth-900/5">
-                <img src="/DSC02531.JPG" alt="Live blood analysis" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" loading="lazy" />
+                <img src="/images/DSC02539.JPG" alt="Live blood analysis" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" loading="lazy" />
               </div>
             </motion.div>
 
@@ -95,7 +97,7 @@ const Science: React.FC = () => {
                 </ul>
               </div>
               <div className="overflow-hidden rounded-xl h-48 bg-earth-900/5">
-                <img src="/DSC02532.JPG" alt="Thermal imaging" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" loading="lazy" />
+                <img src="/images/DSC02547.JPG" alt="Thermal imaging" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -142,6 +144,52 @@ const Science: React.FC = () => {
                 </div>
               </motion.div>
             ))}
+            <AmazonCTA url="#amazon" text="Experience the Science Today" />
+          </div>
+        </div>
+      </div>
+
+      {/* Grounding in Practice - Masonry Gallery */}
+      <div className="py-24 bg-white border-y border-sand-300/30">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="block text-[10px] sm:text-xs font-bold tracking-[0.2em] text-earth-600 uppercase mb-4">Real World Application</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">Grounding in Practice</h2>
+            <p className="text-earth-800/70 max-w-2xl mx-auto text-base sm:text-lg">Biophysics meets daily life. Authentic integration of Terra Sol technology in modern environments.</p>
+          </motion.div>
+
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {[
+              "/images/DSC02492.JPG",
+              "/images/DSC02496.JPG",
+              "/images/DSC02500.JPG",
+              "/images/DSC02504.JPG",
+              "/images/DSC02511.JPG",
+              "/images/DSC02558s.JPG"
+            ].map((src, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
+                viewport={{ once: true }}
+                className="relative rounded-[2rem] overflow-hidden border border-sand-300/50 shadow-sm hover:shadow-xl transition-all duration-500 group break-inside-avoid"
+              >
+                <div className="absolute inset-0 bg-earth-900/10 mix-blend-overlay z-10 opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                <img 
+                  src={src} 
+                  alt={`Grounding in practice ${idx + 1}`} 
+                  className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
@@ -154,10 +202,10 @@ const Science: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-6">Scientific FAQ</h2>
-            <p className="text-earth-800/70">Evidence-based answers to common questions.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">Scientific FAQ</h2>
+            <p className="text-earth-800/70 text-base sm:text-lg">Evidence-based answers to common questions.</p>
           </motion.div>
 
           <div className="space-y-6">

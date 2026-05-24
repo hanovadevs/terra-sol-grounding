@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { ArrowRight, Leaf, Star, ChevronDown } from 'lucide-react';
+import AmazonCTA from './AmazonCTA';
 
 const HERO_WORDS = ['Biology', 'Vitality', 'Balance'];
 
@@ -37,7 +38,7 @@ const Hero: React.FC = () => {
       {/* Parallax background image */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale }}>
         <img
-          src="/DSC02541.JPG"
+          src="/images/DSC02543.JPG"
           alt="Terra Sol Grounding products in a serene nature setting"
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
@@ -93,7 +94,7 @@ const Hero: React.FC = () => {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-6 text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-serif font-bold leading-[0.9] tracking-tight text-white"
+            className="mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-serif font-bold leading-[0.9] tracking-tight text-white"
           >
             <span className="block">Restore Your</span>
             <span className="relative inline-block mt-2">
@@ -128,7 +129,7 @@ const Hero: React.FC = () => {
           {/* CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center gap-4 sm:flex-row sm:gap-5"
+            className="flex flex-col w-full sm:w-auto sm:flex-row items-center gap-4 sm:gap-5"
           >
             <motion.a
               href="#products"
@@ -155,38 +156,8 @@ const Hero: React.FC = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
-      >
-        <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-white/40">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={20} className="text-white/30" />
-        </motion.div>
-      </motion.div>
 
-      {/* Scrolling marquee banner at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden bg-earth-900/80 backdrop-blur-md py-3 border-t border-white/5">
-        <div className="animate-marquee flex whitespace-nowrap gap-12">
-          {[...Array(2)].map((_, setIdx) => (
-            <React.Fragment key={setIdx}>
-              {['12% SILVER FIBER', 'ORGANIC COTTON', '3+ YEAR CONDUCTIVITY', 'PREMIUM GROUNDING', 'SLEEP OPTIMIZATION', 'INFLAMMATION REDUCTION', 'CORTISOL REGULATION', 'BIOELECTRICAL RESTORATION'].map((text) => (
-                <span key={`${setIdx}-${text}`} className="text-[10px] font-bold uppercase tracking-[0.3em] text-sand-100/30 flex items-center gap-8">
-                  {text} <span className="text-earth-500">◆</span>
-                </span>
-              ))}
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
+
     </section>
   );
 };
