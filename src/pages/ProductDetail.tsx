@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Package, Ruler, Settings2 } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import AmazonCTA from '../components/AmazonCTA';
@@ -9,14 +9,19 @@ const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [product, setProduct] = useState(PRODUCTS.find(p => p.id === id));
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
-    // Scroll to top on mount
     window.scrollTo(0, 0);
     if (!product && id) {
       setProduct(PRODUCTS.find(p => p.id === id));
     }
   }, [id, product]);
+
+  // Reset image index if product changes
+  useEffect(() => {
+    setActiveImageIndex(0);
+  }, [product]);
 
   if (!product) {
     return (
@@ -49,7 +54,7 @@ const ProductDetail: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
-          {/* Left Column - Sticky Image */}
+          {/* Left Column - Interactive Image Gallery */}
           <div className="relative">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -57,19 +62,55 @@ const ProductDetail: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="sticky top-32"
             >
-              <div className="relative rounded-[2.5rem] overflow-hidden bg-sand-200 aspect-square lg:aspect-[4/5] shadow-2xl border border-sand-300">
+              {/* Main Stage Image */}
+              <div className="relative rounded-[2.5rem] overflow-hidden bg-sand-200 aspect-square lg:aspect-[4/5] shadow-2xl border border-sand-300 mb-4">
                 {product.isPremium && (
-                  <div className="absolute top-6 left-6 z-20 rounded-full bg-gradient-to-r from-earth-700 to-earth-800 px-4 py-2 text-[10px] font-bold tracking-widest text-white uppercase shadow-lg">
+                  <div className="absolute top-6 left-6 z-20 rounded-full bg-gradient-to-r from-earth-700 to-earth-800 px-4 py-2 text-[10px] font-bold tracking-widest text-white uppercase shadow-lg border border-white/10 backdrop-blur-md">
                     Premium Choice
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-earth-900/20 to-transparent z-10 pointer-events-none" />
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
-                  className="w-full h-full object-cover"
-                />
+                
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activeImageIndex}
+                    src={product.images[activeImageIndex]}
+                    alt={`${product.name} - View ${activeImageIndex + 1}`}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </AnimatePresence>
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-earth-900/10 to-transparent z-10 pointer-events-none" />
               </div>
+
+              {/* Thumbnails Row */}
+              {product.images.length > 1 && (
+                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                  {product.images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-earth-400 focus-visible:ring-offset-2 ${
+                        activeImageIndex === idx 
+                          ? 'border-earth-600 shadow-md scale-100 opacity-100' 
+                          : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'
+                      }`}
+                    >
+                      <img 
+                        src={img} 
+                        alt={`Thumbnail ${idx + 1}`} 
+                        className="w-full h-full object-cover"
+                      />
+                      {activeImageIndex !== idx && (
+                        <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </motion.div>
           </div>
 
@@ -98,14 +139,14 @@ const ProductDetail: React.FC = () => {
               {/* Features */}
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center border border-earth-200">
                     <Settings2 size={20} className="text-earth-700" />
                   </div>
                   <h3 className="text-xl font-serif font-bold text-earth-900">Engineering & Features</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {product.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-sand-200">
+                    <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-sand-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
                       <CheckCircle2 size={18} className="text-earth-600 shrink-0 mt-0.5" />
                       <span className="text-sm font-semibold text-earth-800">{benefit}</span>
                     </div>
@@ -117,14 +158,14 @@ const ProductDetail: React.FC = () => {
               {product.sizes && product.sizes.length > 0 && (
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center border border-earth-200">
                       <Ruler size={20} className="text-earth-700" />
                     </div>
                     <h3 className="text-xl font-serif font-bold text-earth-900">Dimensions</h3>
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {product.sizes.map((size, idx) => (
-                      <span key={idx} className="px-6 py-3 bg-white border border-sand-300 rounded-xl font-bold text-earth-800 text-sm shadow-sm">
+                      <span key={idx} className="px-6 py-3 bg-white border border-sand-300 rounded-2xl font-bold text-earth-800 text-sm shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
                         {size}
                       </span>
                     ))}
@@ -136,26 +177,26 @@ const ProductDetail: React.FC = () => {
               {(product.kit || product.packaging) && (
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center border border-earth-200">
                       <Package size={20} className="text-earth-700" />
                     </div>
                     <h3 className="text-xl font-serif font-bold text-earth-900">What's in the Box</h3>
                   </div>
-                  <div className="bg-white rounded-2xl border border-sand-200 p-6">
+                  <div className="bg-white rounded-[2rem] border border-sand-200 p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
                     {product.kit && product.kit.length > 0 && (
-                      <ul className="space-y-3 mb-6">
+                      <ul className="space-y-4 mb-8">
                         {product.kit.map((item, idx) => (
                           <li key={idx} className="flex items-center gap-3 text-earth-800 font-medium">
-                            <div className="w-1.5 h-1.5 rounded-full bg-earth-400" />
+                            <div className="w-2 h-2 rounded-full bg-earth-400" />
                             {item}
                           </li>
                         ))}
                       </ul>
                     )}
                     {product.packaging && (
-                      <div className="pt-4 border-t border-sand-100">
-                        <span className="text-xs font-bold uppercase tracking-wider text-earth-500 block mb-1">Packaging</span>
-                        <span className="font-semibold text-earth-800">{product.packaging}</span>
+                      <div className="pt-6 border-t border-sand-100">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-earth-500 block mb-2">Packaging</span>
+                        <span className="font-bold text-earth-900 text-lg">{product.packaging}</span>
                       </div>
                     )}
                   </div>
@@ -164,8 +205,8 @@ const ProductDetail: React.FC = () => {
             </div>
 
             {/* Sticky bottom CTA for mobile, inline for desktop */}
-            <div className="mt-12 sticky bottom-6 z-50 lg:static bg-sand-100/90 backdrop-blur-md lg:bg-transparent p-4 lg:p-0 -mx-4 lg:mx-0 rounded-t-3xl border-t border-sand-300 lg:border-none shadow-[0_-10px_40px_rgba(0,0,0,0.05)] lg:shadow-none">
-              <AmazonCTA url={product.amazonUrl} className="w-full h-14 text-base" />
+            <div className="mt-12 sticky bottom-6 z-50 lg:static bg-sand-100/90 backdrop-blur-xl lg:bg-transparent p-4 lg:p-0 -mx-4 lg:mx-0 rounded-[2rem] border border-sand-300/50 lg:border-none shadow-[0_-10px_40px_rgba(0,0,0,0.1)] lg:shadow-none">
+              <AmazonCTA url={product.amazonUrl} className="w-full h-16 text-lg rounded-2xl shadow-xl shadow-earth-900/20" />
             </div>
 
           </motion.div>

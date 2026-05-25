@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ProductGrid from '../components/ProductGrid';
 import { Sparkles, ArrowDown } from 'lucide-react';
+import FAQSection from '../components/FAQSection';
+import { productsFaqs } from '../data/faqs';
 
 const Products: React.FC = () => {
   return (
@@ -55,6 +57,12 @@ const Products: React.FC = () => {
       <div className="relative z-30 -mt-16 pb-24">
         <ProductGrid />
       </div>
+
+      <FAQSection 
+        faqs={productsFaqs} 
+        title="Product & Care FAQs" 
+        subtitle="Learn how to choose, wash, and maintain your 12% silver grounding sheets." 
+      />
     </div>
   );
 };

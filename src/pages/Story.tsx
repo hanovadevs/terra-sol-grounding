@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import StorySection from '../components/StorySection';
 import { Leaf, ShieldCheck, Globe, ArrowRight } from 'lucide-react';
+import FAQSection from '../components/FAQSection';
+import { storyFaqs } from '../data/faqs';
 
 const Story: React.FC = () => {
   return (
@@ -177,6 +179,12 @@ const Story: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <FAQSection 
+        faqs={storyFaqs} 
+        title="Our Story FAQs" 
+        subtitle="Discover the origins, values, and manufacturing standards behind Terra Sol." 
+      />
 
       {/* CTA Section - Sophisticated Finish */}
       <div className="bg-sand-200 py-24 md:py-32">

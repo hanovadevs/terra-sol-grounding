@@ -11,10 +11,16 @@ const Footer: React.FC = () => {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Products', href: '/products' },
-    { name: 'Our Story', href: '/story' },
     { name: 'Science', href: '/science' },
+    { name: 'Research', href: '/research' },
+    { name: 'Journal', href: '/blog' },
+    { name: 'Our Story', href: '/story' },
+  ];
+
+  const supportLinks = [
     { name: 'FAQ', href: '/faq' },
     { name: 'Warranty', href: '/warranty' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   const socialLinks = [
@@ -133,43 +139,27 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Support Links */}
           <div>
             <h4 className="mb-5 text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/30">Support</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm text-sand-100/60">
+              {supportLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="link-underline text-sm text-sand-100/60 transition-colors hover:text-white"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              <li className="flex items-center gap-2 text-sm text-sand-100/60 pt-2">
                 <Mail size={14} className="text-earth-500 shrink-0" />
                 <span>support@terrasolgrounding.com</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-sand-100/60">
                 <MapPin size={14} className="text-earth-500 shrink-0" />
                 <span>Los Angeles, CA</span>
-              </li>
-              <li>
-                <a
-                  href="/docs/manual.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underline flex items-center gap-1 text-sm text-sand-100/60 hover:text-white transition-colors"
-                >
-                  Instruction Manual <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:support@terrasolgrounding.com?subject=Privacy%20Policy%20Request"
-                  className="link-underline text-sm text-sand-100/60 hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:support@terrasolgrounding.com?subject=Terms%20of%20Service%20Request"
-                  className="link-underline text-sm text-sand-100/60 hover:text-white transition-colors"
-                >
-                  Terms of Service
-                </a>
               </li>
             </ul>
           </div>

@@ -14,6 +14,10 @@ import Story from './pages/Story';
 import Science from './pages/Science';
 import FAQ from './pages/FAQ';
 import Warranty from './pages/Warranty';
+import Research from './pages/Research';
+import Blog from './pages/Blog';
+import BlogArticle from './pages/BlogArticle';
+import Contact from './pages/Contact';
 
 const pageTransition = {
   initial: { opacity: 0, y: 12 },
@@ -34,8 +38,12 @@ const AnimatedRoutes: React.FC = () => {
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/story" element={<Story />} />
           <Route path="/science" element={<Science />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/warranty" element={<Warranty />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

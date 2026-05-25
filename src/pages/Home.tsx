@@ -8,6 +8,8 @@ import GroundingMatsSection from '../components/GroundingMatsSection';
 import StepByStepGuide from '../components/StepByStepGuide';
 import ComparisonModule from '../components/ComparisonModule';
 import TestimonialsSection from '../components/TestimonialsSection';
+import FAQSection from '../components/FAQSection';
+import { homeFaqs } from '../data/faqs';
 
 const Home: React.FC = () => {
   return (
@@ -35,6 +37,12 @@ const Home: React.FC = () => {
           </p>
         </div>
       </section>
+
+      <FAQSection 
+        faqs={homeFaqs} 
+        title="Essential Grounding FAQs" 
+        subtitle="Learn the basics of bio-electrical restoration and safe daily usage." 
+      />
 
       <ComparisonModule />
       <ProductGrid />

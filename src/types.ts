@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   tagline?: string;
   price: string;
-  image: string;
+  images: string[];
   amazonUrl: string;
   description: string;
   benefits: string[];

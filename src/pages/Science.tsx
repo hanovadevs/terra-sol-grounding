@@ -6,6 +6,8 @@ import AmazonCTA from '../components/AmazonCTA';
 import StepByStepGuide from '../components/StepByStepGuide';
 import SheetUsageDetails from '../components/SheetUsageDetails';
 import MatUsageDetails from '../components/MatUsageDetails';
+import FAQSection from '../components/FAQSection';
+import { scienceFaqs } from '../data/faqs';
 
 const Science: React.FC = () => {
   return (
@@ -201,54 +203,13 @@ const Science: React.FC = () => {
         </div>
       </div>
 
-      {/* FAQ - Refined Clean Design */}
-      <div className="bg-sand-200 py-24 sm:py-32">
-        <div className="max-w-3xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 sm:mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-4 sm:mb-6">Scientific FAQ</h2>
-            <p className="text-earth-800/70 text-base sm:text-lg">Evidence-based answers to common questions.</p>
-          </motion.div>
 
-          <div className="space-y-6">
-            {[
-              {
-                q: "How long does grounding take to work?",
-                a: "Most people feel effects within 15-30 minutes. Measurable physiological changes appear within this timeframe, but optimal benefits develop over weeks of consistent use."
-              },
-              {
-                q: "Is grounding safe for everyone?",
-                a: "Yes. It's a natural restorative process. However, those with pacemakers should consult their physician. It's highly beneficial for athletes and those with sleep issues."
-              },
-              {
-                q: "Why do some people feel results immediately while others don't?",
-                a: "Sensitivity varies based on baseline inflammation, toxin load, and nervous system state. Highly inflamed individuals may experience dramatic effects immediately."
-              },
-              {
-                q: "What's the science behind the 12% silver concentration?",
-                a: "Higher silver concentration ensures superior electron conductivity and extreme longevity. 12% silver maintains full conductivity for 3+ years, vastly outperforming standard 3% products."
-              }
-            ].map((faq, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/60 backdrop-blur-md p-8 rounded-[2rem] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.03)]"
-              >
-                <h4 className="text-lg font-bold text-earth-900 mb-3">{faq.q}</h4>
-                <p className="text-sm font-medium text-earth-800/70 leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+
+      <FAQSection 
+        faqs={scienceFaqs} 
+        title="Scientific FAQ" 
+        subtitle="Evidence-based biophysical answers to common questions about electron transfer and inflammation." 
+      />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import AmazonCTA from './AmazonCTA';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ShoppingCart, Home, Package, BookOpen, Zap, HelpCircle, Shield } from 'lucide-react';
+import { Menu, X, ShoppingCart, Home, Package, BookOpen, Zap, FlaskConical, Newspaper, HelpCircle, Shield, Mail, ChevronDown } from 'lucide-react';
 import { BRAND_CONFIG } from '../constants';
 
 const Navbar: React.FC = () => {
@@ -10,6 +10,8 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLogoVisible, setIsLogoVisible] = useState(true);
   const [activeHover, setActiveHover] = useState<string | null>(null);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const isHome = location.pathname === '/';
@@ -23,21 +25,40 @@ const Navbar: React.FC = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsMoreOpen(false);
   }, [location.pathname]);
 
-  const navLinks = [
+  // Close "More" dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setIsMoreOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const primaryLinks = [
     { name: 'Home', href: '/', icon: Home },
     { name: 'Products', href: '/products', icon: Package },
-    { name: 'Our Story', href: '/story', icon: BookOpen },
     { name: 'Science', href: '/science', icon: Zap },
-    { name: 'FAQ', href: '/faq', icon: HelpCircle },
-    { name: 'Warranty', href: '/warranty', icon: Shield, badge: 'New' },
+    { name: 'Research', href: '/research', icon: FlaskConical },
+    { name: 'Journal', href: '/blog', icon: Newspaper },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  const moreLinks = [
+    { name: 'Our Story', href: '/story', icon: BookOpen },
+    { name: 'FAQ', href: '/faq', icon: HelpCircle },
+    { name: 'Warranty', href: '/warranty', icon: Shield },
+    { name: 'Contact', href: '/contact', icon: Mail },
+  ];
 
-  // On the home page before scrolling, use a fully transparent dark-text approach
-  // After scrolling or on inner pages, use the frosted glass look
+  const allLinks = [...primaryLinks, ...moreLinks];
+
+  const isActive = (href: string) => location.pathname === href;
+  const isMoreActive = moreLinks.some(l => isActive(l.href));
+
   const navBg = isScrolled || !isHome
     ? 'bg-white/80 backdrop-blur-xl border-b border-sand-300/50 shadow-sm'
     : 'bg-transparent';
@@ -75,8 +96,8 @@ const Navbar: React.FC = () => {
         </motion.div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => {
+        <div className="hidden items-center gap-0.5 lg:flex">
+          {primaryLinks.map((link) => {
             const Icon = link.icon;
             const active = isActive(link.href);
             return (
@@ -87,21 +108,15 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   to={link.href}
-                  className={`relative group px-3.5 py-2.5 rounded-lg flex items-center gap-2 transition-colors ${
+                  className={`relative group px-3 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors ${
                     active
                       ? `${isScrolled || !isHome ? 'text-earth-700' : 'text-white'} font-bold`
                       : `${textColor} hover:text-earth-600`
                   }`}
                 >
-                  <Icon size={14} className="opacity-50" />
-                  <span className="text-xs font-bold uppercase tracking-wide">{link.name}</span>
-                  {link.badge && (
-                    <span className="px-1.5 py-0.5 text-[8px] font-bold uppercase bg-earth-600 text-white rounded-full leading-none">
-                      {link.badge}
-                    </span>
-                  )}
+                  <Icon size={13} className="opacity-50" />
+                  <span className="text-[11px] font-bold uppercase tracking-wide">{link.name}</span>
 
-                  {/* Active/hover underline */}
                   <motion.div
                     className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full ${
                       isScrolled || !isHome ? 'bg-earth-600' : 'bg-white'
@@ -117,6 +132,65 @@ const Navbar: React.FC = () => {
               </div>
             );
           })}
+
+          {/* More Dropdown */}
+          <div ref={moreRef} className="relative">
+            <button
+              onClick={() => setIsMoreOpen(!isMoreOpen)}
+              onMouseEnter={() => setActiveHover('More')}
+              onMouseLeave={() => setActiveHover(null)}
+              className={`relative group px-3 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors ${
+                isMoreActive
+                  ? `${isScrolled || !isHome ? 'text-earth-700' : 'text-white'} font-bold`
+                  : `${textColor} hover:text-earth-600`
+              }`}
+            >
+              <span className="text-[11px] font-bold uppercase tracking-wide">More</span>
+              <ChevronDown size={12} className={`transition-transform ${isMoreOpen ? 'rotate-180' : ''}`} />
+
+              <motion.div
+                className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full ${
+                  isScrolled || !isHome ? 'bg-earth-600' : 'bg-white'
+                }`}
+                initial={{ scaleX: 0 }}
+                animate={{
+                  scaleX: isMoreActive ? 1 : activeHover === 'More' ? 0.6 : 0,
+                }}
+                transition={{ duration: 0.25 }}
+                style={{ originX: 0 }}
+              />
+            </button>
+
+            <AnimatePresence>
+              {isMoreOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 top-full mt-2 w-56 rounded-2xl bg-white/95 backdrop-blur-xl border border-sand-300/50 shadow-xl overflow-hidden py-2"
+                >
+                  {moreLinks.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${
+                          isActive(link.href)
+                            ? 'bg-earth-100 text-earth-700 font-bold'
+                            : 'text-earth-800 hover:bg-earth-50'
+                        }`}
+                      >
+                        <Icon size={16} className="opacity-50" />
+                        <span className="font-semibold">{link.name}</span>
+                      </Link>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Right side */}
@@ -128,7 +202,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className={`p-2 md:hidden rounded-lg transition-colors ${textColor}`}
+            className={`p-2 lg:hidden rounded-lg transition-colors ${textColor}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -172,17 +246,17 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden border-t border-sand-300/50 bg-white/95 backdrop-blur-xl"
+            className="lg:hidden overflow-hidden border-t border-sand-300/50 bg-white/95 backdrop-blur-xl"
           >
             <div className="flex flex-col gap-1 p-4 max-w-7xl mx-auto">
-              {navLinks.map((link, idx) => {
+              {allLinks.map((link, idx) => {
                 const Icon = link.icon;
                 return (
                   <motion.div
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
+                    transition={{ delay: idx * 0.04 }}
                   >
                     <Link
                       to={link.href}
@@ -195,11 +269,6 @@ const Navbar: React.FC = () => {
                     >
                       <Icon size={18} className="opacity-50" />
                       <span className="text-sm font-semibold">{link.name}</span>
-                      {link.badge && (
-                        <span className="ml-auto px-2 py-0.5 text-[8px] font-bold uppercase bg-earth-600 text-white rounded-full">
-                          {link.badge}
-                        </span>
-                      )}
                     </Link>
                   </motion.div>
                 );
@@ -212,7 +281,7 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.4 }}
                 className="flex items-center justify-center gap-2 px-4 py-4 rounded-xl bg-earth-800 text-white font-bold text-sm mt-2"
               >
                 <ShoppingCart size={16} />

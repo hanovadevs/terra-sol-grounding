@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import FAQSection from '../components/FAQSection';
 import { HelpCircle, MessagesSquare } from 'lucide-react';
+import { allFaqs } from '../data/faqs';
 
 const FAQ: React.FC = () => {
   return (
@@ -48,7 +49,11 @@ const FAQ: React.FC = () => {
       </div>
 
       <div className="relative z-30 pb-24">
-        <FAQSection />
+        <FAQSection 
+          faqs={allFaqs} 
+          title="Comprehensive Knowledge Base" 
+          subtitle="Browse our complete database of grounding science, product care, and brand information." 
+        />
       </div>
     </div>
   );
