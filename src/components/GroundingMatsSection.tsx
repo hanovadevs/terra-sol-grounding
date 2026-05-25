@@ -76,7 +76,7 @@ const GroundingMatsSection: React.FC = () => {
             />
             <div className="absolute inset-x-8 bottom-8 z-20 flex justify-between items-end">
               <div>
-                <p className="text-[10px] font-bold tracking-widest uppercase text-earth-300 mb-2">{mats[0].size} • {mats[0].price}</p>
+                <p className="text-[10px] font-bold tracking-widest uppercase text-earth-300 mb-2">{mats[0].size}</p>
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">{mats[0].title}</h3>
                 <p className="text-sand-100/80 max-w-sm">{mats[0].desc}</p>
               </div>
@@ -105,7 +105,7 @@ const GroundingMatsSection: React.FC = () => {
               loading="lazy"
             />
             <div className="absolute inset-x-6 bottom-6 z-20">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-earth-300 mb-2">{mats[1].size} • {mats[1].price}</p>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-earth-300 mb-2">{mats[1].size}</p>
               <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-2">{mats[1].title}</h3>
               <p className="text-sand-100/80 text-sm mb-4">{mats[1].desc}</p>
               <div className="inline-flex items-center gap-2 text-white font-bold text-sm group-hover:text-earth-300 transition-colors">
@@ -128,7 +128,7 @@ const GroundingMatsSection: React.FC = () => {
             <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-earth-800/50 to-transparent z-0 pointer-events-none" />
             
             <div className="flex-1 z-10">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-earth-400 mb-2">{mats[2].size} • {mats[2].price}</p>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-earth-400 mb-2">{mats[2].size}</p>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-3">{mats[2].title}</h3>
               <p className="text-sand-100/70 mb-6">{mats[2].desc}</p>
               <div className="inline-flex items-center gap-2 bg-white text-earth-900 px-6 py-3 rounded-full font-bold text-sm group-hover:bg-earth-100 transition-colors">

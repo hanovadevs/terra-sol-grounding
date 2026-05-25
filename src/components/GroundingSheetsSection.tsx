@@ -47,25 +47,19 @@ const GroundingSheetsSection: React.FC = () => {
             className="w-full lg:w-1/2"
           >
             <span className="block text-[10px] sm:text-xs font-bold tracking-[0.2em] text-earth-600 uppercase mb-4">Flagship Recovery</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-earth-900 mb-4 leading-tight">
               Terra Bare Earth Grounding Sheets
             </h2>
-            <p className="text-earth-800/80 text-base sm:text-lg mb-8 leading-relaxed max-w-xl">
+            <p className="text-earth-800/80 text-sm sm:text-base mb-8 leading-relaxed max-w-xl">
               Engineered for full-body nocturnal recovery. By maximizing the surface area of your body in contact with the Earth's electrons, you create an environment for deep bioelectrical restoration while you sleep.
             </p>
 
             <div className="space-y-4 mb-10">
               <div className="flex items-center justify-between p-4 bg-white rounded-2xl border border-sand-300/50 shadow-sm">
                 <span className="font-bold text-earth-900">King Size Bundle</span>
-                <div className="flex items-center gap-4">
-                  <span className="text-earth-600 font-medium">$199.99</span>
-                </div>
               </div>
               <div className="flex items-center justify-between p-4 bg-white rounded-2xl border border-sand-300/50 shadow-sm">
                 <span className="font-bold text-earth-900">Queen Size Bundle</span>
-                <div className="flex items-center gap-4">
-                  <span className="text-earth-600 font-medium">$189.99</span>
-                </div>
               </div>
             </div>
 

@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import ScienceSection from '../components/ScienceSection';
 import { Microscope, Zap, Thermometer, Droplets, Activity, Brain } from 'lucide-react';
 import AmazonCTA from '../components/AmazonCTA';
+import StepByStepGuide from '../components/StepByStepGuide';
+import SheetUsageDetails from '../components/SheetUsageDetails';
+import MatUsageDetails from '../components/MatUsageDetails';
 
 const Science: React.FC = () => {
   return (
@@ -148,6 +151,10 @@ const Science: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <StepByStepGuide />
+      <SheetUsageDetails />
+      <MatUsageDetails />
 
       {/* Grounding in Practice - Masonry Gallery */}
       <div className="py-24 bg-white border-y border-sand-300/30">

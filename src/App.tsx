@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 // Pages
 import Home from './pages/Home';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import Story from './pages/Story';
 import Science from './pages/Science';
 import FAQ from './pages/FAQ';
@@ -30,6 +31,7 @@ const AnimatedRoutes: React.FC = () => {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/story" element={<Story />} />
           <Route path="/science" element={<Science />} />
           <Route path="/faq" element={<FAQ />} />

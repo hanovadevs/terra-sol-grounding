@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-serif font-bold leading-[0.9] tracking-tight text-white"
+            className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[5rem] font-serif font-bold leading-[0.9] tracking-tight text-white"
           >
             <span className="block">Restore Your</span>
             <span className="relative inline-block mt-2">
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mx-auto mb-10 max-w-2xl text-base sm:text-lg md:text-xl font-medium leading-relaxed text-sand-100/75"
+            className="mx-auto mb-8 max-w-2xl text-sm sm:text-base md:text-lg font-medium leading-relaxed text-sand-100/75"
           >
             Neutralize inflammation and deepen sleep with Terra Sol's premium 12% silver grounding technology — engineered for restorative biophysics.
           </motion.p>

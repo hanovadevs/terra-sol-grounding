@@ -45,11 +45,11 @@ const WhatIsGrounding: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-24"
+          className="text-center mb-16"
         >
-          <span className="block text-[10px] sm:text-xs font-bold tracking-[0.2em] text-earth-400 uppercase mb-4">Biophysics Explained</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6">What is Grounding?</h2>
-          <p className="text-sand-100/70 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed font-medium">
+          <span className="block text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-earth-400 uppercase mb-3">Biophysics Explained</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-4">What is Grounding?</h2>
+          <p className="text-sand-100/70 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed font-medium">
             It is not magic. It is the fundamental electrical mechanism of human biology.
           </p>
         </motion.div>
@@ -88,11 +88,11 @@ const WhatIsGrounding: React.FC = () => {
                     viewport={{ once: true, margin: "-100px" }}
                     className={`w-full md:w-1/2 pl-12 md:pl-0 ${isLeft ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}
                   >
-                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 mb-6 ${isLeft ? 'md:ml-auto' : ''}`}>
-                      <Icon size={24} className="text-earth-400" />
+                    <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 mb-4 ${isLeft ? 'md:ml-auto' : ''}`}>
+                      <Icon size={20} className="text-earth-400" />
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-4">{step.title}</h3>
-                    <p className="text-sand-100/70 leading-relaxed text-base sm:text-lg">
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3">{step.title}</h3>
+                    <p className="text-sand-100/70 leading-relaxed text-sm sm:text-base">
                       {step.description}
                     </p>
                   </motion.div>

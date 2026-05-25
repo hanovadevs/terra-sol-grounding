@@ -26,10 +26,10 @@ const ComparisonModule: React.FC = () => {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/60">Material Science Comparison</span>
           </div>
 
-          <h2 className="mb-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight">
+          <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold tracking-tight">
             Why <span className="italic text-earth-400">Terra Sol?</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-base sm:text-lg leading-relaxed text-sand-100/50">
+          <p className="mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-sand-100/50">
             The grounding market is plagued by material degradation. We've engineered the solution.
           </p>
         </motion.div>
@@ -130,7 +130,7 @@ const ComparisonModule: React.FC = () => {
           viewport={{ once: true }}
           className="rounded-[2rem] border border-white/5 bg-white/3 p-8 sm:p-10 text-center backdrop-blur-md"
         >
-          <p className="text-base sm:text-lg md:text-xl italic text-sand-100/50 leading-relaxed max-w-3xl mx-auto font-serif">
+          <p className="text-sm sm:text-base md:text-lg italic text-sand-100/50 leading-relaxed max-w-3xl mx-auto font-serif">
             "Conductivity is the foundation of grounding efficacy. Our 12% Silver Fiber and Organic Cotton blend is engineered to provide a high-density conductive network for sustained biological restoration."
           </p>
           <div className="mt-6 flex items-center justify-center gap-3">
