@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Ruler, Settings2, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Ruler, Settings2, ArrowRight, Star, ShieldCheck, ThumbsUp } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import AmazonCTA from '../components/AmazonCTA';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { getReviewsByProduct, getAverageRating } from '../data/reviews';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -219,6 +220,83 @@ const ProductDetail: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Customer Reviews for this Product */}
+      {(() => {
+        const productReviews = getReviewsByProduct(product.id);
+        const avgRating = getAverageRating(product.id);
+        if (productReviews.length === 0) return null;
+        return (
+          <div className="bg-white py-14 sm:py-16 border-y border-sand-300/30">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="mb-10"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-earth-600 mb-2 block">Customer Reviews</span>
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-earth-900">What Customers Say</h2>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-sand-50 border border-sand-200">
+                    <div className="flex text-[#FF9900]">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={14} fill={i < Math.round(avgRating) ? 'currentColor' : 'none'} className={i >= Math.round(avgRating) ? 'text-sand-300' : ''} />
+                      ))}
+                    </div>
+                    <span className="text-sm font-bold text-earth-900">{avgRating.toFixed(1)}</span>
+                    <span className="text-xs text-earth-800/40">({productReviews.length} reviews)</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {productReviews.map((review, idx) => (
+                  <motion.div
+                    key={review.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                    className="bg-sand-50 p-5 sm:p-6 rounded-2xl border border-sand-200 hover:shadow-md transition-all duration-300 flex flex-col"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex text-[#FF9900]">
+                        {[...Array(review.rating)].map((_, i) => (
+                          <Star key={i} size={13} fill="currentColor" />
+                        ))}
+                        {[...Array(5 - review.rating)].map((_, i) => (
+                          <Star key={`e${i}`} size={13} className="text-sand-300" />
+                        ))}
+                      </div>
+                      <span className="text-[10px] text-earth-800/30 font-medium">
+                        {new Date(review.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                    </div>
+
+                    <h4 className="text-sm font-bold text-earth-900 mb-2">{review.title}</h4>
+                    <p className="text-xs text-earth-800/70 leading-relaxed mb-4 flex-1">"{review.text}"</p>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-sand-200">
+                      <p className="font-bold text-xs flex items-center gap-1.5 text-earth-900">
+                        {review.name}
+                        {review.verified && <ShieldCheck size={12} className="text-earth-500" />}
+                      </p>
+                      <div className="flex items-center gap-1 text-[10px] text-earth-800/30">
+                        <ThumbsUp size={10} />
+                        <span>{review.helpfulCount} helpful</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* You May Also Like */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24">

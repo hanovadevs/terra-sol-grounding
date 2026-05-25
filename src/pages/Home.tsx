@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
-import SolutionSets from '../components/SolutionSets';
+import GroundingSimulator from '../components/GroundingSimulator';
 import WhatIsGrounding from '../components/WhatIsGrounding';
 import GroundingSheetsSection from '../components/GroundingSheetsSection';
 import GroundingMatsSection from '../components/GroundingMatsSection';
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
       <GroundingSheetsSection />
       <GroundingMatsSection />
       <StepByStepGuide />
-      <SolutionSets />
+      <GroundingSimulator />
       <TestimonialsSection />
 
       {/* Semantic AEO Section */}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ZoomIn, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ZoomIn, CheckCircle2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
+import { getReviewsByProduct, getAverageRating } from '../data/reviews';
 
 const ProductGrid: React.FC = () => {
   const containerVariants = {
@@ -112,9 +113,26 @@ const ProductGrid: React.FC = () => {
                     </p>
                   )}
 
-                  <h3 className="mb-3 text-xl font-serif font-bold text-earth-900 transition-colors group-hover:text-earth-700">
+                  <h3 className="mb-2 text-xl font-serif font-bold text-earth-900 transition-colors group-hover:text-earth-700">
                     {product.name}
                   </h3>
+
+                  {/* Star Rating */}
+                  {(() => {
+                    const avg = getAverageRating(product.id);
+                    const count = getReviewsByProduct(product.id).length;
+                    if (count === 0) return null;
+                    return (
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="flex text-[#FF9900]">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} size={12} fill={i < Math.round(avg) ? 'currentColor' : 'none'} className={i >= Math.round(avg) ? 'text-sand-300' : ''} />
+                          ))}
+                        </div>
+                        <span className="text-[10px] font-bold text-earth-800/40">({count})</span>
+                      </div>
+                    );
+                  })()}
 
                   {/* Minimalist Feature Pills */}
                   <div className="flex flex-wrap gap-2 mb-6">
