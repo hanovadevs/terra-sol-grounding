@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Zap, ShieldCheck, Activity } from 'lucide-react';
+import { Zap, ShieldCheck, Activity, BatteryCharging, Leaf, HeartPulse } from 'lucide-react';
 
 const WhatIsGrounding: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,7 +10,7 @@ const WhatIsGrounding: React.FC = () => {
     offset: ["start end", "end start"]
   });
 
-  const timelineHeight = useTransform(scrollYProgress, [0.2, 0.8], ["0%", "100%"]);
+  const timelineHeight = useTransform(scrollYProgress, [0.2, 0.9], ["0%", "100%"]);
   
   const steps = [
     {
@@ -30,6 +30,24 @@ const WhatIsGrounding: React.FC = () => {
       title: "The Reconnection",
       description: "Grounding (or earthing) safely restores this ancestral connection indoors. By touching a conductive material linked to the Earth, your body instantly absorbs free electrons, neutralizing inflammation at the source.",
       align: "left"
+    },
+    {
+      icon: Leaf,
+      title: "How Terra Sol Products Work",
+      description: "Our grounding sheets and mats are woven with 12% pure conductive silver thread. This conductive matrix is connected to a grounding cord that plugs directly into the ground port of your wall outlet, bringing the Earth's natural frequency directly to your bed or workspace.",
+      align: "right"
+    },
+    {
+      icon: BatteryCharging,
+      title: "The Electron Exchange",
+      description: "Once your skin makes contact with our silver-woven products, a profound electron exchange occurs. Your body absorbs the Earth's free electrons, which act as nature's most powerful antioxidants to quench free radicals and stabilize your cellular voltage.",
+      align: "left"
+    },
+    {
+      icon: HeartPulse,
+      title: "Measurable Health Benefits",
+      description: "Clinical studies demonstrate that regular grounding improves heart rate variability (HRV), dramatically deepens sleep by normalizing the cortisol circadian rhythm, accelerates muscle recovery, and rapidly reduces chronic pain and inflammation.",
+      align: "right"
     }
   ];
 

@@ -123,37 +123,50 @@ const SheetUsageDetails: React.FC = () => {
               viewport={{ once: true, margin: "-100px" }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-earth-100 flex items-center justify-center text-earth-700 shrink-0">
+                <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-amber-200 border border-amber-300/50 flex items-center justify-center text-amber-700 shrink-0 shadow-sm shadow-amber-900/5">
                   <AlertTriangle size={24} />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-500 rounded-full animate-ping opacity-75" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-500 rounded-full" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-earth-900">Washing & Maintenance</h3>
               </div>
-              <p className="text-earth-800/80 leading-relaxed mb-6">
-                Washing your sheet is <strong>essential</strong>. Natural body oils and sweat will slowly oxidize the silver over time if not washed. However, washing incorrectly will strip the silver completely.
+              <p className="text-earth-800/80 leading-relaxed mb-8">
+                Washing your sheet is <strong className="text-amber-700 bg-amber-50 px-1 rounded">essential</strong>. Natural body oils and sweat will slowly oxidize the silver over time if not washed. However, washing incorrectly will strip the silver completely. Follow these strict guidelines:
               </p>
               
               <div className="space-y-4">
-                <div className="p-5 rounded-2xl bg-white border border-sand-300 flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-earth-100 flex items-center justify-center text-earth-700 font-bold shrink-0">1</div>
-                  <div>
-                    <h4 className="font-bold text-earth-900 mb-1">Wash Every 1-2 Weeks</h4>
-                    <p className="text-sm text-earth-800/70">Wash in warm water (approx. 105°F / 40°C). Warm water strips body sweat and natural skin oils from the silver effectively.</p>
-                  </div>
-                </div>
-                <div className="p-5 rounded-2xl bg-white border border-sand-300 flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-earth-100 flex items-center justify-center text-earth-700 font-bold shrink-0">2</div>
-                  <div>
-                    <h4 className="font-bold text-earth-900 mb-1">Use Gentle Detergent</h4>
-                    <p className="text-sm text-earth-800/70">Use a liquid detergent free of bleach, whitening agents, oxi-detergents, and essential oils. <strong>Never use fabric softener.</strong></p>
-                  </div>
-                </div>
-                <div className="p-5 rounded-2xl bg-white border border-sand-300 flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-earth-100 flex items-center justify-center text-earth-700 font-bold shrink-0">3</div>
-                  <div>
-                    <h4 className="font-bold text-earth-900 mb-1">Dry on Low Heat</h4>
-                    <p className="text-sm text-earth-800/70">Line dry naturally when possible, or tumble dry on the lowest heat setting. High heat will melt the silver bonding.</p>
-                  </div>
-                </div>
+                {[
+                  {
+                    step: 1,
+                    title: 'Wash Every 1-2 Weeks',
+                    desc: 'Wash in warm water (approx. 105°F / 40°C). Warm water strips body sweat and natural skin oils from the silver effectively.',
+                  },
+                  {
+                    step: 2,
+                    title: 'Use Gentle Detergent',
+                    desc: <>Use a liquid detergent free of bleach, whitening agents, oxi-detergents, and essential oils. <strong className="text-red-700 bg-red-50 px-1 rounded">Never use fabric softener.</strong></>,
+                  },
+                  {
+                    step: 3,
+                    title: 'Dry on Low Heat',
+                    desc: 'Line dry naturally when possible, or tumble dry on the lowest heat setting. High heat will melt the silver bonding.',
+                  }
+                ].map((item) => (
+                  <motion.div 
+                    key={item.step}
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    className="group relative p-5 sm:p-6 rounded-2xl bg-white border border-sand-200/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-12px_rgba(45,79,30,0.15)] hover:border-earth-300/50 transition-all duration-300 flex items-start gap-5 overflow-hidden cursor-default"
+                  >
+                    <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-earth-200/50 group-hover:bg-earth-500 transition-colors duration-300" />
+                    <div className="w-10 h-10 rounded-full bg-sand-100 flex items-center justify-center text-earth-800 font-serif font-bold shrink-0 text-lg shadow-inner border border-sand-200/50 group-hover:bg-earth-100 group-hover:text-earth-700 transition-colors duration-300">
+                      {item.step}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-earth-900 mb-1.5 text-base">{item.title}</h4>
+                      <p className="text-sm text-earth-800/70 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 

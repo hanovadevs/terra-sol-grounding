@@ -159,84 +159,93 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
+            className="relative"
           >
-            <div className="bg-white/70 backdrop-blur-md rounded-[2.5rem] border border-sand-300/40 p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            {/* Soft background glow */}
+            <div className="absolute -inset-4 bg-earth-100/50 rounded-[3rem] blur-2xl -z-10" />
+
+            <div className="bg-white rounded-[2.5rem] border border-sand-200/80 p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
               <h3 className="text-2xl font-serif font-bold text-earth-900 mb-2">Send a Message</h3>
-              <p className="text-sm text-earth-800/50 mb-8">Fill out the form below and we'll get back to you promptly.</p>
+              <p className="text-sm text-earth-800/60 mb-8">Fill out the form below and we'll get back to you promptly.</p>
 
               {isSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-16 text-center"
+                  className="flex flex-col items-center justify-center py-16 text-center bg-earth-50 rounded-3xl border border-earth-100"
                 >
-                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-earth-200 flex items-center justify-center text-earth-700 mb-6 shadow-sm">
                     <CheckCircle2 size={32} />
                   </div>
                   <h4 className="text-xl font-serif font-bold text-earth-900 mb-2">Message Prepared!</h4>
                   <p className="text-sm text-earth-800/60">Your email client should have opened with the message. Send it to reach us.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-bold text-earth-700 mb-2 uppercase tracking-wider">Name</label>
+                      <label className="block text-[10px] font-bold text-earth-700 mb-2 uppercase tracking-widest">Name</label>
                       <input
                         type="text"
                         required
                         value={formState.name}
                         onChange={e => setFormState({ ...formState, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-sand-300 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/30 transition-all"
+                        className="w-full px-5 py-3.5 rounded-2xl border border-sand-300 bg-sand-50/50 text-earth-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/40 transition-all shadow-inner"
                         placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-earth-700 mb-2 uppercase tracking-wider">Email</label>
+                      <label className="block text-[10px] font-bold text-earth-700 mb-2 uppercase tracking-widest">Email</label>
                       <input
                         type="email"
                         required
                         value={formState.email}
                         onChange={e => setFormState({ ...formState, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-sand-300 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/30 transition-all"
+                        className="w-full px-5 py-3.5 rounded-2xl border border-sand-300 bg-sand-50/50 text-earth-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/40 transition-all shadow-inner"
                         placeholder="you@example.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-earth-700 mb-2 uppercase tracking-wider">Subject</label>
-                    <select
-                      value={formState.subject}
-                      onChange={e => setFormState({ ...formState, subject: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-sand-300 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/30 transition-all"
-                    >
-                      <option>General Inquiry</option>
-                      <option>Warranty Support</option>
-                      <option>Wholesale / Press</option>
-                      <option>Product Question</option>
-                      <option>Other</option>
-                    </select>
+                    <label className="block text-[10px] font-bold text-earth-700 mb-2 uppercase tracking-widest">Subject</label>
+                    <div className="relative">
+                      <select
+                        value={formState.subject}
+                        onChange={e => setFormState({ ...formState, subject: e.target.value })}
+                        className="w-full px-5 py-3.5 rounded-2xl border border-sand-300 bg-sand-50/50 text-earth-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/40 transition-all shadow-inner appearance-none cursor-pointer"
+                      >
+                        <option>General Inquiry</option>
+                        <option>Warranty Support</option>
+                        <option>Wholesale / Press</option>
+                        <option>Product Question</option>
+                        <option>Other</option>
+                      </select>
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-earth-800/50">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                      </div>
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-earth-700 mb-2 uppercase tracking-wider">Message</label>
+                    <label className="block text-[10px] font-bold text-earth-700 mb-2 uppercase tracking-widest">Message</label>
                     <textarea
                       required
                       rows={5}
                       value={formState.message}
                       onChange={e => setFormState({ ...formState, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-sand-300 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/30 transition-all resize-none"
+                      className="w-full px-5 py-4 rounded-2xl border border-sand-300 bg-sand-50/50 text-earth-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-earth-600/20 focus:border-earth-600/40 transition-all shadow-inner resize-none"
                       placeholder="Tell us how we can help..."
                     />
                   </div>
 
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center justify-center gap-3 bg-earth-900 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-earth-900/20 hover:bg-earth-800 transition-colors"
+                    className="w-full flex items-center justify-center gap-3 bg-earth-900 text-sand-50 px-8 py-4 mt-2 rounded-2xl font-bold shadow-lg shadow-earth-900/10 hover:bg-earth-800 transition-all group"
                   >
-                    <Send size={18} />
+                    <Send size={18} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     Send Message
                   </motion.button>
                 </form>
