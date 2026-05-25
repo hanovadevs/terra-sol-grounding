@@ -20,6 +20,7 @@ import Research from './pages/Research';
 import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import Contact from './pages/Contact';
+import Glossary from './pages/Glossary';
 
 const pageTransition = {
   initial: { opacity: 0, y: 12 },
@@ -46,6 +47,7 @@ const AnimatedRoutes: React.FC = () => {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/glossary" element={<Glossary />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

@@ -10,6 +10,9 @@ import GroundingMatsSection from '../components/GroundingMatsSection';
 import StepByStepGuide from '../components/StepByStepGuide';
 import ComparisonModule from '../components/ComparisonModule';
 import TestimonialsSection from '../components/TestimonialsSection';
+import TrustedByBanner from '../components/TrustedByBanner';
+import BenefitsShowcase from '../components/BenefitsShowcase';
+import AsSeenIn from '../components/AsSeenIn';
 import FAQSection from '../components/FAQSection';
 import { homeFaqs } from '../data/faqs';
 import { researchArticles } from '../data/research';
@@ -20,12 +23,15 @@ const Home: React.FC = () => {
   return (
     <main itemScope itemType="https://schema.org/WebPage">
       <Hero />
+      <TrustedByBanner />
+      <AsSeenIn />
       <WhatIsGrounding />
       <GroundingSheetsSection />
       <GroundingMatsSection />
       <StepByStepGuide />
       <GroundingSimulator />
       <TestimonialsSection />
+      <BenefitsShowcase />
 
       {/* Semantic AEO Section */}
       <section aria-labelledby="mission-title" className="bg-sand-100 py-16 sm:py-20 border-y border-earth-900/10">

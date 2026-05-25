@@ -15,6 +15,7 @@ const Footer: React.FC = () => {
     { name: 'Research', href: '/research' },
     { name: 'Journal', href: '/blog' },
     { name: 'Our Story', href: '/story' },
+    { name: 'Glossary', href: '/glossary' },
   ];
 
   const supportLinks = [
