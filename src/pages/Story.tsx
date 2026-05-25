@@ -10,6 +10,53 @@ const Story: React.FC = () => {
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       <StorySection />
 
+      {/* Brand Timeline */}
+      <div className="bg-white py-20 sm:py-24 border-y border-sand-300/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-earth-600 mb-4 block">Our Journey</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-earth-900">The Path to <span className="italic text-earth-600">Premium Grounding</span></h2>
+          </motion.div>
+
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-earth-200 via-earth-400 to-earth-200 sm:-translate-x-px" />
+
+            {[
+              { year: '2022', title: 'The Spark', description: 'Our founder experienced grounding firsthand during a research trip and immediately recognized the gap between the science and the products available.' },
+              { year: '2023', title: 'R&D Phase', description: 'Partnered with textile engineers to develop a 12% silver fiber blend — 3-4x the industry standard — to guarantee long-lasting conductivity.' },
+              { year: '2023', title: 'First Prototype', description: 'First batch of Terra Sol grounding sheets passes independent conductivity testing with a 3-year degradation warranty.' },
+              { year: '2024', title: 'Amazon Launch', description: 'Launched on Amazon with the full product lineup: 3 mat sizes, King and Queen sheets, and the 24-Hour Optimization Bundle.' },
+              { year: '2025', title: 'Growing Community', description: 'Thousands of customers across the US now sleep grounded on Terra Sol. Expanded the research hub and educational content library.' },
+            ].map((milestone, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className={`relative pl-16 sm:pl-0 mb-12 last:mb-0 sm:grid sm:grid-cols-2 sm:gap-12 ${idx % 2 === 0 ? '' : ''}`}
+              >
+                {/* Dot */}
+                <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-1 w-5 h-5 rounded-full bg-earth-600 border-4 border-white shadow-md z-10" />
+
+                {/* Content */}
+                <div className={`${idx % 2 === 0 ? 'sm:text-right sm:pr-12' : 'sm:col-start-2 sm:pl-12'}`}>
+                  <span className="text-xs font-bold text-earth-600 tracking-widest">{milestone.year}</span>
+                  <h3 className="text-lg font-serif font-bold text-earth-900 mt-1 mb-2">{milestone.title}</h3>
+                  <p className="text-sm text-earth-800/60 leading-relaxed">{milestone.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
       {/* Our Values - Glassmorphism Restyle */}
       <div className="relative py-20 sm:py-28 overflow-hidden">
         {/* Subtle background glow */}

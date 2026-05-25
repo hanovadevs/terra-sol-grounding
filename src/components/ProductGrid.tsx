@@ -50,16 +50,16 @@ const ProductGrid: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-widest text-earth-700">The 12% Silver Collection</span>
           </motion.div>
 
-          <h2 className="mb-4 text-4xl leading-tight font-serif font-bold text-earth-900 sm:text-5xl md:text-6xl">
+          <h2 className="mb-3 text-3xl leading-tight font-serif font-bold text-earth-900 sm:text-4xl">
             Our Premium <span className="italic text-earth-600">Products</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-earth-800/70 sm:text-lg">
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-earth-800/70 sm:text-base">
             Carefully crafted with high-density silver and Oeko-Tex cotton to ensure a reliable and effective connection to the Earth's natural energy.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-12"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -105,14 +105,14 @@ const ProductGrid: React.FC = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex grow flex-col p-6 sm:p-8">
+                <div className="flex grow flex-col p-5 sm:p-6">
                   {product.tagline && (
                     <p className="mb-3 text-[10px] font-bold tracking-widest text-earth-600 uppercase">
                       {product.tagline}
                     </p>
                   )}
 
-                  <h3 className="mb-4 text-2xl font-serif font-bold text-earth-900 transition-colors group-hover:text-earth-700">
+                  <h3 className="mb-3 text-xl font-serif font-bold text-earth-900 transition-colors group-hover:text-earth-700">
                     {product.name}
                   </h3>
 
@@ -126,7 +126,7 @@ const ProductGrid: React.FC = () => {
                     ))}
                   </div>
 
-                  <p className="mb-8 text-sm leading-relaxed text-earth-800/70">
+                  <p className="mb-6 text-xs leading-relaxed text-earth-800/70">
                     {product.description}
                   </p>
 

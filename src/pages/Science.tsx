@@ -1,17 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ScienceSection from '../components/ScienceSection';
-import { Microscope, Zap, Thermometer, Droplets, Activity, Brain } from 'lucide-react';
+import { Microscope, Zap, Thermometer, Droplets, Activity, Brain, ExternalLink, ArrowRight } from 'lucide-react';
 import AmazonCTA from '../components/AmazonCTA';
+import ReadingProgressBar from '../components/ReadingProgressBar';
 import StepByStepGuide from '../components/StepByStepGuide';
 import SheetUsageDetails from '../components/SheetUsageDetails';
 import MatUsageDetails from '../components/MatUsageDetails';
 import FAQSection from '../components/FAQSection';
 import { scienceFaqs } from '../data/faqs';
+import { researchArticles } from '../data/research';
 
 const Science: React.FC = () => {
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
+      <ReadingProgressBar />
       <ScienceSection />
       
       {/* The Conductivity Crisis - Elegant Editorial Style */}
@@ -204,6 +208,57 @@ const Science: React.FC = () => {
       </div>
 
 
+
+      {/* Published Research Preview */}
+      <div className="bg-white py-20 sm:py-24 border-y border-sand-300/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-earth-600 mb-4 block">Peer-Reviewed Evidence</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-earth-900 mb-4">Published Research</h2>
+            <p className="text-sm sm:text-base text-earth-800/60 max-w-lg mx-auto leading-relaxed">
+              These findings come from real clinical studies published in accredited medical journals.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {researchArticles.slice(0, 3).map((article, idx) => (
+              <motion.a
+                key={article.id}
+                href={article.pubmedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="group bg-sand-50 rounded-2xl border border-sand-300/40 p-6 hover:shadow-lg hover:border-earth-600/20 transition-all duration-500 hover:-translate-y-1"
+              >
+                <span className="text-[10px] font-bold uppercase tracking-wider text-earth-600 block mb-3">{article.journal} ({article.year})</span>
+                <h3 className="text-sm font-serif font-bold text-earth-900 leading-snug mb-3 group-hover:text-earth-700 transition-colors">{article.title}</h3>
+                <p className="text-xs text-earth-800/50 mb-4 line-clamp-2">{article.summary}</p>
+                <span className="flex items-center gap-1 text-xs font-bold text-earth-600">
+                  Read Study <ExternalLink size={10} />
+                </span>
+              </motion.a>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/research"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-earth-900 text-white rounded-2xl font-bold text-sm hover:bg-earth-800 transition-colors shadow-lg shadow-earth-900/15"
+            >
+              View All {researchArticles.length} Studies <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </div>
 
       <FAQSection 
         faqs={scienceFaqs} 

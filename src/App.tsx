@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AIChat from './components/AIChat';
 import ScrollToTop from './components/ScrollToTop';
+import BackToTop from './components/BackToTop';
+import Newsletter from './components/Newsletter';
 
 // Pages
 import Home from './pages/Home';
@@ -61,8 +63,10 @@ const App: React.FC = () => {
           <AnimatedRoutes />
         </main>
 
+        <Newsletter />
         <Footer />
         <AIChat />
+        <BackToTop />
       </div>
     </Router>
   );

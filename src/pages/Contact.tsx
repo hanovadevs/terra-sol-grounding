@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
 
       {/* Hero Header */}
-      <div className="relative overflow-hidden bg-earth-900 text-sand-100 py-20 sm:py-28">
+      <div className="relative overflow-hidden bg-earth-900 text-sand-100 py-14 sm:py-20">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ rotate: 360 }}
@@ -65,23 +65,23 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-earth-800/50 backdrop-blur-md flex items-center justify-center text-sand-400 border border-earth-700/50 shadow-[0_0_30px_rgba(45,79,30,0.3)]">
-                <Mail size={32} />
+              <div className="w-12 h-12 rounded-xl bg-earth-800/50 backdrop-blur-md flex items-center justify-center text-sand-400 border border-earth-700/50 shadow-[0_0_30px_rgba(45,79,30,0.3)]">
+                <Mail size={22} />
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 tracking-tight">
               Get in <span className="italic text-sand-400">Touch</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-sand-100/70 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-sm sm:text-base text-sand-100/70 max-w-2xl mx-auto font-medium leading-relaxed">
               Have a question, need support, or want to partner with us? We'd love to hear from you.
             </p>
           </motion.div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
 
         {/* Quick Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 -mt-24 relative z-30">

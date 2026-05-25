@@ -12,7 +12,7 @@ const Blog: React.FC = () => {
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
 
       {/* Hero Header */}
-      <div className="relative overflow-hidden bg-earth-900 text-sand-100 py-20 sm:py-28">
+      <div className="relative overflow-hidden bg-earth-900 text-sand-100 py-14 sm:py-20">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ rotate: -360 }}
@@ -29,16 +29,16 @@ const Blog: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-earth-800/50 backdrop-blur-md flex items-center justify-center text-sand-400 border border-earth-700/50 shadow-[0_0_30px_rgba(45,79,30,0.3)]">
-                <Newspaper size={32} />
+              <div className="w-12 h-12 rounded-xl bg-earth-800/50 backdrop-blur-md flex items-center justify-center text-sand-400 border border-earth-700/50 shadow-[0_0_30px_rgba(45,79,30,0.3)]">
+                <Newspaper size={22} />
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 tracking-tight">
               The <span className="italic text-sand-400">Journal</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-sand-100/70 max-w-2xl mx-auto font-medium leading-relaxed mb-6">
+            <p className="text-sm sm:text-base text-sand-100/70 max-w-2xl mx-auto font-medium leading-relaxed mb-5">
               In-depth articles on grounding science, product care, and optimizing your bio-electrical wellness routine.
             </p>
 
@@ -49,7 +49,7 @@ const Blog: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
 
         {/* Featured Article */}
         <Link to={`/blog/${featured.slug}`} className="block mb-12 group">
@@ -57,7 +57,7 @@ const Blog: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-[2.5rem] overflow-hidden border border-sand-300/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(45,79,30,0.1)] transition-all duration-500"
+            className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-[2rem] overflow-hidden border border-sand-300/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(45,79,30,0.1)] transition-all duration-500"
           >
             <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden">
               <img
@@ -72,7 +72,7 @@ const Blog: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-8 sm:p-12 flex flex-col justify-center">
+            <div className="p-6 sm:p-8 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-4">
                 <span className="px-3 py-1 rounded-full bg-earth-100 text-earth-700 text-[10px] font-bold uppercase tracking-wider border border-earth-200">
                   {featured.category}
@@ -82,11 +82,11 @@ const Blog: React.FC = () => {
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-earth-900 mb-4 group-hover:text-earth-700 transition-colors leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-earth-900 mb-3 group-hover:text-earth-700 transition-colors leading-tight">
                 {featured.title}
               </h2>
 
-              <p className="text-base text-earth-800/65 leading-relaxed mb-8">
+              <p className="text-sm text-earth-800/65 leading-relaxed mb-6">
                 {featured.excerpt}
               </p>
 
@@ -128,7 +128,7 @@ const Blog: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-serif font-bold text-earth-900 mb-3 group-hover:text-earth-700 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-serif font-bold text-earth-900 mb-2 group-hover:text-earth-700 transition-colors leading-snug">
                     {article.title}
                   </h3>
 

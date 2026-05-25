@@ -46,7 +46,7 @@ const BlogArticle: React.FC = () => {
   const renderContent = (block: string) => {
     if (block.startsWith('## ')) {
       return (
-        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-earth-900 mt-12 mb-6">
+        <h2 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mt-10 mb-4">
           {block.replace('## ', '')}
         </h2>
       );
@@ -109,11 +109,11 @@ const BlogArticle: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-8 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-earth-900 mb-6 leading-tight">
               {article.title}
             </h1>
 
-            <p className="text-lg sm:text-xl text-earth-800/60 leading-relaxed mb-10 pb-10 border-b border-sand-300">
+            <p className="text-base sm:text-lg text-earth-800/60 leading-relaxed mb-8 pb-8 border-b border-sand-300">
               {article.excerpt}
             </p>
           </motion.div>
@@ -123,12 +123,12 @@ const BlogArticle: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="rounded-[2rem] overflow-hidden mb-12 shadow-xl border border-sand-300"
+            className="rounded-[1.5rem] overflow-hidden mb-10 shadow-xl border border-sand-300"
           >
             <img
               src={article.image}
               alt={article.title}
-              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+              className="w-full h-48 sm:h-64 md:h-72 object-cover"
             />
           </motion.div>
 

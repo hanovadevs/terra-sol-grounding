@@ -34,7 +34,7 @@ const Warranty: React.FC = () => {
     <div className="pt-20 bg-sand-200 min-h-screen font-sans selection:bg-earth-800 selection:text-sand-100">
       
       {/* Super Premium Hero Section */}
-      <div className="relative overflow-hidden bg-earth-900 py-20 sm:py-28 text-sand-100">
+      <div className="relative overflow-hidden bg-earth-900 py-14 sm:py-20 text-sand-100">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
@@ -65,11 +65,11 @@ const Warranty: React.FC = () => {
               </div>
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="mb-6 text-4xl sm:text-5xl md:text-7xl font-serif font-bold tracking-tight">
+            <motion.h1 variants={itemVariants} className="mb-4 text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight">
               Activate Your <span className="italic text-sand-400">Guarantee</span>
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-sand-100/70 leading-relaxed font-medium">
+            <motion.p variants={itemVariants} className="mx-auto max-w-2xl text-sm sm:text-base text-sand-100/70 leading-relaxed font-medium">
               Protect your bio-electrical investment. Register your Terra Sol grounding products below to instantly activate your 3-year conductivity warranty.
             </motion.p>
           </motion.div>

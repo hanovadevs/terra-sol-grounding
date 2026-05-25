@@ -23,7 +23,7 @@ const Research: React.FC = () => {
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
 
       {/* Hero Header */}
-      <div className="relative overflow-hidden bg-earth-900 text-sand-100 py-20 sm:py-28">
+      <div className="relative overflow-hidden bg-earth-900 text-sand-100 py-14 sm:py-20">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ rotate: 360 }}
@@ -40,16 +40,16 @@ const Research: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-earth-800/50 backdrop-blur-md flex items-center justify-center text-sand-400 border border-earth-700/50 shadow-[0_0_30px_rgba(45,79,30,0.3)]">
-                <FlaskConical size={32} />
+              <div className="w-12 h-12 rounded-xl bg-earth-800/50 backdrop-blur-md flex items-center justify-center text-sand-400 border border-earth-700/50 shadow-[0_0_30px_rgba(45,79,30,0.3)]">
+                <FlaskConical size={22} />
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 tracking-tight">
               Published <span className="italic text-sand-400">Research</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-sand-100/70 max-w-2xl mx-auto font-medium leading-relaxed mb-6">
+            <p className="text-sm sm:text-base text-sand-100/70 max-w-2xl mx-auto font-medium leading-relaxed mb-5">
               Peer-reviewed clinical studies on grounding from PubMed, NIH, and accredited medical journals. Real science. Real citations.
             </p>
 
@@ -81,7 +81,7 @@ const Research: React.FC = () => {
       </div>
 
       {/* Articles Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
@@ -102,7 +102,7 @@ const Research: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.06 }}
                 className="group flex flex-col bg-white/70 backdrop-blur-md rounded-[2rem] border border-sand-300/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden hover:shadow-[0_20px_50px_rgba(45,79,30,0.08)] hover:border-earth-600/20 transition-all duration-500 hover:-translate-y-1"
               >
-                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
                   {/* Category + Year */}
                   <div className="flex items-center justify-between mb-4">
                     <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${categoryColors[article.category] || 'bg-sand-100 text-earth-700 border-sand-300'}`}>
@@ -112,7 +112,7 @@ const Research: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base sm:text-lg font-serif font-bold text-earth-900 mb-3 leading-snug group-hover:text-earth-700 transition-colors">
+                  <h3 className="text-sm sm:text-base font-serif font-bold text-earth-900 mb-2 leading-snug group-hover:text-earth-700 transition-colors">
                     {article.title}
                   </h3>
 
@@ -149,8 +149,8 @@ const Research: React.FC = () => {
       </div>
 
       {/* Research Disclaimer */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pb-24">
-        <div className="bg-white/60 backdrop-blur-md rounded-[2rem] border border-sand-300/40 p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.03)]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pb-16">
+        <div className="bg-white/60 backdrop-blur-md rounded-[2rem] border border-sand-300/40 p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.03)]">
           <div className="flex items-start gap-4 mb-6">
             <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 shrink-0 mt-1">
               <AlertTriangle size={18} />

@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
 
       {/* Large CTA banner */}
       <div className="relative z-10 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-16 sm:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-6 py-12 sm:py-14 flex flex-col md:flex-row items-center justify-between gap-8">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
             className="flex-1"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold leading-tight tracking-tight">
               Ready to restore <br />
               your <span className="italic text-earth-400">natural balance?</span>
             </h2>

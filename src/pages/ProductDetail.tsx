@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Ruler, Settings2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Ruler, Settings2, ArrowRight } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import AmazonCTA from '../components/AmazonCTA';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -51,6 +52,12 @@ const ProductDetail: React.FC = () => {
           <ArrowLeft size={16} className="transform group-hover:-translate-x-1 transition-transform" />
           Back to Catalog
         </motion.button>
+
+        <Breadcrumbs items={[
+          { label: 'Home', href: '/' },
+          { label: 'Products', href: '/products' },
+          { label: product.name },
+        ]} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
@@ -127,22 +134,22 @@ const ProductDetail: React.FC = () => {
               </span>
             )}
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-earth-900 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-earth-900 mb-5 leading-tight">
               {product.name}
             </h1>
             
-            <p className="text-lg sm:text-xl text-earth-800/80 leading-relaxed mb-10 pb-10 border-b border-sand-300">
+            <p className="text-base sm:text-lg text-earth-800/80 leading-relaxed mb-8 pb-8 border-b border-sand-300">
               {product.description}
             </p>
 
-            <div className="space-y-10">
+            <div className="space-y-8">
               {/* Features */}
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center border border-earth-200">
                     <Settings2 size={20} className="text-earth-700" />
                   </div>
-                  <h3 className="text-xl font-serif font-bold text-earth-900">Engineering & Features</h3>
+                  <h3 className="text-lg font-serif font-bold text-earth-900">Engineering & Features</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {product.benefits.map((benefit, idx) => (
@@ -161,7 +168,7 @@ const ProductDetail: React.FC = () => {
                     <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center border border-earth-200">
                       <Ruler size={20} className="text-earth-700" />
                     </div>
-                    <h3 className="text-xl font-serif font-bold text-earth-900">Dimensions</h3>
+                    <h3 className="text-lg font-serif font-bold text-earth-900">Dimensions</h3>
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {product.sizes.map((size, idx) => (
@@ -180,7 +187,7 @@ const ProductDetail: React.FC = () => {
                     <div className="w-10 h-10 rounded-full bg-earth-100 flex items-center justify-center border border-earth-200">
                       <Package size={20} className="text-earth-700" />
                     </div>
-                    <h3 className="text-xl font-serif font-bold text-earth-900">What's in the Box</h3>
+                    <h3 className="text-lg font-serif font-bold text-earth-900">What's in the Box</h3>
                   </div>
                   <div className="bg-white rounded-[2rem] border border-sand-200 p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
                     {product.kit && product.kit.length > 0 && (
@@ -211,6 +218,43 @@ const ProductDetail: React.FC = () => {
 
           </motion.div>
         </div>
+      </div>
+
+      {/* You May Also Like */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mb-6">You May Also Like</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PRODUCTS.filter(p => p.id !== product.id).slice(0, 3).map((rel) => (
+              <Link key={rel.id} to={`/products/${rel.id}`} className="group block">
+                <div className="bg-white/70 rounded-[2rem] border border-sand-300/40 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={rel.images[0]}
+                      alt={rel.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6">
+                    {rel.tagline && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-earth-600 mb-2 block">{rel.tagline}</span>
+                    )}
+                    <h3 className="text-base font-serif font-bold text-earth-900 group-hover:text-earth-700 transition-colors mb-3">{rel.name}</h3>
+                    <span className="flex items-center gap-1 text-xs font-bold text-earth-600 group-hover:text-earth-800 transition-colors">
+                      View Product <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
