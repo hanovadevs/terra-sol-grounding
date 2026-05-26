@@ -239,7 +239,7 @@ export const reviews: Review[] = [
     helpfulCount: 15,
   },
 
-  // ── Product 6: 24-Hour Optimization Bundle ──
+  // ── Product 6: Terra Bare Earth Grounding Sheet - King (White) ──
   {
     id: 'r19',
     name: 'Rachel S.',
@@ -249,7 +249,7 @@ export const reviews: Review[] = [
     text: 'I use the sheet at night and the mat during the day at my desk. Within three weeks, I noticed my afternoon anxiety had decreased significantly and I was sleeping much more deeply. The bundle price is excellent value.',
     date: '2025-04-15',
     productId: '6',
-    productName: '24-Hour Optimization Bundle',
+    productName: 'Terra Bare Earth Grounding Sheet - King (White)',
     helpfulCount: 56,
   },
   {
@@ -261,7 +261,7 @@ export const reviews: Review[] = [
     text: 'Bought this after reading the Oschman research on blood viscosity. The sheet plus mat means I am grounded about 14 hours a day. My blood pressure has come down 8 points systolic in 6 weeks. Doctor is pleased.',
     date: '2025-03-01',
     productId: '6',
-    productName: '24-Hour Optimization Bundle',
+    productName: 'Terra Bare Earth Grounding Sheet - King (White)',
     helpfulCount: 71,
   },
   {
@@ -273,7 +273,7 @@ export const reviews: Review[] = [
     text: 'Bought the bundle for myself, loved it so much I bought three more for my kids and husband. The packaging feels premium, the instructions are clear, and the outlet tester made setup foolproof. Highly recommend as a gift.',
     date: '2025-05-14',
     productId: '6',
-    productName: '24-Hour Optimization Bundle',
+    productName: 'Terra Bare Earth Grounding Sheet - King (White)',
     helpfulCount: 32,
   },
 

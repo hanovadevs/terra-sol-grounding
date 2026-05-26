@@ -32,7 +32,7 @@ const Story: React.FC = () => {
               { year: '2022', title: 'The Spark', description: 'Our founder experienced grounding firsthand during a research trip and immediately recognized the gap between the science and the products available.' },
               { year: '2023', title: 'R&D Phase', description: 'Partnered with textile engineers to develop a 12% silver fiber blend — 3-4x the industry standard — to guarantee long-lasting conductivity.' },
               { year: '2023', title: 'First Prototype', description: 'First batch of Terra Sol grounding sheets passes independent conductivity testing with a 3-year degradation warranty.' },
-              { year: '2024', title: 'Amazon Launch', description: 'Launched on Amazon with the full product lineup: 3 mat sizes, King and Queen sheets, and the 24-Hour Optimization Bundle.' },
+              { year: '2024', title: 'Amazon Launch', description: 'Launched on Amazon with the full product lineup: 3 mat sizes, and King and Queen sheets.' },
               { year: '2025', title: 'Growing Community', description: 'Thousands of customers across the US now sleep grounded on Terra Sol. Expanded the research hub and educational content library.' },
             ].map((milestone, idx) => (
               <motion.div

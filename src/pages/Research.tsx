@@ -62,21 +62,31 @@ const Research: React.FC = () => {
 
       {/* Category Filters */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-8 relative z-30">
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl border border-sand-300/50 shadow-lg p-3 sm:p-4 flex flex-wrap gap-2 items-center justify-center">
-          <Filter size={16} className="text-earth-600 hidden sm:block" />
-          {RESEARCH_CATEGORIES.map(cat => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all ${
-                activeCategory === cat.key
-                  ? 'bg-earth-900 text-white shadow-md'
-                  : 'bg-sand-100 text-earth-700 hover:bg-sand-200'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        <div className="bg-sand-200/90 backdrop-blur-xl rounded-2xl border border-white/50 shadow-md p-2 flex flex-wrap gap-1 items-center justify-center lg:justify-start overflow-x-auto no-scrollbar">
+          <div className="pl-3 pr-2 shrink-0 hidden sm:block">
+            <Filter size={16} className="text-earth-600" />
+          </div>
+          {RESEARCH_CATEGORIES.map(cat => {
+            const isActive = activeCategory === cat.key;
+            return (
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`relative px-5 py-2.5 rounded-xl text-[11px] sm:text-xs font-bold tracking-wide transition-colors shrink-0 ${
+                  isActive ? 'text-earth-900' : 'text-earth-800/60 hover:text-earth-900'
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeResearchFilter"
+                    className="absolute inset-0 bg-white rounded-xl shadow-[0_2px_8px_-2px_rgba(45,79,30,0.1)] border border-sand-300/30"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{cat.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 

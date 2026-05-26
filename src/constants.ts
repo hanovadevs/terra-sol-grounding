@@ -72,15 +72,18 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '6',
-    name: '24-Hour Optimization Bundle',
-    tagline: 'The Ultimate Lifestyle Bundle',
-    price: '$249.99',
-    images: ['/images/DSC02552.JPG', '/images/DSC02401.JPG', '/images/DSC02539.JPG'],
-    amazonUrl: 'https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98',
-    description: 'The complete grounding ecosystem. Pair daytime mats with nighttime grounding sheets to stay connected around the clock.',
-    benefits: ['Daytime Mat Support', 'Nighttime Sheet Recovery', 'Multi-Zone Grounding Routine', 'Great For Full Lifestyle Adoption'],
-    kit: ['Grounding Tester', 'Conductivity Pen Tester', 'Grounding Cords', 'Wall Outlet Checker'],
-    packaging: 'Premium Bundle Box'
+    name: 'Terra Bare Earth Grounding Sheet - King (White)',
+    tagline: 'Flagship Sleep Grounding (King)',
+    price: '$199.99',
+    images: ['https://m.media-amazon.com/images/I/71-auTK6PAL._AC_SX679_.jpg', '/images/DSC02410.JPG', '/images/DSC02474.JPG', '/images/DSC02490.JPG'],
+    amazonUrl: 'https://www.amazon.com/dp/B0FRNJV7TH',
+    description: 'Premium king-size grounding sheet made with 12% silver fiber and 88% organic cotton to support deeper, restorative sleep.',
+    benefits: ['Full-Body Overnight Grounding', '12% Silver And 88% Organic Cotton', 'Complete Sleep Bundle Accessories', 'Comfortable Breathable Fabric'],
+    sizes: ['King'],
+    colors: ['White'],
+    kit: ['Socket Tester', 'Carbon Fiber Conductivity Pen', '15ft Grounding Cord', 'Silk Sleep Mask'],
+    packaging: 'Premium Sleep Bundle Box',
+    isPremium: true
   }
 ];
 

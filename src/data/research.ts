@@ -63,16 +63,7 @@ export const researchArticles: ResearchArticle[] = [
     summary: 'This controlled study found that practicing yoga on a grounded mat produced a statistically significant reduction in blood viscosity compared to yoga on a standard mat. The results suggest grounding may enhance the cardiovascular benefits of physical exercise.',
     pubmedUrl: 'https://doi.org/10.4236/ojpm.2015.54019'
   },
-  {
-    id: 'chevalier-2015-mood',
-    title: 'The Effect of Grounding the Human Body on Mood',
-    authors: 'Chevalier G',
-    journal: 'Psychological Reports',
-    year: 2015,
-    category: 'mood',
-    summary: 'A double-blind study where participants were grounded for one hour. Results showed statistically significant improvements in pleasant mood and reductions in anxious, depressed, and irritable mood states compared to the sham-grounded control group.',
-    pubmedUrl: 'https://pubmed.ncbi.nlm.nih.gov/25748085/'
-  },
+
   {
     id: 'sinatra-2017-electric-nutrition',
     title: 'Electric Nutrition: The Surprising Health and Healing Benefits of Biological Grounding (Earthing)',
@@ -136,16 +127,7 @@ export const researchArticles: ResearchArticle[] = [
 
   // ===== 9 NEW STUDIES =====
 
-  {
-    id: 'sokal-2011-physiologic-processes',
-    title: 'Earthing the Human Body Influences Physiologic Processes',
-    authors: 'Sokal K, Sokal P',
-    journal: 'Journal of Alternative and Complementary Medicine',
-    year: 2011,
-    category: 'immunity',
-    summary: 'This double-blind study demonstrated that grounding the human body during rest and physical activity influences thyroid function, blood glucose regulation, and immune response markers. Grounded subjects showed a significant decrease in free tri-iodothyronine and an increase in free thyroxine and TSH, suggesting systemic metabolic regulation through electron transfer.',
-    pubmedUrl: 'https://pubmed.ncbi.nlm.nih.gov/21469913/'
-  },
+
   {
     id: 'sokal-2013-renal-mineral',
     title: 'Earthing the Human Body Influences Blood Urea Nitrogen, Creatinine, and Serum Mineral Concentrations',
@@ -226,4 +208,54 @@ export const researchArticles: ResearchArticle[] = [
     summary: 'The original earthing study by Clint Ober — the pioneer of indoor grounding. This landmark paper documented the first systematic observation that sleeping grounded significantly improved subjective sleep quality, reduced chronic pain, and reduced the bioelectrical stress caused by static electricity and ambient EMF exposure. This paper launched the entire field of grounding research.',
     pubmedUrl: 'http://www.esdjournal.com/articles/cober/ground.htm'
   },
+  {
+    id: 'integrative-lifestyle-earthing-2019',
+    title: 'Integrative and lifestyle medicine strategies should include Earthing (grounding): Review of research evidence and clinical observations-2019',
+    authors: 'Naprapathic Healing Center, Lake Norman Integrative Psychiatry',
+    journal: 'Explore',
+    year: 2019,
+    category: 'general',
+    summary: 'A 2019 Integrative medicine review found grounding may reduce inflammation, pain, stress, improve sleep, circulation, recovery, and may neutralize free radicals; around 20 studies reported benefits for HRV, DOMS, wound healing, anxiety, fatigue, and blood pressure.',
+    pubmedUrl: 'https://www.sciencedirect.com/science/article/pii/S1550830719305476'
+  },
+  {
+    id: 'menigoz-2020-anti-inflammatory-pmc',
+    title: 'Grounding – The universal anti-inflammatory remedy',
+    authors: 'Sun Yat-sen University Cancer Center',
+    journal: 'Biomedical Journal',
+    year: 2020,
+    category: 'inflammation',
+    summary: 'Improved circulation, better sleep, reduced inflammation, lower oxidative stress, and enhanced stress regulation have been linked in emerging research on Earthing, with studies suggesting potential effects on blood viscosity, cardiovascular function, HRV, and wound healing, though evidence is still preliminary and limited.',
+    pubmedUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10105021/'
+  },
+  {
+    id: 'grounding-natural-skincare-2021',
+    title: 'Why Grounding May Be the Future of Natural Skincare Treatments',
+    authors: 'European Journal of Medical and Health Sciences',
+    journal: 'European Journal of Medical and Health Sciences',
+    year: 2021,
+    category: 'general',
+    summary: 'Enhanced blood flow, improved skin repair, and better nutrient absorption may result from combined conductive skincare and Earthing, while also supporting reduced inflammation, stress, and free radical activity, alongside improved microcirculation, hydration, healing, and overall skin function.',
+    pubmedUrl: 'https://www.researchgate.net/publication/353156602_How_Localized_Grounding_Combined_with_Conductive_Skincare_Improves_the_Outcomes_of_the_Traditional_Skincare'
+  },
+  {
+    id: 'chevalier-2012-health-implications-wiley',
+    title: 'Earthing: Health Implications of Reconnecting the Human Body to the Earth\'s Surface Electrons',
+    authors: 'Chevalier G, Sinatra ST, Oschman JL, Sokal K, Sokal P',
+    journal: 'Incorporating Environmental Health in Clinical Medicine',
+    year: 2012,
+    category: 'general',
+    summary: 'Reduced inflammation, stress, pain, and cortisol imbalance, along with improved sleep quality, energy, HRV, circulation, and recovery, have been reported in studies on Earthing, suggesting stabilization of the body\'s electrical and nervous systems may play a supporting role.',
+    pubmedUrl: 'https://onlinelibrary.wiley.com/doi/10.1155/2012/291541'
+  },
+  {
+    id: 'massage-therapists-earthing-2019',
+    title: 'The Effects of Grounding (Earthing) on Bodyworkers\' Pain and Overall Quality of Life: A Randomized Controlled Trial - 2019',
+    authors: 'Department of Family Medicine and Public Health, UC San Diego',
+    journal: 'Explore',
+    year: 2019,
+    category: 'pain',
+    summary: 'In a 6-week randomized controlled trial of 16 massage therapists, Earthing was associated with reduced pain, fatigue, burnout, and depression, while improving energy, physical function, and mood, with benefits persisting after the study period and supporting enhanced occupational recovery.',
+    pubmedUrl: 'https://www.sciencedirect.com/science/article/pii/S1550830718302519'
+  }
 ];
