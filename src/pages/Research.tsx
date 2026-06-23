@@ -19,6 +19,15 @@ const Research: React.FC = () => {
     general: 'bg-sky-100 text-sky-700 border-sky-200',
   };
 
+  const categoryBorderColors: Record<string, string> = {
+    sleep: 'border-t-indigo-400 hover:border-t-indigo-500',
+    inflammation: 'border-t-rose-400 hover:border-t-rose-500',
+    cardiovascular: 'border-t-red-400 hover:border-t-red-500',
+    pain: 'border-t-amber-400 hover:border-t-amber-500',
+    mood: 'border-t-emerald-400 hover:border-t-emerald-500',
+    general: 'border-t-sky-400 hover:border-t-sky-500',
+  };
+
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
 
@@ -110,39 +119,39 @@ const Research: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.06 }}
-                className="group flex flex-col bg-white/70 backdrop-blur-md rounded-[2rem] border border-sand-300/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden hover:shadow-[0_20px_50px_rgba(45,79,30,0.08)] hover:border-earth-600/20 transition-all duration-500 hover:-translate-y-1"
+                className={`group flex flex-col bg-white rounded-[2rem] border-t-4 ${categoryBorderColors[article.category] || 'border-t-earth-400'} border-x border-b border-sand-300/50 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(45,79,30,0.1)] hover:border-earth-600/30 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden`}
               >
-                <div className="p-5 sm:p-6 flex flex-col flex-1">
+                <div className="p-6 sm:p-7 flex flex-col flex-1">
                   {/* Category + Year */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-5">
                     <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${categoryColors[article.category] || 'bg-sand-100 text-earth-700 border-sand-300'}`}>
                       {article.category.replace('-', ' ')}
                     </span>
-                    <span className="text-xs font-bold text-earth-800/30 tabular-nums">{article.year}</span>
+                    <span className="text-[11px] font-bold text-earth-800/60 tabular-nums bg-sand-200/50 px-2.5 py-1 rounded-lg border border-sand-300/30">{article.year}</span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-sm sm:text-base font-serif font-bold text-earth-900 mb-2 leading-snug group-hover:text-earth-700 transition-colors">
+                  <h3 className="text-base sm:text-lg font-serif font-bold text-earth-900 mb-2 leading-snug group-hover:text-earth-700 transition-colors">
                     {article.title}
                   </h3>
 
                   {/* Authors + Journal */}
-                  <p className="text-[11px] text-earth-800/40 mb-4 leading-relaxed">
+                  <p className="text-[11px] text-earth-800/60 mb-5 leading-relaxed font-medium">
                     {article.authors} — <span className="italic">{article.journal}</span>
                   </p>
 
                   {/* Summary */}
-                  <p className="text-sm text-earth-800/65 leading-relaxed flex-1">
+                  <p className="text-sm text-earth-900/80 leading-relaxed font-medium flex-1">
                     {article.summary}
                   </p>
 
                   {/* CTA */}
                   <div className="mt-6 pt-4 border-t border-sand-200 flex items-center justify-between">
-                    <span className="text-xs font-bold text-earth-600 group-hover:text-earth-800 transition-colors">
+                    <span className="text-xs font-bold text-earth-600 group-hover:text-earth-800 transition-colors relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1.5px] after:bg-earth-600 group-hover:after:w-full after:transition-all after:duration-300">
                       Read Full Study
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-earth-100 flex items-center justify-center text-earth-600 group-hover:bg-earth-800 group-hover:text-white transition-all">
-                      <ExternalLink size={14} />
+                    <div className="w-8 h-8 rounded-full bg-earth-100 flex items-center justify-center text-earth-600 group-hover:bg-earth-800 group-hover:text-white transition-all duration-300 transform group-hover:translate-x-0.5">
+                      <ExternalLink size={13} />
                     </div>
                   </div>
                 </div>

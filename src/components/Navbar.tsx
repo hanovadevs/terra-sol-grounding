@@ -64,6 +64,10 @@ const Navbar: React.FC = () => {
     : 'bg-transparent';
 
   const textColor = isScrolled || !isHome ? 'text-earth-900' : 'text-white';
+  
+  const textShadowStyle = !isScrolled && isHome 
+    ? { textShadow: '0 1px 4px rgba(9, 18, 7, 0.4), 0 2px 8px rgba(9, 18, 7, 0.2)' } 
+    : undefined;
 
   return (
     <nav className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 py-4 ${navBg}`}>
@@ -89,7 +93,10 @@ const Navbar: React.FC = () => {
                 <span className="font-serif text-sm font-bold">{BRAND_CONFIG.name[0]}</span>
               )}
             </div>
-            <span className={`text-lg font-serif font-bold tracking-tight hidden sm:inline transition-colors ${textColor}`}>
+            <span 
+              className={`text-lg font-serif font-bold tracking-tight hidden sm:inline transition-colors ${textColor}`}
+              style={textShadowStyle}
+            >
               {BRAND_CONFIG.name}
             </span>
           </Link>
@@ -113,6 +120,7 @@ const Navbar: React.FC = () => {
                       ? `${isScrolled || !isHome ? 'text-earth-700' : 'text-white'} font-bold`
                       : `${textColor} hover:text-earth-600`
                   }`}
+                  style={textShadowStyle}
                 >
                   <Icon size={13} className="opacity-50" />
                   <span className="text-[11px] font-bold uppercase tracking-wide">{link.name}</span>
@@ -144,6 +152,7 @@ const Navbar: React.FC = () => {
                   ? `${isScrolled || !isHome ? 'text-earth-700' : 'text-white'} font-bold`
                   : `${textColor} hover:text-earth-600`
               }`}
+              style={textShadowStyle}
             >
               <span className="text-[11px] font-bold uppercase tracking-wide">More</span>
               <ChevronDown size={12} className={`transition-transform ${isMoreOpen ? 'rotate-180' : ''}`} />

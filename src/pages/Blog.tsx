@@ -77,7 +77,7 @@ const Blog: React.FC = () => {
                 <span className="px-3 py-1 rounded-full bg-earth-100 text-earth-700 text-[10px] font-bold uppercase tracking-wider border border-earth-200">
                   {featured.category}
                 </span>
-                <span className="flex items-center gap-1.5 text-xs text-earth-800/40 font-medium">
+                <span className="flex items-center gap-1.5 text-xs text-earth-800/60 font-semibold">
                   <Clock size={12} /> {featured.readingTime}
                 </span>
               </div>
@@ -86,11 +86,11 @@ const Blog: React.FC = () => {
                 {featured.title}
               </h2>
 
-              <p className="text-sm text-earth-800/65 leading-relaxed mb-6">
+              <p className="text-sm text-earth-900/80 leading-relaxed font-medium mb-6">
                 {featured.excerpt}
               </p>
 
-              <div className="flex items-center gap-2 text-sm font-bold text-earth-600 group-hover:text-earth-800 transition-colors">
+              <div className="flex items-center gap-2 text-sm font-bold text-earth-600 group-hover:text-earth-800 transition-colors relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1.5px] after:bg-earth-600 group-hover:after:w-28 after:transition-all after:duration-300">
                 Read Article <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </div>
             </div>
@@ -106,7 +106,7 @@ const Blog: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 viewport={{ once: true }}
-                className="flex flex-col bg-white/70 backdrop-blur-md rounded-[2rem] border border-sand-300/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden hover:shadow-[0_20px_50px_rgba(45,79,30,0.08)] hover:border-earth-600/20 transition-all duration-500 hover:-translate-y-1 h-full"
+                className="flex flex-col bg-white rounded-[2rem] border border-sand-300/50 shadow-[0_8px_30px_rgba(0,0,0,0.03)] overflow-hidden hover:shadow-[0_20px_50px_rgba(45,79,30,0.1)] hover:border-earth-600/30 transition-all duration-500 hover:-translate-y-1.5 h-full"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
@@ -123,7 +123,7 @@ const Blog: React.FC = () => {
                     <span className="px-3 py-1 rounded-full bg-earth-100 text-earth-700 text-[10px] font-bold uppercase tracking-wider border border-earth-200">
                       {article.category}
                     </span>
-                    <span className="flex items-center gap-1.5 text-xs text-earth-800/40 font-medium">
+                    <span className="flex items-center gap-1.5 text-xs text-earth-800/60 font-semibold">
                       <Clock size={12} /> {article.readingTime}
                     </span>
                   </div>
@@ -132,11 +132,11 @@ const Blog: React.FC = () => {
                     {article.title}
                   </h3>
 
-                  <p className="text-sm text-earth-800/60 leading-relaxed flex-1 mb-6">
+                  <p className="text-sm text-earth-900/80 leading-relaxed font-medium flex-1 mb-6">
                     {article.excerpt}
                   </p>
 
-                  <div className="pt-4 border-t border-sand-200 flex items-center gap-2 text-xs font-bold text-earth-600 group-hover:text-earth-800 transition-colors">
+                  <div className="pt-4 border-t border-sand-200 flex items-center gap-2 text-xs font-bold text-earth-600 group-hover:text-earth-800 transition-colors relative after:absolute after:bottom-[-2px] after:left-6 after:w-0 after:h-[1.5px] after:bg-earth-600 group-hover:after:w-24 after:transition-all after:duration-300">
                     Read Article <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>

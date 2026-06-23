@@ -43,8 +43,13 @@ const Hero: React.FC = () => {
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-earth-900/60 via-earth-900/30 to-sand-200" />
-        <div className="absolute inset-0 bg-gradient-to-r from-earth-900/40 via-transparent to-earth-900/20" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(9, 18, 7, 0.8) 0%, rgba(9, 18, 7, 0.55) 45%, rgba(9, 18, 7, 0.35) 75%, rgba(245, 242, 237, 1) 100%)'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-earth-950/45 via-transparent to-earth-950/25" />
       </motion.div>
 
       {/* Film grain overlay */}
@@ -72,29 +77,13 @@ const Hero: React.FC = () => {
           animate="visible"
           className="flex flex-col items-center"
         >
-          {/* Badge */}
-          <motion.div
-            variants={itemVariants}
-            className="mb-8 flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-5 py-2.5 backdrop-blur-md"
-            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.15)' }}
-          >
-            <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}>
-              <Leaf size={14} className="text-earth-300" />
-            </motion.div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/90">
-              Verified Grounding Technology
-            </span>
-            <div className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={10} className="fill-accent-gold text-accent-gold" />
-              ))}
-            </div>
-          </motion.div>
+
 
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
             className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[5rem] font-serif font-bold leading-[0.9] tracking-tight text-white"
+            style={{ textShadow: '0 4px 16px rgba(9, 18, 7, 0.4), 0 2px 4px rgba(9, 18, 7, 0.2)' }}
           >
             <span className="block">Restore Your</span>
             <span className="relative inline-block mt-2">
@@ -104,7 +93,7 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 exit={{ opacity: 0, y: -40, rotateX: 90 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="italic text-earth-300 inline-block"
+                className="italic text-earth-200 inline-block"
               >
                 {HERO_WORDS[wordIndex]}
               </motion.span>
@@ -121,7 +110,8 @@ const Hero: React.FC = () => {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mx-auto mb-8 max-w-2xl text-sm sm:text-base md:text-lg font-medium leading-relaxed text-sand-100/75"
+            className="mx-auto mb-8 max-w-2xl text-sm sm:text-base md:text-lg font-medium leading-relaxed text-sand-50"
+            style={{ textShadow: '0 2px 8px rgba(9, 18, 7, 0.5), 0 1px 2px rgba(9, 18, 7, 0.3)' }}
           >
             Neutralize inflammation and deepen sleep with Terra Sol's premium 12% silver grounding technology — engineered for restorative biophysics.
           </motion.p>
@@ -147,17 +137,33 @@ const Hero: React.FC = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/science"
-                className="flex items-center gap-2 rounded-full border-2 border-white/25 bg-white/5 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-white/50 hover:bg-white/10"
+                className="flex items-center gap-2 rounded-full border-2 border-white/30 bg-earth-950/20 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-white/60 hover:bg-earth-950/40"
               >
                 Learn the Science
               </Link>
             </motion.div>
           </motion.div>
+
+          {/* Badge */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-10 flex items-center gap-3 rounded-full border border-white/10 bg-earth-950/45 px-5 py-2.5 backdrop-blur-md shadow-lg"
+            whileHover={{ scale: 1.05, backgroundColor: 'rgba(9, 18, 7, 0.65)' }}
+          >
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}>
+              <Leaf size={14} className="text-earth-300" />
+            </motion.div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+              Verified Grounding Technology
+            </span>
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={10} className="fill-accent-gold text-accent-gold" />
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
-
-
-
     </section>
   );
 };

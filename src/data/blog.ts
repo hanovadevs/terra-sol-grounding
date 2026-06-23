@@ -17,7 +17,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Everything you need to know about earthing — what it is, how it works, who it\'s for, and how to start tonight.',
     category: 'Education',
     readingTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80',
+    image: 'https://www.health.com/thmb/eARKqhLAQ3mcV0sILwAdQwm17M0=/2121x0/filters:no_upscale():max_bytes(150000):strip_icc()/Grounding-3668580efb6f419484f6c4787854267d.jpg',
     publishedDate: '2025-03-15',
     content: [
       "## What Is Grounding?",
@@ -43,7 +43,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'An in-depth comparison of grounding sheets and mats — covering use cases, materials, maintenance, and which one fits your lifestyle.',
     category: 'Buying Guide',
     readingTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+    image: 'https://earthingharmony.com/cdn/shop/articles/grounding-sheet-vs-grounding-mat_1.jpg?v=1682066169',
     publishedDate: '2025-02-28',
     content: [
       "## The Core Difference",
@@ -69,7 +69,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'A material science deep-dive into how silver concentration affects conductivity, durability, and long-term grounding effectiveness.',
     category: 'Science',
     readingTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80',
+    image: 'https://www.groundology.co.uk/images/products/high_silver_fitted_sheet_L.jpg',
     publishedDate: '2025-01-20',
     content: [
       "## The Conductive Network",
@@ -94,7 +94,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'A safety-first guide on using your included outlet checker to ensure your home electrical system supports grounding.',
     category: 'How-To',
     readingTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1606290079052-47854f39c235?w=800&q=80',
     publishedDate: '2024-12-10',
     content: [
       "## Why This Step Matters",
@@ -120,7 +120,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'How professional and amateur athletes use grounding to reduce inflammation, accelerate recovery, and optimize sleep-driven performance.',
     category: 'Sports Science',
     readingTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80',
     publishedDate: '2025-04-05',
     content: [
       "## The Recovery Problem",
@@ -144,7 +144,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'An evidence-based look at the published clinical studies linking grounding to better sleep quality and normalized cortisol rhythms.',
     category: 'Research Review',
     readingTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1515894203077-9cd36032142f?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1520206183501-b80ade41d04c?w=800&q=80',
     publishedDate: '2025-05-01',
     content: [
       "## The Sleep Crisis",
@@ -173,7 +173,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Understanding electromagnetic fields in your home and workplace, and the proven biophysics of how grounding neutralizes induced body voltage.',
     category: 'Science',
     readingTime: '9 min read',
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&q=80',
     publishedDate: '2025-05-20',
     content: [
       "## What Are EMFs?",
@@ -198,7 +198,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'How the Earth\'s free electrons act as the most powerful natural anti-inflammatory, and what the peer-reviewed research actually shows.',
     category: 'Research Review',
     readingTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80',
     publishedDate: '2025-05-15',
     content: [
       "## Chronic Inflammation: The Silent Epidemic",
@@ -222,7 +222,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Practical tips for maintaining your grounding routine on the road, in hotels, and while crossing time zones.',
     category: 'Lifestyle',
     readingTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
     publishedDate: '2025-04-20',
     content: [
       "## The Travel Problem",
@@ -249,7 +249,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'How electrical grounding affects the autonomic nervous system, cortisol, and mood — and what the clinical evidence reveals.',
     category: 'Wellness',
     readingTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=800&q=80',
     publishedDate: '2025-04-10',
     content: [
       "## The Nervous System Connection",
@@ -274,7 +274,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Everything you need to know about washing grounding sheets, cleaning mats, testing conductivity, and maximizing product lifespan.',
     category: 'How-To',
     readingTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1610557892470-76d74cd120a1?w=800&q=80',
     publishedDate: '2025-03-25',
     content: [
       "## Why Maintenance Matters",
@@ -324,7 +324,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Cutting through the marketing hype to examine what peer-reviewed science actually says about grounding sheets, their limitations, and realistic expectations.',
     category: 'Research Review',
     readingTime: '10 min read',
-    image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=800&q=80',
     publishedDate: '2025-02-15',
     content: [
       "## The Honest Question",
