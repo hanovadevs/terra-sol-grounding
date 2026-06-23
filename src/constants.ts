@@ -6,7 +6,13 @@ export const PRODUCTS: Product[] = [
     name: 'Terra 24x16 Grounding Mat',
     tagline: 'Compact Desk And Foot Grounding',
     price: '$79.99',
-    images: ['https://m.media-amazon.com/images/I/41G589vrnSL._AC_SL1500_.jpg', '/images/DSC02492.JPG', '/images/DSC02393.JPG'],
+    images: [
+      '/products/terra-24x16-grounding_mat/1.jpeg',
+      '/products/terra-24x16-grounding_mat/2.jpeg',
+      '/products/terra-24x16-grounding_mat/5.JPG',
+      '/products/terra-24x16-grounding_mat/3.jpeg',
+      '/products/terra-24x16-grounding_mat/4.jpeg'
+    ],
     amazonUrl: 'https://www.amazon.com/dp/B0DM4B7LVZ',
     description: 'A compact earthing mat for desks, chairs, and focused work sessions. Designed for daily indoor grounding with easy wipe-clean care.',
     benefits: ['Desk-Friendly Footprint', 'Wipe-Clean Vegan Leather', '15ft Grounding Cord Included', 'Verified Safe Setup Tools'],
@@ -19,7 +25,10 @@ export const PRODUCTS: Product[] = [
     name: 'Terra 29x12.5 Grounding Mat',
     tagline: 'Yoga And Under-Desk Versatility',
     price: '$89.99',
-    images: ['https://m.media-amazon.com/images/I/41OX9x+lJAL._AC_SL1500_.jpg', '/images/DSC02500.JPG', '/images/DSC02504.JPG'],
+    images: [
+      '/products/terra-29x12.5-grounding_mat/1.jpeg',
+      '/products/terra-29x12.5-grounding_mat/2.jpeg'
+    ],
     amazonUrl: 'https://www.amazon.com/dp/B0FSKX34W5',
     description: 'A versatile indoor grounding mat size built for yoga, standing desks, and seated work comfort throughout the day.',
     benefits: ['Flexible Mid-Size Format', 'Yoga And Under-Desk Ready', 'Durable Carbon Vegan Leather', 'Verified Safe Setup Tools'],
@@ -32,7 +41,11 @@ export const PRODUCTS: Product[] = [
     name: 'Terra 27x60 Grounding Mat',
     tagline: 'Full-Length Bed And Recovery Mat',
     price: '$99.99',
-    images: ['https://m.media-amazon.com/images/I/414xCQgT3-L._AC_SL1500_.jpg', '/images/DSC02496.JPG', '/images/DSC02558s.JPG'],
+    images: [
+      '/products/terra-27x60-grounding_mat/1.png',
+      '/products/terra-27x60-grounding_mat/2.jpeg',
+      '/products/terra-27x60-grounding_mat/3.png'
+    ],
     amazonUrl: 'https://www.amazon.com/dp/B0FSKXWDCW',
     description: 'An extended grounding mat designed for bed use and larger contact area sessions. Ideal for nightly recovery and full-body support.',
     benefits: ['Extended 27x60 Surface', 'Bed-Ready Grounding Coverage', 'Wipe-Clean Carbon Vegan Leather', 'Verified Safe Setup Tools'],
@@ -45,7 +58,14 @@ export const PRODUCTS: Product[] = [
     name: 'Terra Bare Earth Grounding Sheet - King',
     tagline: 'Flagship Sleep Grounding (King)',
     price: '$199.99',
-    images: ['https://m.media-amazon.com/images/I/41OwLSIgKiL._AC_SL1500_.jpg', '/images/DSC02410.JPG', '/images/DSC02474.JPG', '/images/DSC02490.JPG'],
+    images: [
+      '/products/grounding-sheet-king/1.jpeg',
+      '/products/grounding-sheet-king/2.JPG',
+      '/products/grounding-sheet-king/3.JPG',
+      '/products/grounding-sheet-king/4.JPG',
+      '/products/grounding-sheet-king/5.JPG',
+      '/products/grounding-sheet-king/6.JPG'
+    ],
     amazonUrl: 'https://www.amazon.com/dp/B0FRNJV7TH',
     description: 'Premium king-size grounding sheet made with 12% silver fiber and 88% organic cotton to support deeper, restorative sleep.',
     benefits: ['Full-Body Overnight Grounding', '12% Silver And 88% Organic Cotton', 'Complete Sleep Bundle Accessories', 'Comfortable Breathable Fabric'],
@@ -60,7 +80,12 @@ export const PRODUCTS: Product[] = [
     name: 'Terra Bare Earth Grounding Sheet - Queen',
     tagline: 'Flagship Sleep Grounding (Queen)',
     price: '$189.99',
-    images: ['https://m.media-amazon.com/images/I/41Znv1UfqLL._AC_SL1500_.jpg', '/images/DSC02474.JPG', '/images/DSC02410.JPG', '/images/DSC02490.JPG'],
+    images: [
+      '/products/grounding-sheet-queen/1.jpeg',
+      '/products/grounding-sheet-queen/2.JPG',
+      '/products/grounding-sheet-queen/3.JPG',
+      '/products/grounding-sheet-queen/4.JPG'
+    ],
     amazonUrl: 'https://www.amazon.com/dp/B0FRZ9ZF24',
     description: 'Premium queen-size grounding sheet made with 12% silver fiber and 88% organic cotton for consistent nightly grounding comfort.',
     benefits: ['Full-Body Overnight Grounding', '12% Silver And 88% Organic Cotton', 'Complete Sleep Bundle Accessories', 'Comfortable Breathable Fabric'],
@@ -75,7 +100,14 @@ export const PRODUCTS: Product[] = [
     name: 'Terra Bare Earth Grounding Sheet - King (White)',
     tagline: 'Flagship Sleep Grounding (King)',
     price: '$199.99',
-    images: ['https://m.media-amazon.com/images/I/71-auTK6PAL._AC_SX679_.jpg', '/images/DSC02410.JPG', '/images/DSC02474.JPG', '/images/DSC02490.JPG'],
+    images: [
+      '/products/grounding-sheet-king/1.jpeg',
+      '/products/grounding-sheet-king/2.JPG',
+      '/products/grounding-sheet-king/3.JPG',
+      '/products/grounding-sheet-king/4.JPG',
+      '/products/grounding-sheet-king/5.JPG',
+      '/products/grounding-sheet-king/6.JPG'
+    ],
     amazonUrl: 'https://www.amazon.com/dp/B0FRNJV7TH',
     description: 'Premium king-size grounding sheet made with 12% silver fiber and 88% organic cotton to support deeper, restorative sleep.',
     benefits: ['Full-Body Overnight Grounding', '12% Silver And 88% Organic Cotton', 'Complete Sleep Bundle Accessories', 'Comfortable Breathable Fabric'],
@@ -164,18 +196,18 @@ export const SOLUTION_SETS = [
     id: '1',
     title: 'The Remote Professional',
     description: 'Combat digital fatigue and EMF exposure during your workday with the Terra Workspace Mat.',
-    image: '/images/DSC02393.JPG'
+    image: '/products/terra-24x16-grounding_mat/3.jpeg'
   },
   {
     id: '2',
     title: 'The Performance Athlete',
     description: 'Accelerate recovery and reduce DOMS with full-body nocturnal grounding.',
-    image: '/images/DSC02394.JPG'
+    image: '/products/terra-27x60-grounding_mat/2.jpeg'
   },
   {
     id: '3',
     title: 'The Modern Parent',
     description: 'Optimize your limited sleep windows with deep, restorative cortisol regulation.',
-    image: '/images/DSC02401.JPG'
+    image: '/products/grounding-sheet-queen/4.JPG'
   }
 ];

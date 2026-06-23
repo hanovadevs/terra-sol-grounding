@@ -10,7 +10,7 @@ const GroundingMatsSection: React.FC = () => {
       size: '27x60 in',
       price: '$99.99',
       desc: 'Extended coverage for nightly bed recovery.',
-      image: 'https://m.media-amazon.com/images/I/414xCQgT3-L._AC_SL1500_.jpg',
+      image: '/products/terra-27x60-grounding_mat/1.png',
       url: 'https://www.amazon.com/dp/B0FSKXWDCW',
       className: 'md:col-span-2 md:row-span-2'
     },
@@ -20,7 +20,7 @@ const GroundingMatsSection: React.FC = () => {
       size: '29x12.5 in',
       price: '$89.99',
       desc: 'Versatile format for standing desks and mobility.',
-      image: 'https://m.media-amazon.com/images/I/41OX9x+lJAL._AC_SL1500_.jpg',
+      image: '/products/terra-29x12.5-grounding_mat/1.jpeg',
       url: 'https://www.amazon.com/dp/B0FSKX34W5',
       className: 'md:col-span-1 md:row-span-2'
     },
@@ -30,7 +30,7 @@ const GroundingMatsSection: React.FC = () => {
       size: '24x16 in',
       price: '$79.99',
       desc: 'Perfect footprint for office chairs and desk setups.',
-      image: 'https://m.media-amazon.com/images/I/41G589vrnSL._AC_SL1500_.jpg',
+      image: '/products/terra-24x16-grounding_mat/1.jpeg',
       url: 'https://www.amazon.com/dp/B0DM4B7LVZ',
       className: 'md:col-span-3 md:row-span-1 flex-row items-center'
     }
