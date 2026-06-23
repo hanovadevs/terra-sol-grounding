@@ -89,32 +89,6 @@ export const blogArticles: BlogArticle[] = [
     ]
   },
   {
-    slug: 'how-to-verify-outlet-grounded',
-    title: 'How to Verify Your Outlet Is Properly Grounded (Step-by-Step)',
-    excerpt: 'A safety-first guide on using your included outlet checker to ensure your home electrical system supports grounding.',
-    category: 'How-To',
-    readingTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1606290079052-47854f39c235?w=800&q=80',
-    publishedDate: '2024-12-10',
-    content: [
-      "## Why This Step Matters",
-      "Before you connect any grounding product to your wall outlet, you need to confirm that the outlet's ground port is actually wired to the earth. In most modern homes built after the 1960s, this is standard. But older homes, poorly renovated spaces, or outlets with wiring issues may have an ungrounded or improperly grounded ground port.",
-      "An ungrounded outlet means no electron transfer. Your product will not work — and you will have no way to know without testing.",
-      "## What You Need",
-      "Every Terra Sol kit includes a Wall Outlet Checker — a small device with three colored indicator lights. Simply plug it into the outlet you plan to use.",
-      "## Reading the Results",
-      "**Two amber/yellow lights illuminated:** Your outlet is properly grounded. You are safe to connect your grounding product.",
-      "**One light or no lights:** The outlet has a wiring issue. Do not use this outlet for grounding. Try a different outlet, or consult a licensed electrician.",
-      "**Red light illuminated:** The outlet has reversed polarity or a missing ground. Again, do not use this outlet.",
-      "## What If No Outlets Pass?",
-      "If you live in an older home where no outlets test as properly grounded, you have two options. First, hire a licensed electrician to install a dedicated ground rod and wire it to a specific outlet. Second, use a grounding rod kit — a separate metal rod that you drive into the earth outside a window and connect directly to your grounding product via a long cord.",
-      "## A Note on Apartment Buildings",
-      "Modern building codes require all outlets in apartment buildings to be properly grounded. However, it is always worth testing. The outlet checker takes 2 seconds and provides instant confirmation.",
-      "## Safety Is Non-Negotiable",
-      "Never skip this step. The ground port is the only safe connection point. Never attempt to connect a grounding cord to the hot or neutral terminals. Terra Sol cords are physically designed to only fit the ground port."
-    ]
-  },
-  {
     slug: 'grounding-for-athletes',
     title: 'Grounding for Athletes: Recovery, DOMS, and Performance',
     excerpt: 'How professional and amateur athletes use grounding to reduce inflammation, accelerate recovery, and optimize sleep-driven performance.',
@@ -136,32 +110,6 @@ export const blogArticles: BlogArticle[] = [
       "## Beyond DOMS: Sleep and Performance",
       "The connection between sleep quality and athletic performance is well-established. Grounding's documented ability to normalize cortisol rhythms means athletes fall asleep faster, spend more time in deep sleep stages, and wake up more recovered.",
       "Many athletes report that the most noticeable benefit of grounding is not the reduction in soreness (though that helps), but the dramatic improvement in sleep depth and consistency."
-    ]
-  },
-  {
-    slug: 'can-grounding-improve-sleep',
-    title: 'Can Grounding Improve Sleep? What the Research Says',
-    excerpt: 'An evidence-based look at the published clinical studies linking grounding to better sleep quality and normalized cortisol rhythms.',
-    category: 'Research Review',
-    readingTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1520206183501-b80ade41d04c?w=800&q=80',
-    publishedDate: '2025-05-01',
-    content: [
-      "## The Sleep Crisis",
-      "Over 70 million Americans suffer from chronic sleep disorders. Poor sleep is linked to increased risk of cardiovascular disease, obesity, diabetes, depression, and cognitive decline. Yet most interventions — from prescription medications to behavioral therapy — address symptoms rather than underlying physiological dysregulation.",
-      "Grounding offers a different approach. Rather than targeting the brain's sleep centers directly, grounding works by normalizing the body's bioelectrical environment — specifically, the cortisol rhythm that governs the sleep-wake cycle.",
-      "## The Foundational Study: Ghaly & Teplitz (2004)",
-      "The landmark study on grounding and sleep was published in the Journal of Alternative and Complementary Medicine by Ghaly and Teplitz. Twelve participants slept grounded for eight weeks. Cortisol levels were measured via saliva samples taken at specific intervals throughout the day.",
-      "The results were striking. Before grounding, participants showed erratic cortisol profiles — levels that were too high at night (preventing sleep onset) or too low in the morning (causing sluggish waking). After eight weeks of grounding, cortisol profiles normalized dramatically. Levels peaked appropriately in the morning and dropped to their lowest point at midnight.",
-      "Subjective reports confirmed the objective data: participants reported falling asleep faster, waking less during the night, and feeling more refreshed upon waking.",
-      "## Why Cortisol Matters for Sleep",
-      "Cortisol is the body's primary stress hormone. In a healthy rhythm, cortisol peaks between 6-8 AM (helping you wake up and feel alert) and drops to its lowest levels around midnight (allowing deep sleep). When this rhythm is disrupted — by chronic stress, shift work, jet lag, or electromagnetic exposure — sleep quality deteriorates dramatically.",
-      "Grounding appears to reset this rhythm by stabilizing the body's electrical environment. The hypothesis is that the influx of free electrons from the Earth helps regulate the autonomic nervous system, shifting it from sympathetic (stress) to parasympathetic (rest) dominance.",
-      "## More Recent Evidence",
-      "A 2022 randomized, double-blind trial at Chang Gung Memorial Hospital in Taiwan tested grounding on patients with mild Alzheimer's disease — a population with severely disrupted sleep. After 12 weeks, the grounded group showed significant improvements in sleep quality scores compared to the sham group.",
-      "A 2024 study in the International Journal of Molecular Sciences used a rodent model to examine grounding's effect on sleep architecture. Grounded animals showed increased total REM and NREM sleep duration, along with changes in neural markers associated with sleep regulation.",
-      "## The Practical Takeaway",
-      "The evidence, while still emerging, consistently points in the same direction: grounding during sleep normalizes cortisol, improves sleep architecture, and produces subjective improvements in sleep quality. It is not a pharmaceutical intervention — it is a restoration of a natural bioelectrical connection that modern life has disrupted."
     ]
   },
 
@@ -266,31 +214,6 @@ export const blogArticles: BlogArticle[] = [
       "This is not a coincidence. The cortisol rhythm is regulated by the hypothalamic-pituitary-adrenal (HPA) axis, which is directly modulated by the autonomic nervous system. Grounding's ability to shift autonomic balance toward parasympathetic dominance cascades upward to normalize the entire stress-response system.",
       "## A Complementary Practice, Not a Replacement",
       "Grounding is not a substitute for therapy, medication, or professional mental health support. But as a complementary practice — something you can do passively while sleeping or working — the evidence suggests it provides real, measurable support for nervous system regulation and mood stability."
-    ]
-  },
-  {
-    slug: 'grounding-product-care-maintenance',
-    title: 'The Complete Guide to Grounding Product Care & Maintenance',
-    excerpt: 'Everything you need to know about washing grounding sheets, cleaning mats, testing conductivity, and maximizing product lifespan.',
-    category: 'How-To',
-    readingTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1610557892470-76d74cd120a1?w=800&q=80',
-    publishedDate: '2025-03-25',
-    content: [
-      "## Why Maintenance Matters",
-      "A grounding product is only effective as long as it maintains conductivity. Silver threads in sheets can oxidize. Carbon surfaces on mats can accumulate residue. The grounding cord's connection points can loosen. Regular, correct maintenance ensures your products continue to perform at their best for years.",
-      "## Grounding Sheet Care",
-      "**Washing Frequency:** Every 1-2 weeks. Your body naturally deposits oils, salt, and dead skin cells onto the sheet. These create an insulating layer over the silver threads if not removed. Regular washing keeps the silver surface clean and conductive.",
-      "**Water Temperature:** Warm water, approximately 105°F / 40°C. Hot water can weaken the bond between silver and cotton fibers. Cold water doesn't effectively remove body oils.",
-      "**Detergent:** Use a plain, liquid laundry detergent. No bleach. No whitening agents. No oxi-clean. No essential oils. No fabric softener. These chemicals either strip the silver or coat it with an insulating film.",
-      "**Drying:** Line dry whenever possible. If using a dryer, use the lowest heat setting only. High heat can melt the silver bonding to cotton fibers.",
-      "## Grounding Mat Care",
-      "Mats are much simpler to maintain. Wipe the surface with a damp cloth and mild soap every 1-2 weeks. Never machine wash a mat. Never submerge it in water. The carbon-infused surface is durable but not waterproof internally.",
-      "## Testing Conductivity",
-      "Every Terra Sol product comes with a Carbon Fiber Conductivity Pen. To test your sheet or mat: connect the grounding cord to your outlet's ground port, then touch the pen to different areas of the surface. A solid LED light confirms conductivity. A flickering or absent light indicates a dead zone.",
-      "Test your sheet after every 5-10 washes. Test your mat monthly. This takes 30 seconds and gives you complete confidence that your product is working.",
-      "## When to Replace",
-      "A well-maintained 12% silver sheet lasts 3-5 years. If your conductivity pen consistently shows dead zones across more than 20% of the surface, it's time for a new sheet. Mats last 5-7 years with proper care."
     ]
   },
   {
