@@ -20,7 +20,7 @@ const GroundingMatsSection: React.FC = () => {
       size: '29x12.5 in',
       price: '$89.99',
       desc: 'Versatile format for standing desks and mobility.',
-      image: '/products/terra-29x12.5-grounding_mat/1.jpeg',
+      image: 'https://m.media-amazon.com/images/I/81UG+rZXPpL._SX522_.jpg',
       url: 'https://www.amazon.com/dp/B0FSKX34W5',
       className: 'md:col-span-1 md:row-span-2'
     },

@@ -26,7 +26,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Yoga And Under-Desk Versatility',
     price: '$89.99',
     images: [
-      '/products/terra-29x12.5-grounding_mat/1.jpeg',
+      'https://m.media-amazon.com/images/I/81UG+rZXPpL._SX522_.jpg',
       '/products/terra-29x12.5-grounding_mat/2.jpeg'
     ],
     amazonUrl: 'https://www.amazon.com/dp/B0FSKX34W5',
