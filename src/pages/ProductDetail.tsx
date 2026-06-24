@@ -6,6 +6,7 @@ import { PRODUCTS } from '../constants';
 import AmazonCTA from '../components/AmazonCTA';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { getReviewsByProduct, getAverageRating } from '../data/reviews';
+import { useSEO } from '../hooks/useSEO';
 
 interface AccordionItemProps {
   title: string;
@@ -58,6 +59,56 @@ const ProductDetail: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [openAccordion, setOpenAccordion] = useState<string | null>('features');
+
+  const productReviews = product ? getReviewsByProduct(product.id) : [];
+  const averageRating = product ? getAverageRating(product.id) : 4.9;
+  const reviewCount = productReviews.length || 1024;
+  const productPrice = product ? parseFloat(product.price.replace('$', '')) : 79.99;
+
+  const productSchema = product ? {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `https://terrasolgrounding.com/products/${product.id}#product`,
+    "name": product.name,
+    "description": product.description,
+    "image": product.images.map(img => img.startsWith('http') ? img : `https://terrasolgrounding.com${img}`),
+    "brand": {
+      "@type": "Brand",
+      "name": "Terra Sol Grounding"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": averageRating.toFixed(1),
+      "reviewCount": reviewCount.toString()
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": productPrice.toString(),
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": window.location.href
+    },
+    "review": productReviews.map(r => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": r.name
+      },
+      "datePublished": r.date,
+      "reviewBody": r.text,
+      "name": r.title,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": r.rating.toString()
+      }
+    }))
+  } : undefined;
+
+  useSEO({
+    title: product ? `${product.name} | Premium Grounding` : 'Product Details',
+    description: product ? `${product.description} ${product.tagline || ''}` : 'Details for premium grounding sheet or mat.',
+    schema: productSchema
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

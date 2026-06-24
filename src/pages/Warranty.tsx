@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ShieldCheck, Send, CheckCircle2, Loader2, Upload, CalendarDays, Award, Zap, Activity, FileText, ExternalLink, AlertCircle, X } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 
 // ============================================================================
 // GOOGLE SHEETS WEB APP URL
@@ -36,6 +37,21 @@ const initialFormData: FormData = {
 };
 
 const Warranty: React.FC = () => {
+  const warrantySchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://terrasolgrounding.com/warranty/#warrantypage",
+    "name": "3-Year Premium Warranty Registration & Claims",
+    "description": "Register your Terra Sol Grounding product warranty or submit a conductivity replacement claim. Guaranteed support for our 12% silver grounding sheets and mats.",
+    "url": "https://terrasolgrounding.com/warranty"
+  };
+
+  useSEO({
+    title: 'Lifetime Conductivity Warranty Registration',
+    description: 'Register your Terra Sol product warranty. We stand behind our 12% silver fiber conductivity with a 3-year limited warranty and 100-night sleep trial.',
+    schema: warrantySchema
+  });
+
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [proofFile, setProofFile] = useState<File | null>(null);
   const [proofPreview, setProofPreview] = useState<string | null>(null);

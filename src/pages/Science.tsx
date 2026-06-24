@@ -11,8 +11,46 @@ import MatUsageDetails from '../components/MatUsageDetails';
 import FAQSection from '../components/FAQSection';
 import { scienceFaqs } from '../data/faqs';
 import { researchArticles } from '../data/research';
+import { useSEO } from '../hooks/useSEO';
 
 const Science: React.FC = () => {
+  const scienceSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://terrasolgrounding.com/science/#sciencepage",
+    "name": "The Science of Earthing & Grounding Biophysics",
+    "description": "Discover the biophysics of earthing: how the body absorbs free electrons from the Earth to neutralize positive radicals, lower cortisol, and balance the nervous system.",
+    "url": "https://terrasolgrounding.com/science",
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Earthing",
+        "sameAs": "https://en.wikipedia.org/wiki/Earthing_system"
+      },
+      {
+        "@type": "Thing",
+        "name": "Free radical",
+        "sameAs": "https://en.wikipedia.org/wiki/Radical_(chemistry)"
+      },
+      {
+        "@type": "Thing",
+        "name": "Cortisol",
+        "sameAs": "https://en.wikipedia.org/wiki/Cortisol"
+      },
+      {
+        "@type": "Thing",
+        "name": "Silver conductivity",
+        "sameAs": "https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity"
+      }
+    ]
+  };
+
+  useSEO({
+    title: 'The Science of Earthing | How Grounding Works',
+    description: 'Discover the biophysics of earthing: how the body absorbs free electrons from the Earth to neutralize positive radicals, lower cortisol, and balance the nervous system.',
+    schema: scienceSchema
+  });
+
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       <ReadingProgressBar />

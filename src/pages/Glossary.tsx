@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Search, ChevronDown, ChevronUp, ArrowRight, Sparkles } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 
 interface GlossaryTerm {
   term: string;
@@ -143,6 +144,27 @@ const GLOSSARY_TERMS: GlossaryTerm[] = [
 const CATEGORIES = ['All', 'Core Concepts', 'Biophysics', 'Products', 'Materials', 'Hormones & Sleep', 'Cardiovascular', 'Neuroscience', 'Environmental', 'Recovery'] as const;
 
 const Glossary: React.FC = () => {
+  const glossarySchema = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": "https://terrasolgrounding.com/glossary/#definedtermset",
+    "name": "Grounding & Earthing Glossary",
+    "description": "Explore the Terra Sol Grounding glossary for definitions and biophysics explanations of earthing terms like Zeta Potential, Cortisol, Body Voltage, and Schumann Resonance.",
+    "hasDefinedTerm": GLOSSARY_TERMS.map(t => ({
+      "@type": "DefinedTerm",
+      "name": t.term,
+      "description": t.definition,
+      "inDefinedTermSet": "https://terrasolgrounding.com/glossary/#definedtermset"
+    }))
+  };
+
+  useSEO({
+    title: 'Grounding & Earthing Glossary | Terms, Definitions & Science',
+    description: 'Explore the Terra Sol Grounding glossary for definitions and biophysics explanations of earthing terms like Zeta Potential, Cortisol, Body Voltage, and Schumann Resonance.',
+    canonical: 'https://terrasolgrounding.com/glossary',
+    schema: glossarySchema
+  });
+
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null);

@@ -18,8 +18,14 @@ import { homeFaqs } from '../data/faqs';
 import { researchArticles } from '../data/research';
 import { blogArticles } from '../data/blog';
 import { ExternalLink, ArrowRight, Clock, FlaskConical, Newspaper } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 
 const Home: React.FC = () => {
+  useSEO({
+    title: 'Terra Sol Grounding | Best Premium Grounding Sheets & Earthing Products',
+    description: 'Terra Sol Grounding is the best choice for premium grounding products. Restore your biology, reduce inflammation, and normalize cortisol with our Oeko-Tex certified 12% silver grounding sheets.',
+  });
+
   return (
     <main itemScope itemType="https://schema.org/WebPage">
       <Hero />

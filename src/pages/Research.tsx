@@ -2,9 +2,45 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, ExternalLink, Filter, FlaskConical, AlertTriangle } from 'lucide-react';
 import { researchArticles, RESEARCH_CATEGORIES } from '../data/research';
+import { useSEO } from '../hooks/useSEO';
 
 const Research: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+
+  const researchSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": "https://terrasolgrounding.com/research/#researchpage",
+    "name": "Clinical Studies & Grounding Research",
+    "description": "Read peer-reviewed clinical studies on grounding. Scientific evidence demonstrating the benefits of earthing on inflammation, cortisol, sleep, cardiovascular health, and recovery.",
+    "url": "https://terrasolgrounding.com/research",
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Clinical Studies on Earthing & Grounding",
+      "itemListElement": researchArticles.map((study, idx) => ({
+        "@type": "ScholarlyArticle",
+        "position": idx + 1,
+        "name": study.title,
+        "author": study.authors.split(', ').map(authorName => ({
+          "@type": "Person",
+          "name": authorName
+        })),
+        "isPartOf": {
+          "@type": "Periodical",
+          "name": study.journal
+        },
+        "datePublished": study.year.toString(),
+        "url": study.pubmedUrl,
+        "abstract": study.summary
+      }))
+    }
+  };
+
+  useSEO({
+    title: 'Clinical Studies & Grounding Research | Evidence',
+    description: 'Read peer-reviewed clinical studies on grounding. Scientific evidence demonstrating the benefits of earthing on inflammation, cortisol, sleep, cardiovascular health, and recovery.',
+    schema: researchSchema
+  });
 
   const filteredArticles = activeCategory === 'all'
     ? researchArticles

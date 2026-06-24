@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageSquare, Shield, Package, Send, CheckCircle2 } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 
 const CONTACT_OPTIONS = [
   {
@@ -35,11 +36,31 @@ const Contact: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://terrasolgrounding.com/contact/#contactpage",
+    "name": "Contact Terra Sol Grounding Support & Partnerships",
+    "description": "Get in touch with the Terra Sol Grounding support team. Submit inquiries for product care, warranty registrations, or partnership opportunities.",
+    "url": "https://terrasolgrounding.com/contact",
+    "mainEntity": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@terrasolgrounding.com",
+      "availableLanguage": "English"
+    }
+  };
+
+  useSEO({
+    title: 'Contact Customer Support & Partnerships',
+    description: 'Get in touch with Terra Sol Grounding. Reach out to hello@terrasolgrounding.com or support@terrasolgrounding.com for customer support, wholesale bulk orders, or press inquiries.',
+    schema: contactSchema
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would POST to a backend / Formspree / Mailchimp
     const mailtoUrl = `mailto:support@terrasolgrounding.com?subject=${encodeURIComponent(formState.subject)}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`)}`;
-    window.open(mailtoUrl, '_blank');
+    window.location.href = mailtoUrl;
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 4000);
   };

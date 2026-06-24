@@ -3,10 +3,36 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Clock, ArrowRight, Newspaper, BookOpen } from 'lucide-react';
 import { blogArticles } from '../data/blog';
+import { useSEO } from '../hooks/useSEO';
 
 const Blog: React.FC = () => {
   const featured = blogArticles[0];
   const rest = blogArticles.slice(1);
+
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://terrasolgrounding.com/blog/#blog",
+    "name": "Terra Sol Grounding Journal",
+    "description": "Explore the Terra Sol Journal. In-depth articles about grounding biophysics, material science, product care guidelines, and athletic recovery protocols.",
+    "publisher": {
+      "@id": "https://terrasolgrounding.com/#organization"
+    },
+    "blogPost": blogArticles.map(article => ({
+      "@type": "BlogPosting",
+      "headline": article.title,
+      "description": article.excerpt,
+      "image": article.image.startsWith('http') ? article.image : `https://terrasolgrounding.com${article.image}`,
+      "datePublished": article.publishedDate,
+      "url": `https://terrasolgrounding.com/blog/${article.slug}`
+    }))
+  };
+
+  useSEO({
+    title: 'The Journal | Grounding Science & Care Articles',
+    description: 'Explore the Terra Sol Journal. In-depth articles about grounding biophysics, material science, product care guidelines, and athletic recovery protocols.',
+    schema: blogSchema
+  });
 
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">

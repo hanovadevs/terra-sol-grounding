@@ -3,12 +3,42 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, ArrowRight } from 'lucide-react';
 import { blogArticles } from '../data/blog';
+import { useSEO } from '../hooks/useSEO';
 
 const BlogArticle: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const article = blogArticles.find(a => a.slug === slug);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const articleSchema = article ? {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `https://terrasolgrounding.com/blog/${article.slug}#blogposting`,
+    "headline": article.title,
+    "description": article.excerpt,
+    "image": article.image.startsWith('http') ? article.image : `https://terrasolgrounding.com${article.image}`,
+    "datePublished": article.publishedDate,
+    "author": {
+      "@type": "Organization",
+      "name": "Terra Sol Grounding",
+      "url": "https://terrasolgrounding.com/"
+    },
+    "publisher": {
+      "@id": "https://terrasolgrounding.com/#organization"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": window.location.href
+    },
+    "articleBody": article.content.join('\n\n')
+  } : undefined;
+
+  useSEO({
+    title: article ? `${article.title} | The Journal` : 'Article Details',
+    description: article ? article.excerpt : 'Read this article from the Terra Sol Grounding journal.',
+    schema: articleSchema
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

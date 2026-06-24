@@ -3,8 +3,28 @@ import { motion } from 'framer-motion';
 import FAQSection from '../components/FAQSection';
 import { HelpCircle, MessagesSquare } from 'lucide-react';
 import { allFaqs } from '../data/faqs';
+import { useSEO } from '../hooks/useSEO';
 
 const FAQ: React.FC = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  useSEO({
+    title: 'Frequently Asked Questions & Help | FAQ',
+    description: 'Find answers to common questions about grounding science, Oeko-Tex certification, silver thread wash care guidelines, and setup instructions.',
+    schema: faqSchema
+  });
+
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       

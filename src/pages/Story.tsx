@@ -4,8 +4,24 @@ import StorySection from '../components/StorySection';
 import { Leaf, ShieldCheck, Globe, ArrowRight } from 'lucide-react';
 import FAQSection from '../components/FAQSection';
 import { storyFaqs } from '../data/faqs';
+import { useSEO } from '../hooks/useSEO';
 
 const Story: React.FC = () => {
+  const storySchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": "https://terrasolgrounding.com/story/#storypage",
+    "name": "About Terra Sol Grounding - Our Story & Brand Mission",
+    "description": "Learn about Terra Sol Grounding, our commitment to natural biological wellness, and our industry-leading 12% silver fiber conductivity standard.",
+    "url": "https://terrasolgrounding.com/story"
+  };
+
+  useSEO({
+    title: 'Our Story & Brand Mission | About Terra Sol',
+    description: 'Learn about Terra Sol Grounding, our commitment to natural biological wellness, and our industry-leading 12% silver fiber conductivity standard.',
+    schema: storySchema
+  });
+
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       <StorySection />
