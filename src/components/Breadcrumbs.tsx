@@ -47,22 +47,33 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
 
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex items-center flex-wrap gap-1 text-xs">
+      <ol itemScope itemType="https://schema.org/BreadcrumbList" className="flex items-center flex-wrap gap-1 text-xs">
         {crumbs.map((crumb, idx) => {
           const isLast = idx === crumbs.length - 1;
+          const absoluteUrl = crumb.href ? `${window.location.origin}${crumb.href}` : window.location.href;
+
           return (
-            <li key={idx} className="flex items-center gap-1">
+            <li 
+              key={idx} 
+              itemProp="itemListElement" 
+              itemScope 
+              itemType="https://schema.org/ListItem" 
+              className="flex items-center gap-1"
+            >
               {idx === 0 && <Home size={12} className="text-earth-600 mr-0.5" />}
               {crumb.href && !isLast ? (
                 <Link
                   to={crumb.href}
+                  itemProp="item"
                   className="font-medium text-earth-600 hover:text-earth-900 transition-colors"
                 >
-                  {crumb.label}
+                  <span itemProp="name">{crumb.label}</span>
                 </Link>
               ) : (
-                <span className="font-bold text-earth-900">{crumb.label}</span>
+                <span itemProp="name" className="font-bold text-earth-900">{crumb.label}</span>
               )}
+              {!crumb.href && <link itemProp="item" href={absoluteUrl} />}
+              <meta itemProp="position" content={(idx + 1).toString()} />
               {!isLast && (
                 <ChevronRight size={12} className="text-earth-800/20" />
               )}
