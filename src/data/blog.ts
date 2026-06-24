@@ -17,7 +17,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'Everything you need to know about earthing — what it is, how it works, who it\'s for, and how to start tonight.',
     category: 'Education',
     readingTime: '8 min read',
-    image: 'https://www.health.com/thmb/eARKqhLAQ3mcV0sILwAdQwm17M0=/2121x0/filters:no_upscale():max_bytes(150000):strip_icc()/Grounding-3668580efb6f419484f6c4787854267d.jpg',
+    image: '/images/blog/grounding-guide.png',
     publishedDate: '2025-03-15',
     content: [
       "## What Is Grounding?",
@@ -43,7 +43,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'An in-depth comparison of grounding sheets and mats — covering use cases, materials, maintenance, and which one fits your lifestyle.',
     category: 'Buying Guide',
     readingTime: '6 min read',
-    image: 'https://earthingharmony.com/cdn/shop/articles/grounding-sheet-vs-grounding-mat_1.jpg?v=1682066169',
+    image: '/images/blog/sheets-vs-mats.png',
     publishedDate: '2025-02-28',
     content: [
       "## The Core Difference",
@@ -69,7 +69,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt: 'A material science deep-dive into how silver concentration affects conductivity, durability, and long-term grounding effectiveness.',
     category: 'Science',
     readingTime: '7 min read',
-    image: 'https://www.groundology.co.uk/images/products/high_silver_fitted_sheet_L.jpg',
+    image: '/images/blog/silver-science.png',
     publishedDate: '2025-01-20',
     content: [
       "## The Conductive Network",

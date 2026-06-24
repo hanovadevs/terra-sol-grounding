@@ -76,7 +76,7 @@ const GroundingSheetsSection: React.FC = () => {
           >
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-square md:aspect-4/3 group border-4 border-white">
               <img 
-                src="/products/grounding-sheet-king/1.jpeg" 
+                src="/products/grounding-sheet-king/gray.JPG" 
                 alt="Terra Bare Earth Grounding Sheet" 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
                 loading="lazy"

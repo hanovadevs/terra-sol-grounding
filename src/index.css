@@ -30,33 +30,46 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-sand-200 text-earth-900;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-semibold;
   }
 
-  html {
-    scroll-behavior: auto;
+  /* Custom scrollbar — desktop only */
+  @media (min-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f5f2ed;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d4f1e;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #1a2e12;
+    }
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #f5f2ed;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #2d4f1e;
-    border-radius: 999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #1a2e12;
+  /* Hide scrollbar on mobile for a cleaner look */
+  @media (max-width: 767px) {
+    ::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
 
   /* Text selection */
@@ -64,7 +77,14 @@
     background: #2d4f1e;
     color: #fcfbf9;
   }
+
+  /* Ensure images don't overflow their containers on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
+
 
 /* ============================================
    CORE UTILITY CLASSES

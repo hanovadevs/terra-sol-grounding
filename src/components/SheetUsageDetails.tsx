@@ -34,7 +34,7 @@ const SheetUsageDetails: React.FC = () => {
               className="relative rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(45,79,30,0.2)] aspect-square lg:aspect-[4/5] border-8 border-white"
             >
               <img 
-                src="/products/grounding-sheet-king/1.jpeg" 
+                src="/products/grounding-sheet-king/gray.JPG" 
                 alt="Terra Bare Earth Grounding Sheet Details" 
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
               />

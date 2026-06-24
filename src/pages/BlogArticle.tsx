@@ -26,11 +26,11 @@ const BlogArticle: React.FC = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-sand-200">
-        <h2 className="text-3xl font-serif font-bold text-earth-900 mb-4">Article Not Found</h2>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-sand-200 px-4">
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-earth-900 mb-4 text-center">Article Not Found</h2>
         <button
           onClick={() => navigate('/blog')}
-          className="px-6 py-3 bg-earth-800 text-white rounded-full font-bold hover:bg-earth-900 transition-colors"
+          className="px-6 py-3 bg-earth-800 text-white rounded-full font-bold hover:bg-earth-900 transition-colors text-sm"
         >
           Return to Journal
         </button>
@@ -46,7 +46,7 @@ const BlogArticle: React.FC = () => {
   const renderContent = (block: string) => {
     if (block.startsWith('## ')) {
       return (
-        <h2 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mt-10 mb-4">
+        <h2 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-earth-900 mt-8 sm:mt-10 mb-3 sm:mb-4">
           {block.replace('## ', '')}
         </h2>
       );
@@ -55,7 +55,7 @@ const BlogArticle: React.FC = () => {
     // Handle bold text within paragraphs
     const parts = block.split(/(\*\*[^*]+\*\*)/g);
     return (
-      <p className="text-base sm:text-lg text-earth-800/75 leading-relaxed mb-6">
+      <p className="text-sm sm:text-base md:text-lg text-earth-800/75 leading-relaxed mb-5 sm:mb-6">
         {parts.map((part, i) => {
           if (part.startsWith('**') && part.endsWith('**')) {
             return <strong key={i} className="font-bold text-earth-900">{part.slice(2, -2)}</strong>;
@@ -77,7 +77,7 @@ const BlogArticle: React.FC = () => {
         />
       </div>
 
-      <div className="pt-24 pb-24 min-h-screen bg-sand-100 selection:bg-earth-800 selection:text-sand-100">
+      <div className="pt-20 sm:pt-24 pb-16 sm:pb-24 min-h-screen bg-sand-100 selection:bg-earth-800 selection:text-sand-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
 
           {/* Back Button */}
@@ -85,9 +85,9 @@ const BlogArticle: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate('/blog')}
-            className="flex items-center gap-2 text-earth-600 hover:text-earth-900 font-bold text-sm mb-8 transition-colors group"
+            className="flex items-center gap-2 text-earth-600 hover:text-earth-900 font-bold text-xs sm:text-sm mb-6 sm:mb-8 transition-colors group"
           >
-            <ArrowLeft size={16} className="transform group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft size={14} className="transform group-hover:-translate-x-1 transition-transform" />
             Back to Journal
           </motion.button>
 
@@ -97,23 +97,23 @@ const BlogArticle: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="px-3 py-1 rounded-full bg-earth-100 text-earth-700 text-[10px] font-bold uppercase tracking-wider border border-earth-200">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <span className="px-2.5 sm:px-3 py-1 rounded-full bg-earth-100 text-earth-700 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider border border-earth-200">
                 {article.category}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-earth-800/40 font-medium">
-                <Clock size={12} /> {article.readingTime}
+              <span className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-earth-800/40 font-medium">
+                <Clock size={11} /> {article.readingTime}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-earth-800/40 font-medium">
-                <Calendar size={12} /> {new Date(article.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              <span className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-earth-800/40 font-medium">
+                <Calendar size={11} /> {new Date(article.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-earth-900 mb-6 leading-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-earth-900 mb-4 sm:mb-6 leading-tight">
               {article.title}
             </h1>
 
-            <p className="text-base sm:text-lg text-earth-800/60 leading-relaxed mb-8 pb-8 border-b border-sand-300">
+            <p className="text-sm sm:text-base md:text-lg text-earth-800/60 leading-relaxed mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-sand-300">
               {article.excerpt}
             </p>
           </motion.div>
@@ -123,12 +123,12 @@ const BlogArticle: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="rounded-[1.5rem] overflow-hidden mb-10 shadow-xl border border-sand-300"
+            className="rounded-xl sm:rounded-2xl md:rounded-[1.5rem] overflow-hidden mb-8 sm:mb-10 shadow-xl border border-sand-300"
           >
             <img
               src={article.image}
               alt={article.title}
-              className="w-full h-48 sm:h-64 md:h-72 object-cover"
+              className="w-full h-40 sm:h-48 md:h-64 lg:h-72 object-cover"
             />
           </motion.div>
 
@@ -145,15 +145,15 @@ const BlogArticle: React.FC = () => {
           </motion.article>
 
           {/* Divider */}
-          <div className="mt-16 mb-16 border-t border-sand-300" />
+          <div className="mt-12 sm:mt-16 mb-10 sm:mb-16 border-t border-sand-300" />
 
           {/* Related Articles */}
           <div>
-            <h2 className="text-2xl font-serif font-bold text-earth-900 mb-8">Continue Reading</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-earth-900 mb-6 sm:mb-8">Continue Reading</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {related.map((rel) => (
                 <Link key={rel.slug} to={`/blog/${rel.slug}`} className="group block">
-                  <div className="bg-white/70 rounded-2xl border border-sand-300/40 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                  <div className="bg-white/70 rounded-xl sm:rounded-2xl border border-sand-300/40 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
                         src={rel.image}
@@ -162,11 +162,11 @@ const BlogArticle: React.FC = () => {
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-4 sm:p-5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-earth-600 mb-2 block">
+                    <div className="p-3.5 sm:p-4 md:p-5">
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-earth-600 mb-1.5 sm:mb-2 block">
                         {rel.category}
                       </span>
-                      <h3 className="text-sm font-serif font-bold text-earth-900 group-hover:text-earth-700 transition-colors leading-snug">
+                      <h3 className="text-xs sm:text-sm font-serif font-bold text-earth-900 group-hover:text-earth-700 transition-colors leading-snug">
                         {rel.title}
                       </h3>
                     </div>

@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
     price: '$99.99',
     images: [
       '/products/terra-27x60-grounding_mat/1.png',
-      '/products/terra-27x60-grounding_mat/2.jpeg',
+      '/products/terra-27x60-grounding_mat/2.png',
       '/products/terra-27x60-grounding_mat/3.png'
     ],
     amazonUrl: 'https://www.amazon.com/dp/B0FSKXWDCW',
@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Flagship Sleep Grounding (King)',
     price: '$199.99',
     images: [
-      '/products/grounding-sheet-king/1.jpeg',
+      '/products/grounding-sheet-king/gray.JPG',
       '/products/grounding-sheet-king/2.JPG',
       '/products/grounding-sheet-king/3.JPG',
       '/products/grounding-sheet-king/4.JPG',
@@ -81,7 +81,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Flagship Sleep Grounding (Queen)',
     price: '$189.99',
     images: [
-      '/products/grounding-sheet-queen/1.jpeg',
+      '/products/grounding-sheet-queen/1.JPG',
       '/products/grounding-sheet-queen/2.JPG',
       '/products/grounding-sheet-queen/3.JPG',
       '/products/grounding-sheet-queen/4.JPG'
@@ -101,7 +101,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Flagship Sleep Grounding (King)',
     price: '$199.99',
     images: [
-      '/products/grounding-sheet-king/1.jpeg',
+      '/products/grounding-sheet-king/white.JPG',
       '/products/grounding-sheet-king/2.JPG',
       '/products/grounding-sheet-king/3.JPG',
       '/products/grounding-sheet-king/4.JPG',

@@ -180,33 +180,9 @@ const ProductDetail: React.FC = () => {
               </span>
             )}
             
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-earth-900 mb-2 leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-earth-900 mb-4 leading-tight">
               {product.name}
             </h1>
-
-            {/* Review Stars & Scroll Anchor */}
-            {(() => {
-              const avg = getAverageRating(product.id);
-              const count = getReviewsByProduct(product.id).length;
-              if (count === 0) return null;
-              return (
-                <a href="#reviews" className="flex items-center gap-2 mb-4 group cursor-pointer inline-flex self-start">
-                  <div className="flex text-accent-gold">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={13} fill={i < Math.round(avg) ? 'currentColor' : 'none'} className={i >= Math.round(avg) ? 'text-sand-300' : 'fill-accent-gold'} />
-                    ))}
-                  </div>
-                  <span className="text-xs font-semibold text-earth-800/80 group-hover:text-earth-600 transition-colors">
-                    {avg.toFixed(1)} ({count} reviews)
-                  </span>
-                </a>
-              );
-            })()}
-            
-            <div className="mb-6 flex items-baseline gap-3">
-              <span className="text-2xl sm:text-3xl font-bold text-earth-900">{product.price}</span>
-              <span className="text-xs font-medium text-earth-800/40">Free shipping & 100-night trial</span>
-            </div>
 
             <p className="text-sm text-earth-800/80 leading-relaxed mb-6">
               {product.description}
