@@ -135,11 +135,11 @@ const Home: React.FC = () => {
                   viewport={{ once: true }}
                   className="bg-white/70 backdrop-blur-md rounded-[2rem] border border-sand-300/40 overflow-hidden shadow-sm hover:shadow-lg hover:border-earth-600/20 transition-all duration-500 hover:-translate-y-1 h-full flex flex-col"
                 >
-                  <div className="aspect-[16/10] overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden">
                     <img
                       src={article.image}
                       alt={article.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>

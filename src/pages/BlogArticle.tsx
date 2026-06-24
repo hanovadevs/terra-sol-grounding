@@ -154,11 +154,11 @@ const BlogArticle: React.FC = () => {
               {related.map((rel) => (
                 <Link key={rel.slug} to={`/blog/${rel.slug}`} className="group block">
                   <div className="bg-white/70 rounded-xl sm:rounded-2xl border border-sand-300/40 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
-                    <div className="aspect-[16/10] overflow-hidden">
+                    <div className="relative aspect-[16/10] overflow-hidden">
                       <img
                         src={rel.image}
                         alt={rel.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>

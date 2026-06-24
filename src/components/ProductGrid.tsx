@@ -30,12 +30,12 @@ const KingSheetCard: React.FC<{ itemVariants: any; index: number }> = ({ itemVar
     >
       {/* Image Showcase Stage — links to the active variant */}
       <Link to={`/products/${active.product.id}`} className="block outline-none">
-        <div className="relative aspect-[4/3] overflow-hidden bg-sand-50/80 p-6 flex items-center justify-center border-b border-sand-200/50">
+        <div className="relative aspect-[4/3] overflow-hidden bg-sand-50/80 border-b border-sand-200/50">
           <img
             key={active.product.id}
             src={active.product.images[0]}
             alt={active.product.name}
-            className="max-h-full max-w-full w-auto h-auto object-contain transition-all duration-500 ease-[0.22,1,0.36,1]"
+            className="absolute inset-0 m-auto max-h-[85%] max-w-[85%] w-auto h-auto object-contain transition-all duration-500 ease-[0.22,1,0.36,1]"
             loading="lazy"
           />
 
@@ -188,12 +188,12 @@ const ProductGrid: React.FC = () => {
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white border border-sand-300/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgb(45,79,30,0.08)] hover:border-earth-600/30 hover:-translate-y-1.5"
                 >
                   {/* Image Showcase Stage */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-sand-50/80 p-6 flex items-center justify-center border-b border-sand-200/50">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-sand-50/80 border-b border-sand-200/50">
                     {/* Primary Image */}
                     <img
                       src={product.images[0]}
                       alt={product.name}
-                      className="max-h-full max-w-full w-auto h-auto object-contain transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:scale-[1.03] group-hover:opacity-0"
+                      className="absolute inset-0 m-auto max-h-[85%] max-w-[85%] w-auto h-auto object-contain transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:scale-[1.03] group-hover:opacity-0"
                       loading="lazy"
                     />
                     {/* Secondary Image (Hover State) */}

@@ -59,12 +59,12 @@ const Blog: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-2xl sm:rounded-[2rem] overflow-hidden border border-sand-300/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(45,79,30,0.1)] transition-all duration-500"
           >
-            <div className="relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto overflow-hidden">
+            <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:h-full min-h-[280px] sm:min-h-[350px] lg:min-h-[400px] overflow-hidden">
               <img
                 src={featured.image}
                 alt={featured.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-earth-900/30 via-transparent to-transparent" />
               <div className="absolute top-4 left-4 sm:top-6 sm:left-6 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-earth-700 border border-sand-300/50">
@@ -108,11 +108,11 @@ const Blog: React.FC = () => {
                 viewport={{ once: true }}
                 className="flex flex-col bg-white rounded-2xl sm:rounded-[2rem] border border-sand-300/50 shadow-[0_8px_30px_rgba(0,0,0,0.03)] overflow-hidden hover:shadow-[0_20px_50px_rgba(45,79,30,0.1)] hover:border-earth-600/30 transition-all duration-500 hover:-translate-y-1 h-full"
               >
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative w-full aspect-[16/10] overflow-hidden">
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-earth-900/20 via-transparent to-transparent" />
