@@ -81,21 +81,26 @@ const Footer: React.FC = () => {
           {/* Brand column */}
           <div className="space-y-5">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all group-hover:border-white/20">
+              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white border border-white/10 shadow-[0_3px_10px_rgba(0,0,0,0.1)] transition-all group-hover:scale-105 group-hover:shadow-[0_5px_15px_rgba(255,255,255,0.15)] group-hover:border-earth-600/30">
                 {isLogoVisible ? (
                   <img
                     src={BRAND_CONFIG.logo}
                     alt={BRAND_CONFIG.name}
-                    className="h-full w-full object-cover"
+                    className="h-[88%] w-[88%] object-contain rounded-full"
                     onError={() => setIsLogoVisible(false)}
                   />
                 ) : (
-                  <span className="font-serif text-base font-bold text-white">{BRAND_CONFIG.name[0]}</span>
+                  <span className="font-serif text-base font-bold text-earth-800">{BRAND_CONFIG.name[0]}</span>
                 )}
               </div>
-              <span className="text-lg font-serif font-bold tracking-tight group-hover:text-earth-300 transition-colors">
-                {BRAND_CONFIG.name}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-sm sm:text-base font-serif font-bold tracking-[0.14em] uppercase group-hover:text-earth-300 transition-colors">
+                  {BRAND_CONFIG.name}
+                </span>
+                <span className="text-[7px] sm:text-[8px] font-sans font-bold tracking-[0.25em] uppercase text-sand-300/50 -mt-0.5 sm:-mt-1">
+                  Grounding
+                </span>
+              </div>
             </Link>
 
             <p className="text-sm leading-relaxed text-sand-100/50 max-w-xs">

@@ -73,32 +73,33 @@ const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 py-4 ${navBg}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-          <Link to="/" className="group flex items-center gap-2.5" aria-label="Terra Sol Home">
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <Link to="/" className="group flex items-center gap-2.5 sm:gap-3" aria-label="Terra Sol Home">
             <div
-              className={`flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border transition-all ${
-                isScrolled || !isHome
-                  ? 'border-earth-600/15 bg-earth-600/5'
-                  : 'border-white/20 bg-white/10 backdrop-blur-md'
-              }`}
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center overflow-hidden rounded-full bg-white border border-sand-300/40 shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_5px_15px_rgba(45,79,30,0.12)] group-hover:border-earth-600/20 flex-shrink-0"
             >
               {isLogoVisible ? (
                 <img
                   src={BRAND_CONFIG.logo}
                   alt=""
-                  className="h-full w-full object-contain"
+                  className="h-[88%] w-[88%] object-contain rounded-full transition-transform duration-500 group-hover:rotate-[4deg]"
                   onError={() => setIsLogoVisible(false)}
                 />
               ) : (
-                <span className="font-serif text-sm font-bold">{BRAND_CONFIG.name[0]}</span>
+                <span className="font-serif text-sm font-bold text-earth-800">{BRAND_CONFIG.name[0]}</span>
               )}
             </div>
-            <span 
-              className={`text-lg font-serif font-bold tracking-tight hidden sm:inline transition-colors ${textColor}`}
-              style={textShadowStyle}
-            >
-              {BRAND_CONFIG.name}
-            </span>
+            <div className="flex flex-col">
+              <span 
+                className={`text-sm sm:text-base md:text-lg font-serif font-bold tracking-[0.14em] uppercase transition-colors duration-300 ${textColor}`}
+                style={textShadowStyle}
+              >
+                {BRAND_CONFIG.name}
+              </span>
+              <span className={`text-[7px] sm:text-[8px] font-sans font-bold tracking-[0.25em] uppercase opacity-75 -mt-0.5 sm:-mt-1 transition-colors duration-300 ${isScrolled || !isHome ? 'text-earth-700/80' : 'text-sand-300/90'}`}>
+                Grounding
+              </span>
+            </div>
           </Link>
         </motion.div>
 
