@@ -7,6 +7,7 @@ import AIChat from './components/AIChat';
 import ScrollToTop from './components/ScrollToTop';
 import BackToTop from './components/BackToTop';
 import Newsletter from './components/Newsletter';
+import { Analytics } from '@vercel/analytics/react';
 
 // Pages
 import Home from './pages/Home';
@@ -69,6 +70,7 @@ const App: React.FC = () => {
         <Footer />
         <AIChat />
         <BackToTop />
+        <Analytics />
       </div>
     </Router>
   );
