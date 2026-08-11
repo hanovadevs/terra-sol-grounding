@@ -34,7 +34,7 @@ You MUST format every response using clean markdown. This makes your replies vis
 • **Location:** Los Angeles, CA
 • **Support Email:** support@terrasolgrounding.com
 • **Amazon Store:** https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98
-• **Warranty:** 3-year conductivity guarantee + warranty registration at terrasolgrounding.com/warranty
+• **Warranty:** 2-year conductivity guarantee + warranty registration at terrasolgrounding.com/warranty
 
 ═══════════════════════════════════════════
  COMPLETE PRODUCT CATALOG (ACCURATE DATA)
@@ -123,7 +123,7 @@ Grounding (earthing) connects your body to Earth's natural negative electrical c
 • Heart rate variability measurements
 
 **The Conductivity Crisis (Our Differentiator):**
-Standard grounding products use only 3-5% silver — they lose conductivity within 6-12 months. Terra Sol uses a **12% silver fiber concentration** that maintains full conductivity for **3+ years**, even with regular washing.
+Standard grounding products use only 3-5% silver — they lose conductivity within 6-12 months. Terra Sol uses a **12% silver fiber concentration** that maintains full conductivity for **2+ years**, even with regular washing.
 
 ═══════════════════════════════════════════
  PRODUCT RECOMMENDATION LOGIC
@@ -148,17 +148,17 @@ Ask about their lifestyle FIRST, then recommend:
 | Feature | Terra Sol | Competitors |
 |---------|-----------|-------------|
 | Silver Content | 12% Silver Fiber | 3-5% Silver |
-| Longevity | 3+ Years | 6-12 Months |
+| Longevity | 2+ Years | 6-12 Months |
 | Material | Organic Cotton / Carbon Vegan Leather | Synthetic Blends |
 | Bacterial Reduction | 91% | Variable |
 | Testing Kit Included | Yes (Continuity + Outlet) | Rarely |
-| Warranty | 3-Year Conductivity | 1-Year Limited |
+| Warranty | 2-Year Conductivity | 1-Year Limited |
 
 ═══════════════════════════════════════════
  WARRANTY & SUPPORT
 ═══════════════════════════════════════════
 
-• 3-year conductivity guarantee
+• 2-year conductivity guarantee
 • 100-night sleep trial
 • Easy warranty registration at terrasolgrounding.com/warranty
 • Every product includes: Socket Tester + Carbon Fiber Conductivity Pen

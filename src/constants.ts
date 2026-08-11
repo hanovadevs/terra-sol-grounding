@@ -178,16 +178,16 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const BRAND_STORY = "At Terra Sol, we believe that modern life has disconnected us from our most vital source of energy: the Earth. Our mission is to bridge that gap by providing high-quality, verified grounding products that bring the healing power of nature into your home. We are committed to quality, sustainability, and the science of wellness.";
 
-export const WARRANTY_INFO = "We stand behind the quality of our products. Every Terra Sol purchase comes with a 100-night sleep trial and a 3-year limited warranty against conductivity degradation. Register your product below to activate your coverage.";
+export const WARRANTY_INFO = "We stand behind the quality of our products. Every Terra Sol purchase comes with a 100-night sleep trial and a 2-year limited warranty against conductivity degradation. Register your product below to activate your coverage.";
 
 export const COMPARISON_DATA = {
   features: [
     { name: 'Conductivity Material', terraSol: '12% Silver / 88% Cotton', competitors: 'Standard 3-5% Silver' },
-    { name: 'Oxidation Resistance', terraSol: 'High (3+ Years)', competitors: 'Low (6-12 Months)' },
+    { name: 'Oxidation Resistance', terraSol: 'High (2+ Years)', competitors: 'Low (6-12 Months)' },
     { name: 'Material Quality', terraSol: 'Pure Cotton Blend', competitors: 'Synthetic Blends' },
     { name: 'Bacterial Reduction', terraSol: '91%', competitors: 'Variable' },
     { name: 'Included Testing Kit', terraSol: 'Yes (Continuity + Outlet)', competitors: 'Rarely' },
-    { name: 'Warranty', terraSol: '3-Year Conductivity', competitors: '1-Year Limited' }
+    { name: 'Warranty', terraSol: '2-Year Conductivity', competitors: '1-Year Limited' }
   ]
 };
 

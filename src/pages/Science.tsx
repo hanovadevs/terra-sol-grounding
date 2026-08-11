@@ -82,7 +82,7 @@ const Science: React.FC = () => {
                 </p>
               </div>
               <p>
-                Terra Sol solves this by utilizing a high-density <span className="text-earth-700 font-bold bg-earth-900/5 px-2 rounded-md">12% Silver Fiber blend</span>. This significantly higher silver concentration ensures a more robust and durable conductive network that maintains its efficacy for 3+ years.
+                Terra Sol solves this by utilizing a high-density <span className="text-earth-700 font-bold bg-earth-900/5 px-2 rounded-md">12% Silver Fiber blend</span>. This significantly higher silver concentration ensures a more robust and durable conductive network that maintains its efficacy for 2+ years.
               </p>
             </div>
           </div>

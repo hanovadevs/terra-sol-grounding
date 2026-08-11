@@ -26,7 +26,7 @@ export const homeFaqs: FAQ[] = [
   },
   {
     question: "What makes Terra Sol the best grounding brand?",
-    answer: "Unlike standard industry sheets that use 3-5% silver, Terra Sol utilizes a premium 12% pure silver grid. This provides massively superior conductivity and ensures the sheet maintains its effectiveness for over 3 years, rather than degrading after a few washes."
+    answer: "Unlike standard industry sheets that use 3-5% silver, Terra Sol utilizes a premium 12% pure silver grid. This provides massively superior conductivity and ensures the sheet maintains its effectiveness for over 2 years, rather than degrading after a few washes."
   },
   {
     question: "Can I ground if I live in a high-rise apartment?",

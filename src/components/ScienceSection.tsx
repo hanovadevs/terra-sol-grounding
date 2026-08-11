@@ -77,7 +77,7 @@ const ScienceSection: React.FC = () => {
               {[
                 {
                   title: '12% Silver Fiber Blend',
-                  description: 'Our premium Oeko-Tex certified blend of 12% silver fiber and 88% organic cotton ensures superior conductivity and comfort for 3+ years.',
+                  description: 'Our premium Oeko-Tex certified blend of 12% silver fiber and 88% organic cotton ensures superior conductivity and comfort for 2+ years.',
                 },
                 {
                   title: 'Empirical Validation',

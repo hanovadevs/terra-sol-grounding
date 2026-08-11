@@ -299,7 +299,7 @@ const ProductDetail: React.FC = () => {
                   <div className="w-8 h-8 rounded-full bg-sand-200/50 flex items-center justify-center mb-1">
                     <ShieldCheck size={14} className="text-earth-700" />
                   </div>
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-earth-800">3-Yr Warranty</span>
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-earth-800">2-Yr Warranty</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-8 h-8 rounded-full bg-sand-200/50 flex items-center justify-center mb-1">
@@ -381,7 +381,7 @@ const ProductDetail: React.FC = () => {
                   )}
                   <div className="flex justify-between py-1 border-b border-sand-200/30">
                     <span className="text-xs text-earth-800/60 font-semibold">Warranty:</span>
-                    <span className="text-xs text-earth-900 font-bold">3-Year Conductivity Coverage</span>
+                    <span className="text-xs text-earth-900 font-bold">2-Year Conductivity Coverage</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-xs text-earth-800/60 font-semibold">Sleep Trial:</span>

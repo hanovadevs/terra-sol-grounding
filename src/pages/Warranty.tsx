@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { ShieldCheck, Send, CheckCircle2, Loader2, Upload, CalendarDays, Award, Zap, Activity, FileText, ExternalLink, AlertCircle, X } from 'lucide-react';
+import { ShieldCheck, Send, CheckCircle2, Loader2, Upload, CalendarDays, Award, Zap, Activity, FileText, ExternalLink, AlertCircle, X, Headphones, Gift, Clock, Mail, Globe, Leaf } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 
 // ============================================================================
@@ -41,14 +41,14 @@ const Warranty: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": "https://terrasolgrounding.com/warranty/#warrantypage",
-    "name": "3-Year Premium Warranty Registration & Claims",
+    "name": "2-Year Premium Warranty Registration & Claims",
     "description": "Register your Terra Sol Grounding product warranty or submit a conductivity replacement claim. Guaranteed support for our 12% silver grounding sheets and mats.",
     "url": "https://terrasolgrounding.com/warranty"
   };
 
   useSEO({
     title: 'Lifetime Conductivity Warranty Registration',
-    description: 'Register your Terra Sol product warranty. We stand behind our 12% silver fiber conductivity with a 3-year limited warranty and 100-night sleep trial.',
+    description: 'Register your Terra Sol product warranty. We stand behind our 12% silver fiber conductivity with a 2-year limited warranty and 100-night sleep trial.',
     schema: warrantySchema
   });
 
@@ -213,11 +213,240 @@ const Warranty: React.FC = () => {
             </motion.h1>
 
             <motion.p variants={itemVariants} className="mx-auto max-w-2xl text-sm sm:text-base text-sand-100/70 leading-relaxed font-medium">
-              Register your Terra Sol grounding products for warranty reference. Our 3-Year Limited Manufacturing Warranty covers manufacturing defects in materials and workmanship.
+              Register your Terra Sol grounding products for warranty reference. Our 2-Year Limited Manufacturing Warranty covers manufacturing defects in materials and workmanship.
             </motion.p>
           </motion.div>
         </div>
       </div>
+
+      {/* Premium Warranty Card Section */}
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        {/* Background ambient effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-earth-700/5 blur-[120px]" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-gold/5 blur-[100px]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-earth-100 border border-earth-200 text-[10px] font-bold uppercase tracking-widest text-earth-700 mb-6">
+              <Award size={12} /> Your Warranty Card
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-earth-900 mb-4 tracking-tight">
+              What's <span className="italic text-earth-600">Included</span>
+            </h2>
+            <p className="text-sm sm:text-base text-earth-800/60 max-w-lg mx-auto leading-relaxed">
+              Every Terra Sol product is backed by our comprehensive manufacturer warranty. Here's what you get.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+
+            {/* LEFT CARD — Dark Warranty Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative rounded-[2rem] overflow-hidden bg-earth-950 text-sand-100 p-8 sm:p-10 shadow-2xl border border-earth-900 group"
+            >
+              {/* Grain overlay */}
+              <div className="grain-overlay absolute inset-0 pointer-events-none" />
+
+              {/* Decorative shimmer */}
+              <div className="absolute inset-0 shimmer pointer-events-none opacity-50" />
+
+              {/* Subtle corner glow */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-accent-gold/10 blur-[60px] pointer-events-none" />
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-earth-600/10 blur-[60px] pointer-events-none" />
+
+              {/* Decorative border line */}
+              <div className="absolute inset-4 rounded-[1.5rem] border border-white/[0.06] pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col items-center text-center h-full justify-between">
+                {/* Logo area */}
+                <div className="mb-8">
+                  <div className="w-16 h-16 rounded-full border border-accent-gold/30 flex items-center justify-center mx-auto mb-5 bg-earth-900/50 shadow-[0_0_30px_rgba(201,169,78,0.1)]">
+                    <Leaf size={24} className="text-accent-gold/80" />
+                  </div>
+                  <h3 className="text-lg font-serif font-bold tracking-[0.12em] uppercase text-sand-100">Terra Sol</h3>
+                  <span className="text-[8px] font-bold tracking-[0.3em] uppercase text-sand-100/30 block -mt-0.5">— Grounding —</span>
+                </div>
+
+                {/* Main warranty text */}
+                <div className="mb-8">
+                  <h4 className="text-4xl sm:text-5xl font-serif font-bold text-white mb-2 tracking-tight">
+                    2-Year
+                  </h4>
+                  <p className="text-sm sm:text-base font-bold uppercase tracking-[0.15em] text-sand-100/60">
+                    Manufacturer Warranty
+                  </p>
+                </div>
+
+                {/* Sub text */}
+                <p className="text-sm text-sand-100/50 leading-relaxed max-w-xs mb-8">
+                  Register within <span className="font-bold text-white">30 days</span> of purchase to activate your warranty.
+                </p>
+
+                {/* QR code placeholder */}
+                <div className="bg-white rounded-2xl p-4 mb-6 shadow-lg">
+                  <div className="w-28 h-28 sm:w-32 sm:h-32 bg-earth-950 rounded-xl flex items-center justify-center relative overflow-hidden">
+                    {/* QR code visual pattern */}
+                    <div className="grid grid-cols-7 gap-[3px] p-2">
+                      {Array.from({ length: 49 }).map((_, i) => {
+                        const isCornerModule = 
+                          (i < 3 || (i >= 4 && i < 7)) && (Math.floor(i/7) < 3) ||
+                          (i % 7 < 3 && Math.floor(i/7) >= 4) ||
+                          (i % 7 >= 4 && Math.floor(i/7) >= 4);
+                        const isRandom = Math.random() > 0.45;
+                        return (
+                          <div
+                            key={i}
+                            className={`w-[5px] h-[5px] sm:w-[6px] sm:h-[6px] rounded-[1px] ${
+                              isCornerModule || isRandom ? 'bg-earth-950' : 'bg-transparent'
+                            }`}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-sand-100/40 mb-6 flex items-center gap-2">
+                  <span className="w-5 h-px bg-sand-100/20" />
+                  Scan to Register
+                  <span className="w-5 h-px bg-sand-100/20" />
+                </p>
+
+                {/* Bottom trust badges */}
+                <div className="flex items-center gap-6 pt-6 border-t border-white/[0.06] w-full justify-center">
+                  <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-wider text-sand-100/40">
+                    <ShieldCheck size={14} className="text-accent-gold/60" />
+                    Secure Registration
+                  </div>
+                  <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-wider text-sand-100/40">
+                    <CheckCircle2 size={14} className="text-accent-gold/60" />
+                    Your Purchase. Our Promise.
+                  </div>
+                </div>
+
+                {/* URL */}
+                <div className="mt-5 flex items-center gap-2 bg-white/5 border border-white/[0.06] rounded-full px-5 py-2.5">
+                  <Globe size={12} className="text-accent-gold/50" />
+                  <span className="text-[10px] font-bold tracking-wide text-sand-100/50">www.terrasolgrounding.com/warranty</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* RIGHT CARD — Light Info Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative rounded-[2rem] overflow-hidden bg-white border border-sand-300/50 p-8 sm:p-10 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.08)] flex flex-col"
+            >
+              {/* Decorative top accent */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-earth-600 via-accent-gold to-earth-400" />
+
+              {/* Logo & intro */}
+              <div className="text-center mb-8 pt-2">
+                <div className="w-14 h-14 rounded-full border-2 border-earth-200 flex items-center justify-center mx-auto mb-4 bg-sand-50">
+                  <Leaf size={22} className="text-earth-700" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-serif font-bold text-earth-900 uppercase tracking-wide">Thank You for Choosing Terra Sol</h3>
+                <p className="text-sm text-earth-800/60 mt-2 leading-relaxed">
+                  Register your product within <span className="font-bold text-earth-900">30 days</span> of purchase to activate your <span className="font-bold text-earth-900">2-Year Manufacturer Warranty</span>.
+                </p>
+              </div>
+
+              {/* Benefit icons grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                {[
+                  { icon: ShieldCheck, title: '2-Year', subtitle: 'Manufacturer Warranty' },
+                  { icon: Headphones, title: 'Priority', subtitle: 'Customer Support' },
+                  { icon: Gift, title: 'Exclusive', subtitle: 'Product Updates' },
+                  { icon: Clock, title: 'Faster', subtitle: 'Warranty Service' },
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + idx * 0.08 }}
+                    viewport={{ once: true }}
+                    className="text-center group"
+                  >
+                    <div className="w-12 h-12 mx-auto rounded-2xl bg-sand-100 border border-sand-200 flex items-center justify-center mb-3 group-hover:bg-earth-100 group-hover:border-earth-200 transition-colors duration-300">
+                      <item.icon size={20} className="text-earth-700" />
+                    </div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-earth-900 leading-tight">{item.title}</p>
+                    <p className="text-[9px] font-bold uppercase tracking-wider text-earth-800/40 leading-tight">{item.subtitle}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-sand-200 mb-6" />
+
+              {/* Warranty Information */}
+              <div className="mb-8">
+                <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-earth-900 mb-4">Warranty Information</h4>
+                <ul className="space-y-3">
+                  {[
+                    'Register your product online within 30 days of purchase.',
+                    'Keep your proof of purchase.',
+                    'Warranty applies to the original purchaser only.',
+                    'Damage caused by misuse, modifications, improper installation, accidents, or normal wear is not covered.',
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-earth-800/70 leading-relaxed">
+                      <Leaf size={12} className="text-earth-600 shrink-0 mt-1" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-sand-200 mb-6" />
+
+              {/* Need Help */}
+              <div className="bg-sand-50 rounded-2xl border border-sand-200 p-5 flex items-start gap-4 mb-6">
+                <div className="w-10 h-10 rounded-full bg-earth-100 border border-earth-200 flex items-center justify-center shrink-0">
+                  <Headphones size={18} className="text-earth-700" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-earth-900 mb-2">Need Help?</h4>
+                  <div className="space-y-1.5">
+                    <a href="mailto:support@terrasolgrounding.com" className="flex items-center gap-2 text-sm text-earth-800/60 hover:text-earth-700 transition-colors">
+                      <Mail size={12} className="text-earth-600" />
+                      support@terrasolgrounding.com
+                    </a>
+                    <a href="https://terrasolgrounding.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-earth-800/60 hover:text-earth-700 transition-colors">
+                      <Globe size={12} className="text-earth-600" />
+                      www.terrasolgrounding.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Closing message */}
+              <div className="text-center mt-auto pt-4">
+                <p className="text-sm italic text-earth-800/50 font-serif leading-relaxed">
+                  We're here to help you stay grounded.<br />
+                  Thank you for being part of the Terra Sol community.
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
 
       {/* Main Content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
@@ -240,7 +469,7 @@ const Warranty: React.FC = () => {
 
               <ul className="space-y-5">
                 {[
-                  { icon: Zap, title: "3-Year Protection", desc: "Full coverage for any loss of conductivity in our 12% silver fiber." },
+                  { icon: Zap, title: "2-Year Protection", desc: "Full coverage for any loss of conductivity in our 12% silver fiber." },
                   { icon: Activity, title: "Faster Support", desc: "Registration helps us verify your purchase faster if you need support." },
                   { icon: ShieldCheck, title: "Purchase Record", desc: "Keep a verified record of your purchase for future warranty reference." }
                 ].map((item, idx) => (
