@@ -22,8 +22,8 @@ import { useSEO } from '../hooks/useSEO';
 
 const Home: React.FC = () => {
   useSEO({
-    title: 'Terra Sol Grounding | Best Premium Grounding Sheets & Earthing Products',
-    description: 'Terra Sol Grounding is the best choice for premium grounding products. Restore your biology, reduce inflammation, and normalize cortisol with our Oeko-Tex certified 12% silver grounding sheets.',
+    title: 'Grounding Sheets & Mats | Terra Sol Grounding',
+    description: 'Shop Terra Sol grounding sheets and grounding mats in the US, featuring 12% silver-fiber sheets, practical setup guidance, product care information, and Amazon ordering.',
   });
 
   return (

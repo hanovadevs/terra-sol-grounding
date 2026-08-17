@@ -107,6 +107,9 @@ const ProductDetail: React.FC = () => {
   useSEO({
     title: product ? `${product.name} | Premium Grounding` : 'Product Details',
     description: product ? `${product.description} ${product.tagline || ''}` : 'Details for premium grounding sheet or mat.',
+    canonical: product ? `https://terrasolgrounding.com/products/${product.id}` : undefined,
+    image: product?.images[0],
+    type: 'product',
     schema: productSchema
   });
 

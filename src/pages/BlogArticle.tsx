@@ -37,6 +37,9 @@ const BlogArticle: React.FC = () => {
   useSEO({
     title: article ? `${article.title} | The Journal` : 'Article Details',
     description: article ? article.excerpt : 'Read this article from the Terra Sol Grounding journal.',
+    canonical: article ? `https://terrasolgrounding.com/blog/${article.slug}` : undefined,
+    image: article?.image,
+    type: 'article',
     schema: articleSchema
   });
 

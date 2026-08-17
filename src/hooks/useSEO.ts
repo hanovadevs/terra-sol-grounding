@@ -4,36 +4,44 @@ interface SEOProps {
   title: string;
   description?: string;
   canonical?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'product';
   schema?: Record<string, any> | Record<string, any>[];
 }
 
-export const useSEO = ({ title, description, canonical, schema }: SEOProps) => {
+const SITE_URL = 'https://terrasolgrounding.com';
+const DEFAULT_IMAGE = `${SITE_URL}/terra-sol-grounding.jpeg`;
+
+const setMeta = (selector: string, attribute: 'name' | 'property', key: string, content: string) => {
+  let element = document.querySelector<HTMLMetaElement>(selector);
+  if (!element) {
+    element = document.createElement('meta');
+    element.setAttribute(attribute, key);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('content', content);
+};
+
+export const useSEO = ({ title, description, canonical, image = DEFAULT_IMAGE, type = 'website', schema }: SEOProps) => {
   useEffect(() => {
-    // Set title
     const fullTitle = title.includes('Terra Sol') ? title : `${title} | Terra Sol Grounding`;
     document.title = fullTitle;
+    const canonicalUrl = canonical || `${SITE_URL}${window.location.pathname === '/' ? '/' : window.location.pathname.replace(/\/$/, '')}`;
+    const imageUrl = image.startsWith('http') ? image : `${SITE_URL}${image}`;
 
-    // Set meta description
     if (description) {
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', description);
-      } else {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        metaDesc.setAttribute('content', description);
-        document.head.appendChild(metaDesc);
-      }
-      
-      // Update OpenGraph description
-      const ogDesc = document.querySelector('meta[property="og:description"]');
-      if (ogDesc) {
-        ogDesc.setAttribute('content', description);
-      }
+      setMeta('meta[name="description"]', 'name', 'description', description);
+      setMeta('meta[property="og:description"]', 'property', 'og:description', description);
+      setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
     }
+    setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle);
+    setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    setMeta('meta[property="og:type"]', 'property', 'og:type', type);
+    setMeta('meta[property="og:image"]', 'property', 'og:image', imageUrl);
+    setMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', `${title} — Terra Sol Grounding`);
+    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', fullTitle);
+    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', imageUrl);
 
-    // Set canonical link
-    const canonicalUrl = canonical || window.location.href;
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (linkCanonical) {
       linkCanonical.setAttribute('href', canonicalUrl);
@@ -67,6 +75,5 @@ export const useSEO = ({ title, description, canonical, schema }: SEOProps) => {
         script.remove();
       }
     };
-  }, [title, description, canonical, JSON.stringify(schema)]);
+  }, [title, description, canonical, image, type, JSON.stringify(schema)]);
 };
-
