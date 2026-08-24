@@ -75,20 +75,18 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
           <Link to="/" className="group flex items-center gap-2.5 sm:gap-3" aria-label="Terra Sol Home">
-            <div
-              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center overflow-hidden rounded-full bg-white border border-sand-300/40 shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_5px_15px_rgba(45,79,30,0.12)] group-hover:border-earth-600/20 flex-shrink-0"
-            >
-              {isLogoVisible ? (
-                <img
-                  src={BRAND_CONFIG.logo}
-                  alt=""
-                  className="h-[88%] w-[88%] object-contain rounded-full transition-transform duration-500 group-hover:rotate-[4deg]"
-                  onError={() => setIsLogoVisible(false)}
-                />
-              ) : (
-                <span className="font-serif text-sm font-bold text-earth-800">{BRAND_CONFIG.name[0]}</span>
-              )}
-            </div>
+            {isLogoVisible ? (
+              <img
+                src="/bg_logo.png"
+                alt="Terra Sol"
+                className="h-13 w-13 sm:h-16 sm:w-16 object-contain transition-transform duration-500 group-hover:rotate-[4deg] flex-shrink-0"
+                onError={() => setIsLogoVisible(false)}
+              />
+            ) : (
+              <div className="flex h-13 w-13 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-white/10 flex-shrink-0">
+                <span className="font-serif text-base font-bold text-earth-800">{BRAND_CONFIG.name[0]}</span>
+              </div>
+            )}
             <div className="flex flex-col">
               <span 
                 className={`text-sm sm:text-base md:text-lg font-serif font-bold tracking-[0.14em] uppercase transition-colors duration-300 ${textColor}`}

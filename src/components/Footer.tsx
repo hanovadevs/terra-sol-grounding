@@ -81,18 +81,18 @@ const Footer: React.FC = () => {
           {/* Brand column */}
           <div className="space-y-5">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white border border-white/10 shadow-[0_3px_10px_rgba(0,0,0,0.1)] transition-all group-hover:scale-105 group-hover:shadow-[0_5px_15px_rgba(255,255,255,0.15)] group-hover:border-earth-600/30">
-                {isLogoVisible ? (
-                  <img
-                    src={BRAND_CONFIG.logo}
-                    alt={BRAND_CONFIG.name}
-                    className="h-[88%] w-[88%] object-contain rounded-full"
-                    onError={() => setIsLogoVisible(false)}
-                  />
-                ) : (
-                  <span className="font-serif text-base font-bold text-earth-800">{BRAND_CONFIG.name[0]}</span>
-                )}
-              </div>
+              {isLogoVisible ? (
+                <img
+                  src="/bg_logo.png"
+                  alt={BRAND_CONFIG.name}
+                  className="h-14 w-14 sm:h-16 sm:w-16 object-contain transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
+                  onError={() => setIsLogoVisible(false)}
+                />
+              ) : (
+                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-white/10 flex-shrink-0">
+                  <span className="font-serif text-lg font-bold text-earth-800">{BRAND_CONFIG.name[0]}</span>
+                </div>
+              )}
               <div className="flex flex-col">
                 <span className="text-sm sm:text-base font-serif font-bold tracking-[0.14em] uppercase group-hover:text-earth-300 transition-colors">
                   {BRAND_CONFIG.name}

@@ -120,7 +120,7 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const BRAND_CONFIG = {
-  logo: '/terra-sol-grounding.jpeg',
+  logo: '/bg_logo.png',
   name: 'TERRA SOL',
   tagline: 'Restore Your Biology While You Sleep.'
 };
