@@ -17,13 +17,106 @@ import FAQSection from '../components/FAQSection';
 import { homeFaqs } from '../data/faqs';
 import { researchArticles } from '../data/research';
 import { blogArticles } from '../data/blog';
+import { PRODUCTS } from '../constants';
 import { ExternalLink, ArrowRight, Clock, FlaskConical, Newspaper } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 
 const Home: React.FC = () => {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://terrasolgrounding.com/#website",
+        "url": "https://terrasolgrounding.com/",
+        "name": "Terra Sol Grounding",
+        "description": "Premium 12% silver grounding sheets and carbon vegan leather grounding mats designed for cortisol regulation, inflammation reduction, and restorative sleep.",
+        "publisher": {
+          "@id": "https://terrasolgrounding.com/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://terrasolgrounding.com/products?search={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://terrasolgrounding.com/#organization",
+        "name": "Terra Sol Grounding",
+        "url": "https://terrasolgrounding.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://terrasolgrounding.com/logo.png",
+          "width": "512",
+          "height": "512"
+        },
+        "description": "Terra Sol Grounding is a premier US brand specializing in high-density 12% silver fiber grounding sheets and carbon vegan leather grounding mats.",
+        "email": "support@terrasolgrounding.com",
+        "areaServed": "US",
+        "knowsAbout": [
+          "Earthing",
+          "Grounding Sheets",
+          "Grounding Mats",
+          "Silver Oxidation Prevention",
+          "Cortisol Regulation",
+          "Electromagnetic Field Dissipation",
+          "Sleep Architecture Optimization",
+          "Bioelectrical Restoration"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/terrasolgrounding",
+          "https://www.facebook.com/terrasolgrounding",
+          "https://www.amazon.com/stores/TerraSolGrounding/page/72F16C5A-B767-4AB5-AE34-88D0D13C0D98"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "support@terrasolgrounding.com",
+          "availableLanguage": "en"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://terrasolgrounding.com/#faq",
+        "mainEntity": homeFaqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://terrasolgrounding.com/#featured-products",
+        "name": "Featured Terra Sol Grounding Products",
+        "itemListElement": PRODUCTS.map((prod, idx) => ({
+          "@type": "ListItem",
+          "position": idx + 1,
+          "item": {
+            "@type": "Product",
+            "name": prod.name,
+            "url": `https://terrasolgrounding.com/products/${prod.id}`,
+            "image": prod.images[0].startsWith('http') ? prod.images[0] : `https://terrasolgrounding.com${prod.images[0]}`,
+            "description": prod.description,
+            "offers": {
+              "@type": "Offer",
+              "price": parseFloat(prod.price.replace('$', '')).toString(),
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        }))
+      }
+    ]
+  };
+
   useSEO({
     title: 'Grounding Sheets & Mats | Terra Sol Grounding',
     description: 'Shop Terra Sol grounding sheets and grounding mats in the US, featuring 12% silver-fiber sheets, practical setup guidance, product care information, and Amazon ordering.',
+    schema: homeSchema
   });
 
   return (

@@ -6,33 +6,57 @@ import { Sparkles, ArrowDown } from 'lucide-react';
 import FAQSection from '../components/FAQSection';
 import { productsFaqs } from '../data/faqs';
 import { useSEO } from '../hooks/useSEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { PRODUCTS } from '../constants';
 
 const Products: React.FC = () => {
   const catalogSchema = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": "https://terrasolgrounding.com/products/#collectionpage",
-    "name": "Terra Sol Grounding Sheets & Mats Catalog",
-    "description": "Explore the Terra Sol collection of premium grounding mats and 12% silver grounding sheets. Science-backed products designed to neutralize inflammation and optimize sleep.",
-    "url": "https://terrasolgrounding.com/products",
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": PRODUCTS.map((p, idx) => ({
-        "@type": "ListItem",
-        "position": idx + 1,
-        "url": `https://terrasolgrounding.com/products/${p.id}`,
-        "name": p.name,
-        "image": p.images[0].startsWith('http') ? p.images[0] : `https://terrasolgrounding.com${p.images[0]}`,
-        "description": p.description,
-        "offers": {
-          "@type": "Offer",
-          "price": parseFloat(p.price.replace('$', '')).toString(),
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://terrasolgrounding.com/products/#collectionpage",
+        "name": "Terra Sol Grounding Sheets & Mats Catalog",
+        "description": "Explore the Terra Sol collection of premium grounding mats and 12% silver grounding sheets. Science-backed products designed to neutralize inflammation and optimize sleep.",
+        "url": "https://terrasolgrounding.com/products",
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": PRODUCTS.map((p, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "url": `https://terrasolgrounding.com/products/${p.id}`,
+            "name": p.name,
+            "image": p.images[0].startsWith('http') ? p.images[0] : `https://terrasolgrounding.com${p.images[0]}`,
+            "description": p.description,
+            "offers": {
+              "@type": "Offer",
+              "price": parseFloat(p.price.replace('$', '')).toString(),
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          }))
         }
-      }))
-    }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://terrasolgrounding.com/products/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://terrasolgrounding.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Products",
+            "item": "https://terrasolgrounding.com/products"
+          }
+        ]
+      }
+    ]
   };
 
   useSEO({
@@ -88,8 +112,13 @@ const Products: React.FC = () => {
         </div>
       </div>
       
+      {/* Breadcrumbs Navigation */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Products' }]} />
+      </div>
+
       {/* The Actual Grid Container */}
-      <div className="relative z-30 -mt-16 pb-24">
+      <div className="relative z-30 -mt-8 pb-24">
         <ProductGrid />
       </div>
 

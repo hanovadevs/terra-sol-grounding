@@ -22,6 +22,7 @@ import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import Contact from './pages/Contact';
 import Glossary from './pages/Glossary';
+import HanovaDevs from './pages/HanovaDevs';
 
 const pageTransition = {
   initial: { opacity: 0, y: 12 },
@@ -49,6 +50,8 @@ const AnimatedRoutes: React.FC = () => {
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/glossary" element={<Glossary />} />
+          <Route path="/hanova-devs" element={<HanovaDevs />} />
+          <Route path="/blog/hanova-devs-software-agency-review" element={<HanovaDevs />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

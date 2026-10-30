@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, ExternalLink, Filter, FlaskConical, AlertTriangle } from 'lucide-react';
 import { researchArticles, RESEARCH_CATEGORIES } from '../data/research';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { useSEO } from '../hooks/useSEO';
 
 const Research: React.FC = () => {
@@ -9,31 +10,53 @@ const Research: React.FC = () => {
 
   const researchSchema = {
     "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "@id": "https://terrasolgrounding.com/research/#researchpage",
-    "name": "Clinical Studies & Grounding Research",
-    "description": "Read peer-reviewed clinical studies on grounding. Scientific evidence demonstrating the benefits of earthing on inflammation, cortisol, sleep, cardiovascular health, and recovery.",
-    "url": "https://terrasolgrounding.com/research",
-    "mainEntity": {
-      "@type": "ItemList",
-      "name": "Clinical Studies on Earthing & Grounding",
-      "itemListElement": researchArticles.map((study, idx) => ({
-        "@type": "ScholarlyArticle",
-        "position": idx + 1,
-        "name": study.title,
-        "author": study.authors.split(', ').map(authorName => ({
-          "@type": "Person",
-          "name": authorName
-        })),
-        "isPartOf": {
-          "@type": "Periodical",
-          "name": study.journal
-        },
-        "datePublished": study.year.toString(),
-        "url": study.pubmedUrl,
-        "abstract": study.summary
-      }))
-    }
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://terrasolgrounding.com/research/#researchpage",
+        "name": "Clinical Studies & Grounding Research",
+        "description": "Read peer-reviewed clinical studies on grounding. Scientific evidence demonstrating the benefits of earthing on inflammation, cortisol, sleep, cardiovascular health, and recovery.",
+        "url": "https://terrasolgrounding.com/research",
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Clinical Studies on Earthing & Grounding",
+          "itemListElement": researchArticles.map((study, idx) => ({
+            "@type": "ScholarlyArticle",
+            "position": idx + 1,
+            "name": study.title,
+            "author": study.authors.split(', ').map(authorName => ({
+              "@type": "Person",
+              "name": authorName
+            })),
+            "isPartOf": {
+              "@type": "Periodical",
+              "name": study.journal
+            },
+            "datePublished": study.year.toString(),
+            "url": study.pubmedUrl,
+            "abstract": study.summary
+          }))
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://terrasolgrounding.com/research/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://terrasolgrounding.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Research",
+            "item": "https://terrasolgrounding.com/research"
+          }
+        ]
+      }
+    ]
   };
 
   useSEO({
@@ -103,6 +126,11 @@ const Research: React.FC = () => {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Breadcrumbs Navigation */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Research' }]} />
       </div>
 
       {/* Category Filters */}

@@ -67,41 +67,113 @@ const ProductDetail: React.FC = () => {
 
   const productSchema = product ? {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": `https://terrasolgrounding.com/products/${product.id}#product`,
-    "name": product.name,
-    "description": product.description,
-    "image": product.images.map(img => img.startsWith('http') ? img : `https://terrasolgrounding.com${img}`),
-    "brand": {
-      "@type": "Brand",
-      "name": "Terra Sol Grounding"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": averageRating.toFixed(1),
-      "reviewCount": reviewCount.toString()
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": productPrice.toString(),
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": window.location.href
-    },
-    "review": productReviews.map(r => ({
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": r.name
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": `https://terrasolgrounding.com/products/${product.id}#product`,
+        "name": product.name,
+        "description": product.description,
+        "image": product.images.map(img => img.startsWith('http') ? img : `https://terrasolgrounding.com${img}`),
+        "sku": `TSG-00${product.id}`,
+        "mpn": `TERRASOL-SKU-${product.id}`,
+        "category": "Health & Personal Care > Wellness & Sleep",
+        "brand": {
+          "@type": "Brand",
+          "name": "Terra Sol Grounding"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": averageRating.toFixed(1),
+          "reviewCount": reviewCount.toString()
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": productPrice.toString(),
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "priceValidUntil": "2027-12-31",
+          "url": `https://terrasolgrounding.com/products/${product.id}`,
+          "seller": {
+            "@type": "Organization",
+            "name": "Terra Sol Grounding"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "US",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 100,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0.00",
+              "currency": "USD"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 4,
+                "unitCode": "DAY"
+              }
+            }
+          }
+        },
+        "review": productReviews.map(r => ({
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": r.name
+          },
+          "datePublished": r.date,
+          "reviewBody": r.text,
+          "name": r.title,
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": r.rating.toString()
+          }
+        }))
       },
-      "datePublished": r.date,
-      "reviewBody": r.text,
-      "name": r.title,
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": r.rating.toString()
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://terrasolgrounding.com/products/${product.id}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://terrasolgrounding.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Products",
+            "item": "https://terrasolgrounding.com/products"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": product.name,
+            "item": `https://terrasolgrounding.com/products/${product.id}`
+          }
+        ]
       }
-    }))
+    ]
   } : undefined;
 
   useSEO({

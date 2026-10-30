@@ -11,36 +11,77 @@ import MatUsageDetails from '../components/MatUsageDetails';
 import FAQSection from '../components/FAQSection';
 import { scienceFaqs } from '../data/faqs';
 import { researchArticles } from '../data/research';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { useSEO } from '../hooks/useSEO';
 
 const Science: React.FC = () => {
   const scienceSchema = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://terrasolgrounding.com/science/#sciencepage",
-    "name": "The Science of Earthing & Grounding Biophysics",
-    "description": "Discover the biophysics of earthing: how the body absorbs free electrons from the Earth to neutralize positive radicals, lower cortisol, and balance the nervous system.",
-    "url": "https://terrasolgrounding.com/science",
-    "about": [
+    "@graph": [
       {
-        "@type": "Thing",
-        "name": "Earthing",
-        "sameAs": "https://en.wikipedia.org/wiki/Earthing_system"
+        "@type": "MedicalWebPage",
+        "@id": "https://terrasolgrounding.com/science/#sciencepage",
+        "name": "The Science of Earthing & Grounding Biophysics",
+        "description": "Discover the biophysics of earthing: how the body absorbs free electrons from the Earth to neutralize positive radicals, lower cortisol, and balance the nervous system.",
+        "url": "https://terrasolgrounding.com/science",
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Earthing",
+            "sameAs": "https://en.wikipedia.org/wiki/Earthing_system"
+          },
+          {
+            "@type": "Thing",
+            "name": "Free radical",
+            "sameAs": "https://en.wikipedia.org/wiki/Radical_(chemistry)"
+          },
+          {
+            "@type": "Thing",
+            "name": "Cortisol",
+            "sameAs": "https://en.wikipedia.org/wiki/Cortisol"
+          },
+          {
+            "@type": "Thing",
+            "name": "Silver conductivity",
+            "sameAs": "https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity"
+          }
+        ],
+        "citation": [
+          "https://pubmed.ncbi.nlm.nih.gov/15650465/",
+          "https://pubmed.ncbi.nlm.nih.gov/22757749/",
+          "https://pubmed.ncbi.nlm.nih.gov/25848315/",
+          "https://pubmed.ncbi.nlm.nih.gov/26445582/"
+        ]
       },
       {
-        "@type": "Thing",
-        "name": "Free radical",
-        "sameAs": "https://en.wikipedia.org/wiki/Radical_(chemistry)"
+        "@type": "FAQPage",
+        "@id": "https://terrasolgrounding.com/science/#faq",
+        "mainEntity": scienceFaqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
       },
       {
-        "@type": "Thing",
-        "name": "Cortisol",
-        "sameAs": "https://en.wikipedia.org/wiki/Cortisol"
-      },
-      {
-        "@type": "Thing",
-        "name": "Silver conductivity",
-        "sameAs": "https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity"
+        "@type": "BreadcrumbList",
+        "@id": "https://terrasolgrounding.com/science/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://terrasolgrounding.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Science",
+            "item": "https://terrasolgrounding.com/science"
+          }
+        ]
       }
     ]
   };
@@ -54,6 +95,9 @@ const Science: React.FC = () => {
   return (
     <div className="pt-20 bg-sand-200 min-h-screen selection:bg-earth-800 selection:text-sand-100">
       <ReadingProgressBar />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Science' }]} />
+      </div>
       <ScienceSection />
       
       {/* The Conductivity Crisis - Elegant Editorial Style */}

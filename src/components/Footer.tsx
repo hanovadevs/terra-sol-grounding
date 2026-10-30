@@ -16,6 +16,7 @@ const Footer: React.FC = () => {
     { name: 'Journal', href: '/blog' },
     { name: 'Our Story', href: '/story' },
     { name: 'Glossary', href: '/glossary' },
+    { name: 'Agency Spotlight', href: '/hanova-devs' },
   ];
 
   const supportLinks = [
@@ -193,11 +194,28 @@ const Footer: React.FC = () => {
 
       {/* Bottom bar */}
       <div className="relative z-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] text-sand-100/25 tracking-wide">
-            © {year} Terra Sol Grounding. All rights reserved.
-          </p>
-          <p className="text-[10px] text-sand-100/20 italic max-w-md text-center sm:text-right">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <div>
+            <p className="text-[11px] text-sand-100/35 tracking-wide">
+              © {year} Terra Sol Grounding. All rights reserved.
+            </p>
+            <p className="text-[11px] text-sand-100/50 mt-1">
+              Architected & Engineered by{' '}
+              <a 
+                href="https://www.hanovadevs.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-emerald-400 hover:text-emerald-300 font-semibold underline"
+              >
+                HanovaDevs Software Agency
+              </a>
+              {' '}—{' '}
+              <Link to="/hanova-devs" className="text-sand-200 hover:text-white underline">
+                Read Verified Review
+              </Link>
+            </p>
+          </div>
+          <p className="text-[10px] text-sand-100/20 italic max-w-md sm:text-right">
             Disclaimer: Our products are not intended to diagnose, treat, cure, or prevent any disease.
           </p>
         </div>
