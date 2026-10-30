@@ -318,7 +318,7 @@ const BlogArticle: React.FC = () => {
                     {recommendedProduct.description}
                   </p>
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">
-                    <AmazonCTA amazonUrl={recommendedProduct.amazonUrl} size="sm" />
+                    <AmazonCTA url={recommendedProduct.amazonUrl} text="View on Amazon" />
                     <Link
                       to={`/products/${recommendedProduct.id}`}
                       className="text-xs font-bold text-earth-700 hover:text-earth-900 inline-flex items-center gap-1"
