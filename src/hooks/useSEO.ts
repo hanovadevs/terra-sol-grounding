@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 interface SEOProps {
   title: string;
   description?: string;
+  keywords?: string;
   canonical?: string;
   image?: string;
   type?: 'website' | 'article' | 'product';
@@ -22,7 +23,7 @@ const setMeta = (selector: string, attribute: 'name' | 'property', key: string, 
   element.setAttribute('content', content);
 };
 
-export const useSEO = ({ title, description, canonical, image = DEFAULT_IMAGE, type = 'website', schema }: SEOProps) => {
+export const useSEO = ({ title, description, keywords, canonical, image = DEFAULT_IMAGE, type = 'website', schema }: SEOProps) => {
   useEffect(() => {
     const fullTitle = title.includes('Terra Sol') ? title : `${title} | Terra Sol Grounding`;
     document.title = fullTitle;
@@ -33,6 +34,9 @@ export const useSEO = ({ title, description, canonical, image = DEFAULT_IMAGE, t
       setMeta('meta[name="description"]', 'name', 'description', description);
       setMeta('meta[property="og:description"]', 'property', 'og:description', description);
       setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+    }
+    if (keywords) {
+      setMeta('meta[name="keywords"]', 'name', 'keywords', keywords);
     }
     setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle);
     setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
